@@ -1,0 +1,16 @@
+############################################################
+# Target: libjsonld-cpp-core
+
+add_library(jsonld-cpp-core STATIC IriUtils.cpp sha1.cpp)
+
+target_include_directories(jsonld-cpp-core
+        PUBLIC
+            $<INSTALL_INTERFACE:include/libjsonld-cpp-core>
+            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include;>"
+)
+
+target_compile_features(jsonld-cpp-core PRIVATE cxx_std_17)
+target_compile_options(jsonld-cpp-core PRIVATE ${DCD_CXX_FLAGS})
+set_target_properties(jsonld-cpp-core PROPERTIES CXX_EXTENSIONS OFF)
+
+install (TARGETS jsonld-cpp-core DESTINATION lib)
