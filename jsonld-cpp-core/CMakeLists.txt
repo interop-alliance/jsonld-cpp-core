@@ -1,7 +1,25 @@
 ############################################################
 # Target: libjsonld-cpp-core
 
-add_library(jsonld-cpp-core STATIC IriUtils.cpp sha1.cpp)
+add_library(jsonld-cpp-core STATIC
+        IriUtils.cpp
+        sha1.cpp
+        JsonLdProcessor.cpp
+        RemoteDocument.cpp
+        JsonLdUrl.cpp
+        DocumentLoader.cpp
+        JsonLdOptions.cpp
+        JsonLdError.cpp
+        JsonLdApi.cpp
+        RDFDataset.cpp
+        JsonLdUtils.cpp
+        RDFDatasetUtils.cpp
+        DoubleFormatter.cpp
+        ObjUtils.cpp
+        NormalizeUtils.cpp
+        Permutator.cpp
+        Context.cpp
+        UniqueNamer.cpp)
 
 target_include_directories(jsonld-cpp-core
         PUBLIC
