@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C40828524A5BB18007A6266 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C40828124A5BB18007A6266 /* sha1.h */; };
+		7C40828624A5BB18007A6266 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C40828224A5BB18007A6266 /* sha1.cpp */; };
+		7C40828724A5BB18007A6266 /* IriUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C40828324A5BB18007A6266 /* IriUtils.h */; };
+		7C40828824A5BB18007A6266 /* IriUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C40828424A5BB18007A6266 /* IriUtils.cpp */; };
+		7C40829624A5C303007A6266 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C40829424A5C302007A6266 /* main.cpp */; };
+		7C40829724A5C303007A6266 /* test_IriUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C40829524A5C302007A6266 /* test_IriUtils.cpp */; };
+		7C40829D24A5C569007A6266 /* libgmock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829924A5C569007A6266 /* libgmock.a */; };
+		7C40829E24A5C569007A6266 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829A24A5C569007A6266 /* libgtest.a */; };
+		7C40829F24A5C569007A6266 /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829B24A5C569007A6266 /* libgtest_main.a */; };
+		7C4082A024A5C569007A6266 /* libgmock_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829C24A5C569007A6266 /* libgmock_main.a */; };
+		7C4082A124A5CA60007A6266 /* libjsonld-cpp-core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25057F24A3DAE3005F7F28 /* libjsonld-cpp-core.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C40828B24A5BC8D007A6266 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7C25057F24A3DAE3005F7F28 /* libjsonld-cpp-core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjsonld-cpp-core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C40828124A5BB18007A6266 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = "../../../jsonld-cpp-core/sha1.h"; sourceTree = "<group>"; };
+		7C40828224A5BB18007A6266 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = "../../../jsonld-cpp-core/sha1.cpp"; sourceTree = "<group>"; };
+		7C40828324A5BB18007A6266 /* IriUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IriUtils.h; path = "../../../jsonld-cpp-core/IriUtils.h"; sourceTree = "<group>"; };
+		7C40828424A5BB18007A6266 /* IriUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IriUtils.cpp; path = "../../../jsonld-cpp-core/IriUtils.cpp"; sourceTree = "<group>"; };
+		7C40828D24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "UnitTests_jsonld-cpp-core"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C40829424A5C302007A6266 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../../../tests/tests-jsonld-cpp-core/main.cpp"; sourceTree = "<group>"; };
+		7C40829524A5C302007A6266 /* test_IriUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_IriUtils.cpp; path = "../../../tests/tests-jsonld-cpp-core/test_IriUtils.cpp"; sourceTree = "<group>"; };
+		7C40829924A5C569007A6266 /* libgmock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmock.a; path = ../../tests/googletest/build/lib/libgmock.a; sourceTree = "<group>"; };
+		7C40829A24A5C569007A6266 /* libgtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest.a; path = ../../tests/googletest/build/lib/libgtest.a; sourceTree = "<group>"; };
+		7C40829B24A5C569007A6266 /* libgtest_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest_main.a; path = ../../tests/googletest/build/lib/libgtest_main.a; sourceTree = "<group>"; };
+		7C40829C24A5C569007A6266 /* libgmock_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmock_main.a; path = ../../tests/googletest/build/lib/libgmock_main.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7C25057D24A3DAE2005F7F28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C40828A24A5BC8D007A6266 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C4082A124A5CA60007A6266 /* libjsonld-cpp-core.a in Frameworks */,
+				7C40829D24A5C569007A6266 /* libgmock.a in Frameworks */,
+				7C40829E24A5C569007A6266 /* libgtest.a in Frameworks */,
+				7C40829F24A5C569007A6266 /* libgtest_main.a in Frameworks */,
+				7C4082A024A5C569007A6266 /* libgmock_main.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C25057624A3DAE2005F7F28 = {
+			isa = PBXGroup;
+			children = (
+				7C25058124A3DAE3005F7F28 /* jsonld-cpp-core */,
+				7C40828E24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */,
+				7C25058024A3DAE3005F7F28 /* Products */,
+				7C40829824A5C569007A6266 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7C25058024A3DAE3005F7F28 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C25057F24A3DAE3005F7F28 /* libjsonld-cpp-core.a */,
+				7C40828D24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C25058124A3DAE3005F7F28 /* jsonld-cpp-core */ = {
+			isa = PBXGroup;
+			children = (
+				7C40828424A5BB18007A6266 /* IriUtils.cpp */,
+				7C40828324A5BB18007A6266 /* IriUtils.h */,
+				7C40828224A5BB18007A6266 /* sha1.cpp */,
+				7C40828124A5BB18007A6266 /* sha1.h */,
+			);
+			path = "jsonld-cpp-core";
+			sourceTree = "<group>";
+		};
+		7C40828E24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */ = {
+			isa = PBXGroup;
+			children = (
+				7C40829424A5C302007A6266 /* main.cpp */,
+				7C40829524A5C302007A6266 /* test_IriUtils.cpp */,
+			);
+			path = "UnitTests_jsonld-cpp-core";
+			sourceTree = "<group>";
+		};
+		7C40829824A5C569007A6266 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C40829C24A5C569007A6266 /* libgmock_main.a */,
+				7C40829924A5C569007A6266 /* libgmock.a */,
+				7C40829B24A5C569007A6266 /* libgtest_main.a */,
+				7C40829A24A5C569007A6266 /* libgtest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7C25057B24A3DAE2005F7F28 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C40828724A5BB18007A6266 /* IriUtils.h in Headers */,
+				7C40828524A5BB18007A6266 /* sha1.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7C25057E24A3DAE2005F7F28 /* jsonld-cpp-core */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C25058A24A3DAE3005F7F28 /* Build configuration list for PBXNativeTarget "jsonld-cpp-core" */;
+			buildPhases = (
+				7C25057B24A3DAE2005F7F28 /* Headers */,
+				7C25057C24A3DAE2005F7F28 /* Sources */,
+				7C25057D24A3DAE2005F7F28 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "jsonld-cpp-core";
+			productName = "jsonld-cpp-core";
+			productReference = 7C25057F24A3DAE3005F7F28 /* libjsonld-cpp-core.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7C40828C24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C40829124A5BC8D007A6266 /* Build configuration list for PBXNativeTarget "UnitTests_jsonld-cpp-core" */;
+			buildPhases = (
+				7C40828924A5BC8D007A6266 /* Sources */,
+				7C40828A24A5BC8D007A6266 /* Frameworks */,
+				7C40828B24A5BC8D007A6266 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UnitTests_jsonld-cpp-core";
+			productName = "UnitTests_jsonld-cpp-core";
+			productReference = 7C40828D24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C25057724A3DAE2005F7F28 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Oleg Kuzenko";
+				TargetAttributes = {
+					7C25057E24A3DAE2005F7F28 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					7C40828C24A5BC8D007A6266 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 7C25057A24A3DAE2005F7F28 /* Build configuration list for PBXProject "jsonld-cpp-core" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7C25057624A3DAE2005F7F28;
+			productRefGroup = 7C25058024A3DAE3005F7F28 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C25057E24A3DAE2005F7F28 /* jsonld-cpp-core */,
+				7C40828C24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C25057C24A3DAE2005F7F28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C40828824A5BB18007A6266 /* IriUtils.cpp in Sources */,
+				7C40828624A5BB18007A6266 /* sha1.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C40828924A5BC8D007A6266 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C40829724A5C303007A6266 /* test_IriUtils.cpp in Sources */,
+				7C40829624A5C303007A6266 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7C25058824A3DAE3005F7F28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7C25058924A3DAE3005F7F28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7C25058B24A3DAE3005F7F28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../include";
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7C25058C24A3DAE3005F7F28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../include";
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7C40829224A5BC8D007A6266 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../tests/googletest/googletest/include",
+					"$(PROJECT_DIR)/../../tests/rapidcheck/include",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../tests/googletest/build/lib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7C40829324A5BC8D007A6266 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../tests/googletest/googletest/include",
+					"$(PROJECT_DIR)/../../tests/rapidcheck/include",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../tests/googletest/build/lib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C25057A24A3DAE2005F7F28 /* Build configuration list for PBXProject "jsonld-cpp-core" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C25058824A3DAE3005F7F28 /* Debug */,
+				7C25058924A3DAE3005F7F28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C25058A24A3DAE3005F7F28 /* Build configuration list for PBXNativeTarget "jsonld-cpp-core" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C25058B24A3DAE3005F7F28 /* Debug */,
+				7C25058C24A3DAE3005F7F28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C40829124A5BC8D007A6266 /* Build configuration list for PBXNativeTarget "UnitTests_jsonld-cpp-core" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C40829224A5BC8D007A6266 /* Debug */,
+				7C40829324A5BC8D007A6266 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7C25057724A3DAE2005F7F28 /* Project object */;
+}
