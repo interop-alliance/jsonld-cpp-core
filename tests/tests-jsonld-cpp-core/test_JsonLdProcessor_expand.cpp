@@ -10,7 +10,6 @@ using nlohmann::json;
 #pragma clang diagnostic ignored "-Weverything"
 #pragma GCC diagnostic ignored "-Wall"
 #pragma GCC diagnostic ignored "-Wextra"
-#include <rapidcheck/gtest.h>
 #pragma clang diagnostic pop
 #pragma GCC diagnostic pop
 
