@@ -29,4 +29,6 @@ target_link_libraries(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core jsonld-cp
 add_test(NAME UnitTests_JsonLdProcessor_expand_jsonld-cpp-core
         COMMAND UnitTests_JsonLdProcessor_expand_jsonld-cpp-core)
 
+file(COPY ${PROJECT_SOURCE_DIR}/tests/tests-jsonld-cpp-core/test_data DESTINATION ${CMAKE_BINARY_DIR})
+
 ####
