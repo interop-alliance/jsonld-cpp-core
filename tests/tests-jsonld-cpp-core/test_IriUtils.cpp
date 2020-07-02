@@ -222,5 +222,4 @@ TEST(IriUtilsTest, prependBase_rfc3896_abnormalExamples) {
 
 //    result = IriUtils::prependBase("http://a/b/c/d;p?q", "http:g");
 //    EXPECT_EQ(result, "http:g");
-
 }
