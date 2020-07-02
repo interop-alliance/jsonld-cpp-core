@@ -140,8 +140,7 @@ namespace RDF {
     bool operator<=(const Quad &lhs, const Quad &rhs);
     bool operator>=(const Quad &lhs, const Quad &rhs);
 
-    struct QuadPtrLess :
-            public std::binary_function<const std::shared_ptr<Quad>, const std::shared_ptr<Quad>, bool> {
+    struct QuadPtrLess {
         bool operator()(const std::shared_ptr<Quad> & lhs, const std::shared_ptr<Quad> & rhs) const {
             return *lhs < *rhs ;
         }
