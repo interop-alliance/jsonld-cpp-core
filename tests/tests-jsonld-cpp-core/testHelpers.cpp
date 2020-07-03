@@ -21,6 +21,8 @@ namespace
 std::string resolvePath(const std::string &relPath) {
     namespace fs = std::filesystem;
     auto baseDir = fs::current_path();
+
+    // TODO: remove infinite recursion here
     while (baseDir.has_parent_path())
     {
         auto combinePath = baseDir / relPath;
