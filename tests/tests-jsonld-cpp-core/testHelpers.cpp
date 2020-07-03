@@ -5,6 +5,15 @@
 
 #include "testHelpers.h"
 
+namespace
+{
+#ifdef _WIN32
+    const std::string testPath = "tests\\tests-jsonld-cpp-core\\test_data\\";
+#elif
+    const std::string testPath = "test_data/";
+#endif
+}
+
 // A somewhat "parent recursive" relative path file finder. If file is not found
 // at current dir + relPath, it will go up to parent dir and try again. This is mainly
 // for use by tests to find test data files in the main source hierarchy when being built
@@ -37,20 +46,20 @@ std::string getBaseUri(const std::string& testName, const std::string& testNumbe
 }
 
 std::string getInputStr(const std::string& testName, const std::string& testNumber) {
-    std::ifstream fsIn {resolvePath("test_data/" + testName + "-" + testNumber + "-in.jsonld") };
+    std::ifstream fsIn {resolvePath(testPath + testName + "-" + testNumber + "-in.jsonld") };
     std::string inputStr {std::istreambuf_iterator<char>(fsIn), std::istreambuf_iterator<char>() };
     return inputStr;
 }
 
 nlohmann::json getExpectedJson(const std::string& testName, const std::string& testNumber) {
-    std::ifstream fsOut {resolvePath("test_data/" + testName + "-" + testNumber + "-out.jsonld") };
+    std::ifstream fsOut {resolvePath(testPath + testName + "-" + testNumber + "-out.jsonld") };
     std::string outputStr { std::istreambuf_iterator<char>(fsOut), std::istreambuf_iterator<char>() };
     nlohmann::json expected = nlohmann::json::parse(outputStr);
     return expected;
 }
 
 std::string getExpectedRDF(const std::string& testName, const std::string& testNumber) {
-    std::ifstream fsOut {resolvePath("test_data/" + testName + "-" + testNumber + "-out.nq") };
+    std::ifstream fsOut {resolvePath(testPath + testName + "-" + testNumber + "-out.nq") };
     std::string outputStr { std::istreambuf_iterator<char>(fsOut), std::istreambuf_iterator<char>() };
     return outputStr;
 }
