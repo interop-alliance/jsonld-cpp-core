@@ -24,7 +24,11 @@ target_include_directories(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core
         PUBLIC
         ${PROJECT_SOURCE_DIR}/jsonld-cpp-core)
 
-target_link_libraries(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core jsonld-cpp-core gtest gmock rapidcheck_gtest stdc++fs)
+target_link_libraries(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core jsonld-cpp-core gtest gmock rapidcheck_gtest)
+
+if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
+    target_link_libraries(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core stdc++fs)
+endif()
 
 add_test(NAME UnitTests_JsonLdProcessor_expand_jsonld-cpp-core
         COMMAND UnitTests_JsonLdProcessor_expand_jsonld-cpp-core)
