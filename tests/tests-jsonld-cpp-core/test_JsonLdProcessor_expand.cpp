@@ -5,6 +5,9 @@
 using nlohmann::json;
 
 #include <gtest/gtest.h>
+
+#ifndef _WIN32
+
 #pragma clang diagnostic push
 #pragma GCC diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -12,6 +15,8 @@ using nlohmann::json;
 #pragma GCC diagnostic ignored "-Wextra"
 #pragma clang diagnostic pop
 #pragma GCC diagnostic pop
+
+#endif // !_WIN32
 
 void performExpandTest(int testNumber) {
     std::string testName = "expand";

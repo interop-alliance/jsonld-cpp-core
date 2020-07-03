@@ -1,13 +1,17 @@
+#include <vector>
+
 #include "IriUtils.h"
+#include "uri.hpp"
+
+#ifndef _WIN32
 
 #pragma clang diagnostic push
 #pragma GCC diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
-#include "uri.hpp"
 #pragma clang diagnostic pop
 #pragma GCC diagnostic pop
 
-#include <vector>
+#endif // !_WIN32
 
 namespace {
 
