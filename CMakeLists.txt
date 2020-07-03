@@ -5,6 +5,7 @@ project(jsonld-cpp-core VERSION 1.0.0
                  LANGUAGES C CXX )
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
   set(DCD_CXX_FLAGS -Wall -Wextra -Wpedantic -Wno-unknown-pragmas)

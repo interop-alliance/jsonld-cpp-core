@@ -1,7 +1,7 @@
-#include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <filesystem>
 
 #include "testHelpers.h"
 
@@ -9,7 +9,7 @@ namespace
 {
 #ifdef _WIN32
     const std::string testPath = "tests\\tests-jsonld-cpp-core\\test_data\\";
-#elif
+#else
     const std::string testPath = "test_data/";
 #endif
 }
