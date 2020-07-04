@@ -1,4 +1,4 @@
-add_executable(UnitTests_jsonld-cpp-core main.cpp test_IriUtils.cpp)
+add_executable(UnitTests_jsonld-cpp-core main.cpp test_IriUtils.cpp test_JsonLdApi.cpp test_JsonLdUtils.cpp test_DocumentLoader.cpp testHelpers.cpp testHelpers.h test_NodeComparisons.cpp test_ObjectComparisons.cpp test_UniqueNamer.cpp test_DoubleFormatter.cpp test_Permutator.cpp test_NormalizeUtils.cpp test_Sha1.cpp)
 
 target_compile_features(UnitTests_jsonld-cpp-core PRIVATE cxx_std_17)
 target_compile_options(UnitTests_jsonld-cpp-core PRIVATE ${DCD_CXX_FLAGS})
