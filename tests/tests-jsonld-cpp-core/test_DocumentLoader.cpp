@@ -2,6 +2,8 @@
 #include "testHelpers.h"
 
 #include <gtest/gtest.h>
+
+#ifndef _WIN32
 #pragma clang diagnostic push
 #pragma GCC diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -9,11 +11,21 @@
 #pragma GCC diagnostic ignored "-Wextra"
 #pragma clang diagnostic pop
 #pragma GCC diagnostic pop
+#endif
+
+namespace
+{
+#ifdef _WIN32
+    const std::string sampleDocumentPath = "tests\\tests-jsonld-cpp-core\\test_data\\pi-is-four.json";
+#else
+    const std::string sampleDocumentPath = "test_data/pi-is-four.json";
+#endif
+}
 
 TEST(DocumentLoaderTest, load_sample_document_from_filesystem) {
     DocumentLoader dl;
 
-    std::string docPath = resolvePath("test_data/pi-is-four.json");
+    std::string docPath = resolvePath(sampleDocumentPath);
 
     RemoteDocument d = dl.loadDocument(docPath);
     json j = d.getDocument();

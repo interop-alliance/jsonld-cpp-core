@@ -3,6 +3,8 @@
 #include <fstream>
 
 #include <gtest/gtest.h>
+
+#ifndef _WIN32
 #pragma clang diagnostic push
 #pragma GCC diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -10,6 +12,7 @@
 #pragma GCC diagnostic ignored "-Wextra"
 #pragma clang diagnostic pop
 #pragma GCC diagnostic pop
+#endif
 
 void performToRDFTest(int testNumber) {
 

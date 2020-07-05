@@ -151,8 +151,20 @@
   <ItemGroup>
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\main.cpp" />
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\testHelpers.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_DocumentLoader.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_DoubleFormatter.cpp" />
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_IriUtils.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdApi.cpp" />
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdProcessor_expand.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdProcessor_normalize.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdProcessor_toRDF.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdUtils.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_NodeComparisons.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_NormalizeUtils.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_ObjectComparisons.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_Permutator.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_Sha1.cpp" />
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_UniqueNamer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\jsonld-cpp-core.vcxproj">

@@ -2,6 +2,8 @@
 #include "RDFDataset.h"
 
 #include <gtest/gtest.h>
+
+#ifndef _WIN32
 #pragma clang diagnostic push
 #pragma GCC diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
@@ -9,7 +11,7 @@
 #pragma GCC diagnostic ignored "-Wextra"
 #pragma clang diagnostic pop
 #pragma GCC diagnostic pop
-
+#endif
 
 TEST(NormalizeUtilsTest, getAdjacentBlankNodeName_notBlankNode_returnsNull) {
     std::string id = "_:b0";
