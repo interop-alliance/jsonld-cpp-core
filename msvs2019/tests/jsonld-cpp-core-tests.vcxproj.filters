@@ -27,6 +27,42 @@
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\testHelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_DocumentLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_DoubleFormatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdApi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdProcessor_normalize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdProcessor_toRDF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_JsonLdUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_NodeComparisons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_NormalizeUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_ObjectComparisons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_Permutator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_Sha1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_UniqueNamer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\tests\tests-jsonld-cpp-core\testHelpers.h">
