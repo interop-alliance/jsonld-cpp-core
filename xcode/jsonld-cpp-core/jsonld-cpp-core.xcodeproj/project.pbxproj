@@ -48,6 +48,18 @@
 		7C1F518624A6076600732FCC /* test_IriUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F7E24A606FD00732FCC /* test_IriUtils.cpp */; };
 		7C1F518724A6076600732FCC /* testHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F8024A606FD00732FCC /* testHelpers.cpp */; };
 		7C1F518824A6076600732FCC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F518424A606FF00732FCC /* main.cpp */; };
+		7C35470624B1AFE200D78C21 /* test_DocumentLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FA24B1AFE100D78C21 /* test_DocumentLoader.cpp */; };
+		7C35470724B1AFE200D78C21 /* test_JsonLdProcessor_normalize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FB24B1AFE100D78C21 /* test_JsonLdProcessor_normalize.cpp */; };
+		7C35470824B1AFE200D78C21 /* test_DoubleFormatter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FC24B1AFE100D78C21 /* test_DoubleFormatter.cpp */; };
+		7C35470924B1AFE200D78C21 /* test_Permutator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FD24B1AFE100D78C21 /* test_Permutator.cpp */; };
+		7C35470A24B1AFE200D78C21 /* test_UniqueNamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FE24B1AFE100D78C21 /* test_UniqueNamer.cpp */; };
+		7C35470B24B1AFE200D78C21 /* test_JsonLdUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FF24B1AFE200D78C21 /* test_JsonLdUtils.cpp */; };
+		7C35470C24B1AFE200D78C21 /* test_ObjectComparisons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C35470024B1AFE200D78C21 /* test_ObjectComparisons.cpp */; };
+		7C35470D24B1AFE200D78C21 /* test_NormalizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C35470124B1AFE200D78C21 /* test_NormalizeUtils.cpp */; };
+		7C35470E24B1AFE200D78C21 /* test_Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C35470224B1AFE200D78C21 /* test_Sha1.cpp */; };
+		7C35470F24B1AFE200D78C21 /* test_JsonLdProcessor_toRDF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C35470324B1AFE200D78C21 /* test_JsonLdProcessor_toRDF.cpp */; };
+		7C35471024B1AFE200D78C21 /* test_JsonLdApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C35470424B1AFE200D78C21 /* test_JsonLdApi.cpp */; };
+		7C35471124B1AFE200D78C21 /* test_NodeComparisons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C35470524B1AFE200D78C21 /* test_NodeComparisons.cpp */; };
 		7C40829D24A5C569007A6266 /* libgmock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829924A5C569007A6266 /* libgmock.a */; };
 		7C40829E24A5C569007A6266 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829A24A5C569007A6266 /* libgtest.a */; };
 		7C40829F24A5C569007A6266 /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829B24A5C569007A6266 /* libgtest_main.a */; };
@@ -643,6 +655,18 @@
 		7C1F518324A606FF00732FCC /* expand-0030-out.jsonld */ = {isa = PBXFileReference; lastKnownFileType = text; path = "expand-0030-out.jsonld"; sourceTree = "<group>"; };
 		7C1F518424A606FF00732FCC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7C25057F24A3DAE3005F7F28 /* libjsonld-cpp-core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjsonld-cpp-core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C3546FA24B1AFE100D78C21 /* test_DocumentLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_DocumentLoader.cpp; sourceTree = "<group>"; };
+		7C3546FB24B1AFE100D78C21 /* test_JsonLdProcessor_normalize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_JsonLdProcessor_normalize.cpp; sourceTree = "<group>"; };
+		7C3546FC24B1AFE100D78C21 /* test_DoubleFormatter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_DoubleFormatter.cpp; sourceTree = "<group>"; };
+		7C3546FD24B1AFE100D78C21 /* test_Permutator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_Permutator.cpp; sourceTree = "<group>"; };
+		7C3546FE24B1AFE100D78C21 /* test_UniqueNamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_UniqueNamer.cpp; sourceTree = "<group>"; };
+		7C3546FF24B1AFE200D78C21 /* test_JsonLdUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_JsonLdUtils.cpp; sourceTree = "<group>"; };
+		7C35470024B1AFE200D78C21 /* test_ObjectComparisons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_ObjectComparisons.cpp; sourceTree = "<group>"; };
+		7C35470124B1AFE200D78C21 /* test_NormalizeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_NormalizeUtils.cpp; sourceTree = "<group>"; };
+		7C35470224B1AFE200D78C21 /* test_Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_Sha1.cpp; sourceTree = "<group>"; };
+		7C35470324B1AFE200D78C21 /* test_JsonLdProcessor_toRDF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_JsonLdProcessor_toRDF.cpp; sourceTree = "<group>"; };
+		7C35470424B1AFE200D78C21 /* test_JsonLdApi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_JsonLdApi.cpp; sourceTree = "<group>"; };
+		7C35470524B1AFE200D78C21 /* test_NodeComparisons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_NodeComparisons.cpp; sourceTree = "<group>"; };
 		7C40828D24A5BC8D007A6266 /* UnitTests_jsonld-cpp-core */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "UnitTests_jsonld-cpp-core"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C40829924A5C569007A6266 /* libgmock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmock.a; path = ../../tests/googletest/build/lib/libgmock.a; sourceTree = "<group>"; };
 		7C40829A24A5C569007A6266 /* libgtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest.a; path = ../../tests/googletest/build/lib/libgtest.a; sourceTree = "<group>"; };
@@ -725,6 +749,18 @@
 			children = (
 				7C1F4F7C24A606FD00732FCC /* testHelpers.h */,
 				7C1F4F7D24A606FD00732FCC /* test_JsonLdProcessor_expand.cpp */,
+				7C3546FA24B1AFE100D78C21 /* test_DocumentLoader.cpp */,
+				7C3546FC24B1AFE100D78C21 /* test_DoubleFormatter.cpp */,
+				7C35470424B1AFE200D78C21 /* test_JsonLdApi.cpp */,
+				7C3546FB24B1AFE100D78C21 /* test_JsonLdProcessor_normalize.cpp */,
+				7C35470324B1AFE200D78C21 /* test_JsonLdProcessor_toRDF.cpp */,
+				7C3546FF24B1AFE200D78C21 /* test_JsonLdUtils.cpp */,
+				7C35470524B1AFE200D78C21 /* test_NodeComparisons.cpp */,
+				7C35470124B1AFE200D78C21 /* test_NormalizeUtils.cpp */,
+				7C35470024B1AFE200D78C21 /* test_ObjectComparisons.cpp */,
+				7C3546FD24B1AFE100D78C21 /* test_Permutator.cpp */,
+				7C35470224B1AFE200D78C21 /* test_Sha1.cpp */,
+				7C3546FE24B1AFE100D78C21 /* test_UniqueNamer.cpp */,
 				7C1F4F7E24A606FD00732FCC /* test_IriUtils.cpp */,
 				7C1F4F7F24A606FD00732FCC /* CMakeLists.txt */,
 				7C1F4F8024A606FD00732FCC /* testHelpers.cpp */,
@@ -1449,10 +1485,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C35470724B1AFE200D78C21 /* test_JsonLdProcessor_normalize.cpp in Sources */,
+				7C35470B24B1AFE200D78C21 /* test_JsonLdUtils.cpp in Sources */,
 				7C1F518524A6076600732FCC /* test_JsonLdProcessor_expand.cpp in Sources */,
+				7C35470C24B1AFE200D78C21 /* test_ObjectComparisons.cpp in Sources */,
 				7C1F518624A6076600732FCC /* test_IriUtils.cpp in Sources */,
+				7C35470E24B1AFE200D78C21 /* test_Sha1.cpp in Sources */,
+				7C35470D24B1AFE200D78C21 /* test_NormalizeUtils.cpp in Sources */,
+				7C35470A24B1AFE200D78C21 /* test_UniqueNamer.cpp in Sources */,
+				7C35470824B1AFE200D78C21 /* test_DoubleFormatter.cpp in Sources */,
 				7C1F518724A6076600732FCC /* testHelpers.cpp in Sources */,
+				7C35470624B1AFE200D78C21 /* test_DocumentLoader.cpp in Sources */,
+				7C35470924B1AFE200D78C21 /* test_Permutator.cpp in Sources */,
+				7C35471124B1AFE200D78C21 /* test_NodeComparisons.cpp in Sources */,
+				7C35470F24B1AFE200D78C21 /* test_JsonLdProcessor_toRDF.cpp in Sources */,
 				7C1F518824A6076600732FCC /* main.cpp in Sources */,
+				7C35471024B1AFE200D78C21 /* test_JsonLdApi.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1609,6 +1657,7 @@
 					"$(PROJECT_DIR)/../../tests/googletest/googletest/include",
 					"$(PROJECT_DIR)/../../tests/rapidcheck/include",
 					"$(PROJECT_DIR)/../../include",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core",
 				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../tests/googletest/build/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1624,6 +1673,7 @@
 					"$(PROJECT_DIR)/../../tests/googletest/googletest/include",
 					"$(PROJECT_DIR)/../../tests/rapidcheck/include",
 					"$(PROJECT_DIR)/../../include",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core",
 				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../tests/googletest/build/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
