@@ -1,6 +1,7 @@
 #include "JsonLdProcessor.h"
 #include "RDFDataset.h"
 #include "RDFDatasetUtils.h"
+#include "CurlHttpRequest.h"
 
 using RDF::RDFDataset;
 using nlohmann::json;
