@@ -43,7 +43,7 @@ add_test(NAME UnitTests_JsonLdProcessor_expand_jsonld-cpp-core
 
 ####
 
-add_executable(UnitTests_JsonLdProcessor_toRdf_jsonld-cpp-core main.cpp test_JsonLdProcessor_toRdf.cpp testHelpers.cpp testHelpers.h)
+add_executable(UnitTests_JsonLdProcessor_toRdf_jsonld-cpp-core main.cpp test_JsonLdProcessor_toRDF.cpp testHelpers.cpp testHelpers.h)
 
 target_compile_features(UnitTests_JsonLdProcessor_toRdf_jsonld-cpp-core PRIVATE cxx_std_17)
 target_compile_options(UnitTests_JsonLdProcessor_toRdf_jsonld-cpp-core PRIVATE ${DCD_CXX_FLAGS})
