@@ -1,5 +1,5 @@
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
-# TODO: Add linux libcurl library and ssl dependency
+    file(GLOB LIB_CURL ${PROJECT_SOURCE_DIR}/3rdparty/curl-7.71.1/build/linux/libcurl.so.4)
 elseif(CMAKE_CXX_COMPILER_ID MATCHES Clang)
     file(GLOB LIB_CURL ${PROJECT_SOURCE_DIR}/3rdparty/curl-7.71.1/build/mac/libcurl.a)
     file(GLOB LIB_SSL ${PROJECT_SOURCE_DIR}/3rdparty/curl-7.71.1/build/mac/libssl.a)
