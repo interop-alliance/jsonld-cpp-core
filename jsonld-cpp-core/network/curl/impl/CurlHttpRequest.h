@@ -1,13 +1,13 @@
 //
-//  CurlHttpCommunicator.h
+//  CurlHttpRequest.h
 //
 //
 //  Created by Oleg Kuzenko on 7/09/20.
 //  Copyright © 2020 Oleg. All rights reserved.
 //
 
-#ifndef CURL_HTTP_COMMUNICATOR_H
-#define CURL_HTTP_COMMUNICATOR_H
+#ifndef CURL_HTTP_REQUEST_H
+#define CURL_HTTP_REQUEST_H
 
 #include <curl/curl.h>
 
@@ -37,4 +37,4 @@ namespace jsonld
     }
 }
 
-#endif //CURL_HTTP_COMMUNICATOR_H
+#endif //CURL_HTTP_REQUEST_H

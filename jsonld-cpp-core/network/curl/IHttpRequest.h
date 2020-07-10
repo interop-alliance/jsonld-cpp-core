@@ -1,5 +1,5 @@
 //
-//  IHttpCommunicator.h
+//  IHttpRequest.h
 //
 //
 //  Created by Oleg Kuzenko on 7/09/20.
@@ -52,6 +52,6 @@ namespace jsonld
             virtual void performRequest(HttpRequestParameters params, IHttpRequestCallback responseCallback) = 0;
         };
 
-        using IHttpCommunicatorPtr = std::shared_ptr<IHttpRequest>;
+        using IHttpRequestPtr = std::shared_ptr<IHttpRequest>;
     }
 }

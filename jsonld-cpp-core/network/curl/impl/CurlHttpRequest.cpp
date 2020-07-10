@@ -1,5 +1,5 @@
 //
-//  CurlHttpCommunicator.cpp
+//  CurlHttpRequest.cpp
 //
 //
 //  Created by Oleg Kuzenko on 7/09/20.

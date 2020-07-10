@@ -1,13 +1,13 @@
 //
-//  CurlGuard.h
+//  CurlHelper.h
 //
 //
 //  Created by Oleg Kuzenko on 7/09/20.
 //  Copyright © 2020 Oleg. All rights reserved.
 //
 
-#ifndef CURL_GUARD_H
-#define CURL_GUARD_H
+#ifndef CURL_HELPER_H
+#define CURL_HELPER_H
 
 #include <curl/curl.h>
 #include <exception>
@@ -44,4 +44,4 @@ namespace jsonld
     }
 }
 
-#endif //CURL_GUARD_H
+#endif //CURL_HELPER_H
