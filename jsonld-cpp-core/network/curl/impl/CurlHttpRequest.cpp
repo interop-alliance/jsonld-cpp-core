@@ -12,6 +12,20 @@
 #include "CurlHttpRequest.h"
 #include "CurlHelper.h"
 
+#ifdef _WIN32
+#ifdef _DEBUG
+#pragma comment (lib, "libcurl_a_debug.lib")
+#else
+#pragma comment (lib, "libcurl_a.lib")
+#endif
+
+#pragma comment (lib, "Normaliz.lib")
+#pragma comment (lib, "Ws2_32.lib")
+#pragma comment (lib, "Wldap32.lib")
+#pragma comment (lib, "Crypt32.lib")
+#pragma comment (lib, "advapi32.lib")
+#endif
+
 namespace
 {
     // ptr points to the delivered data, and the size of that data is bufferSize; elementSize is always 1.

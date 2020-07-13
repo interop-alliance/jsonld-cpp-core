@@ -23,6 +23,7 @@ nlohmann::json JsonLdProcessor::expand(nlohmann::json input, JsonLdOptions opts)
     // 5)
     // TODO: add support for getting a context from HTTP when content-type
     // is set to a jsonld compatible format
+    // jsonld::network::CurlHttpRequest request;
 
     // 6)
     JsonLdApi api(opts);
