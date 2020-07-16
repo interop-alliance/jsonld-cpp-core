@@ -15,13 +15,13 @@
 
 TEST(JsonLdApiTest, construct_default) {
     JsonLdApi api;
-    EXPECT_EQ(api.getOptions().getBase(), "");
+    EXPECT_EQ(api.getOptions()->getBase(), "");
 }
 
 TEST(JsonLdApiTest, construct_with_options) {
-    JsonLdOptions options("foobar");
+    const auto options = std::make_shared<JsonLdOptions>("foobar");
     JsonLdApi api(options);
-    EXPECT_EQ(api.getOptions().getBase(), "foobar");
+    EXPECT_EQ(api.getOptions()->getBase(), "foobar");
 }
 
 

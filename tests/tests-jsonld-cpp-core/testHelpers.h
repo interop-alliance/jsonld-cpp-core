@@ -8,7 +8,7 @@ std::string resolvePath(const std::string &relPath);
 
 std::string getTestNumberStr(int i);
 
-std::string getBaseUri(const std::string& testName, const std::string& testNumber);
+std::string getDocumentUri(const std::string& testName, const std::string& testNumber);
 
 std::string getInputStr(const std::string& testName, const std::string& testNumber);
 

@@ -157,10 +157,10 @@ namespace RDF {
         std::shared_ptr<Node> objectToRDF(nlohmann::json item);
 
     public:
-        JsonLdOptions options;
+        std::shared_ptr<JsonLdOptions> m_options;
         UniqueNamer *blankNodeUniqueNamer;
 
-        RDFDataset(JsonLdOptions options, UniqueNamer *blankNodeUniqueNamer);
+        RDFDataset(const std::shared_ptr<JsonLdOptions>& options, UniqueNamer *blankNodeUniqueNamer);
 
         VectorMap::mapped_type & at(const VectorMap::key_type& s);
         std::pair<VectorMap::iterator,bool> insert( const VectorMap::value_type& value );

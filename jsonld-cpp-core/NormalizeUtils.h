@@ -8,11 +8,11 @@
 
 class NormalizeUtils {
 private:
-    std::vector<RDF::Quad> quads;
-    std::map<std::string, std::map<std::string, std::vector<RDF::Quad>>> bnodes;
-    std::map<std::string, std::string> cachedHashes;
-    UniqueNamer uniqueNamer;
-    JsonLdOptions opts;
+    std::vector<RDF::Quad> m_quads;
+    std::map<std::string, std::map<std::string, std::vector<RDF::Quad>>> m_bnodes;
+    std::map<std::string, std::string> m_cachedHashes;
+    UniqueNamer m_uniqueNamer;
+    std::shared_ptr<JsonLdOptions> m_options;
 
     struct HashResult {
         std::string hash;
@@ -29,7 +29,7 @@ public:
             std::vector<RDF::Quad> quads,
             std::map<std::string, std::map<std::string, std::vector<RDF::Quad>>> bnodes,
             UniqueNamer  iuniqueNamer,
-            JsonLdOptions opts);
+            const std::shared_ptr<JsonLdOptions>& options);
 
     std::string hashBlankNodes(const std::vector<std::string> &unnamed_);
 

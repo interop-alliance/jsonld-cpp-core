@@ -8,15 +8,15 @@
 
 class JsonLdApi {
 private:
-    JsonLdOptions options;
-    UniqueNamer blankNodeUniqueNamer;
+    std::shared_ptr<JsonLdOptions> m_options;
+    UniqueNamer m_blankNodeUniqueNamer;
 
 public:
 
     JsonLdApi() = default;
-    explicit JsonLdApi(JsonLdOptions options);
+    explicit JsonLdApi(const std::shared_ptr<JsonLdOptions>& options);
 
-    JsonLdOptions getOptions() const;
+    const std::shared_ptr<JsonLdOptions> getOptions() const;
 
     /**
      * Expansion Algorithm

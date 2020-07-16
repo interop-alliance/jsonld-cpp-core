@@ -23,8 +23,8 @@ void Context::checkEmptyKey(const std::map<std::string, std::string>& map) {
 }
 
 void Context::init() {
-    contextMap.insert(std::make_pair(JsonLdConsts::BASE, options.getBase()));
-    termDefinitions = ObjUtils::newMap();
+    m_contextMap.insert(std::make_pair(JsonLdConsts::BASE, m_options->getBase()));
+    m_termDefinitions = ObjUtils::newMap();
 }
 
 /**
@@ -99,7 +99,7 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
     for (auto context : myContext) {
         // 3.1)
         if (context.is_null()) {
-            Context c(options);
+            Context c(m_options);
             result = c;
             continue;
         }
@@ -218,9 +218,9 @@ std::string Context::getContainer(std::string property) {
     if (property != JsonLdConsts::TYPE && JsonLdUtils::isKeyword(property)) {
         return property;
     }
-    if(!termDefinitions.contains(property))
+    if(!m_termDefinitions.contains(property))
         return "";
-    auto td = termDefinitions[property];
+    auto td = m_termDefinitions[property];
 //        if (td == null) {
 //            return null;
 //        }
@@ -265,8 +265,8 @@ std::string Context::expandIri(
             createTermDefinition(context, value, defined);
         }
         // 3)
-        if (vocab && termDefinitions.find(value) != termDefinitions.end()) {
-            auto td = termDefinitions.at(value);
+        if (vocab && m_termDefinitions.find(value) != m_termDefinitions.end()) {
+            auto td = m_termDefinitions.at(value);
             if (!td.is_null()) {
                 if(td.contains(JsonLdConsts::ID))
                     return td.at(JsonLdConsts::ID);
@@ -292,8 +292,8 @@ std::string Context::expandIri(
                 createTermDefinition(context, prefix, defined);
             }
             // 4.4)
-            if (termDefinitions.find(prefix) != termDefinitions.end()) {
-                auto id = termDefinitions.at(prefix).at(JsonLdConsts::ID);
+            if (m_termDefinitions.find(prefix) != m_termDefinitions.end()) {
+                auto id = m_termDefinitions.at(prefix).at(JsonLdConsts::ID);
                 id = id.get<std::string>() + suffix;
                 return id;
             }
@@ -301,8 +301,8 @@ std::string Context::expandIri(
             return value;
         }
         // 5)
-        if (vocab && contextMap.find(JsonLdConsts::VOCAB) != contextMap.end()) {
-            return contextMap.at(JsonLdConsts::VOCAB) + value;
+        if (vocab && m_contextMap.find(JsonLdConsts::VOCAB) != m_contextMap.end()) {
+            return m_contextMap.at(JsonLdConsts::VOCAB) + value;
         }
         // 6)
         else if (relative) {
@@ -336,8 +336,7 @@ std::string Context::expandIri(
  * @param defined map of defined values
  * @throws JsonLdError
  */
-void Context::createTermDefinition(json context, const std::string& term,
-                                   std::map<std::string, bool> & defined)
+void Context::createTermDefinition(json context, const std::string& term, std::map<std::string, bool> & defined)
 {
     // 1) has term been defined already?
     if (defined.find(term) != defined.end()) {
@@ -355,7 +354,7 @@ void Context::createTermDefinition(json context, const std::string& term,
     // if term is a keyword
     if (JsonLdUtils::isKeyword(term)) {
         // if term is not ('@type' and getAllowContainerSetOnType is true)
-        if(!(options.getAllowContainerSetOnType() && term == JsonLdConsts::TYPE)) {
+        if(!(m_options->getAllowContainerSetOnType() && term == JsonLdConsts::TYPE)) {
             // if context for term contain '@id'
             if( !(context.at(term)).contains(JsonLdConsts::ID)) {
                 throw JsonLdError(JsonLdError::KeywordRedefinition, term);
@@ -364,8 +363,8 @@ void Context::createTermDefinition(json context, const std::string& term,
     }
 
     // 7) remove any previous definition
-    if(termDefinitions.count(term) ) {
-        termDefinitions.erase(term);
+    if (m_termDefinitions.count(term) ) {
+        m_termDefinitions.erase(term);
     }
 
     // 3) get value associated with term
@@ -375,7 +374,7 @@ void Context::createTermDefinition(json context, const std::string& term,
 
     if (value == nullptr ||
         (value.contains(JsonLdConsts::ID) && value.at(JsonLdConsts::ID) == nullptr)) {
-        termDefinitions[term] = nullptr;
+        m_termDefinitions[term] = nullptr;
         defined[term] = true;
         return;
     }
@@ -456,7 +455,7 @@ void Context::createTermDefinition(json context, const std::string& term,
                 }
             }
             definition[JsonLdConsts::REVERSE] = true;
-            termDefinitions[term] = definition;
+            m_termDefinitions[term] = definition;
             defined[term] = true;
             return;
         }
@@ -493,16 +492,16 @@ void Context::createTermDefinition(json context, const std::string& term,
             if (context.contains(prefix)) {
                 createTermDefinition(context, prefix, defined);
             }
-            if (termDefinitions.find(prefix) != termDefinitions.end()) {
-                auto id = termDefinitions.at(prefix).at(JsonLdConsts::ID);
+            if (m_termDefinitions.find(prefix) != m_termDefinitions.end()) {
+                auto id = m_termDefinitions.at(prefix).at(JsonLdConsts::ID);
                 id = id.get<std::string>() + suffix;
                 definition[JsonLdConsts::ID] = id;
             } else {
                 definition[JsonLdConsts::ID] = term;
             }
             // 15)
-        } else if (contextMap.find(JsonLdConsts::VOCAB) != contextMap.end()) {
-            definition[JsonLdConsts::ID] = contextMap.at(JsonLdConsts::VOCAB) + term;
+        } else if (m_contextMap.find(JsonLdConsts::VOCAB) != m_contextMap.end()) {
+            definition[JsonLdConsts::ID] = m_contextMap.at(JsonLdConsts::VOCAB) + term;
         } else if (term != JsonLdConsts::TYPE) {
             throw JsonLdError(JsonLdError::InvalidIriMapping,
                                   "relative term definition without vocab mapping");
@@ -536,37 +535,38 @@ void Context::createTermDefinition(json context, const std::string& term,
         }
 
         // 18)
-        termDefinitions[term] = definition;
+        m_termDefinitions[term] = definition;
         defined[term] = true;
 
 }
 
 std::string & Context::at(const std::string &s) {
-    return contextMap.at(s);
+    return m_contextMap.at(s);
 }
 
 size_t Context::erase(const std::string &key) {
-    return contextMap.erase(key);
+    return m_contextMap.erase(key);
 }
 
 std::pair<Context::StringMap::iterator,bool> Context::insert( const StringMap::value_type& value ) {
     // unlike a normal c++ map, which does not insert a value if the key is already present,
     // we DO want to replace, so we have to erase first
-    if(contextMap.find(value.first) != contextMap.end()) {
-        contextMap.erase(value.first);
+    if (m_contextMap.find(value.first) != m_contextMap.end()) {
+        m_contextMap.erase(value.first);
     }
-    return contextMap.insert(value);
+    return m_contextMap.insert(value);
 }
 
 size_t Context::count(const std::string &key) const {
-    return contextMap.count(key);
+    return m_contextMap.count(key);
 }
 
 bool Context::isReverseProperty(const std::string &property) {
-    if(!termDefinitions.count(property)) {
+    if (!m_termDefinitions.count(property)) {
         return false;
     }
-    auto td = termDefinitions.at(property);
+
+    auto td = m_termDefinitions.at(property);
     if (td.is_null()) {
         return false;
     }
@@ -574,8 +574,8 @@ bool Context::isReverseProperty(const std::string &property) {
 }
 
 nlohmann::json Context::getTermDefinition(const std::string & key) {
-    if(termDefinitions.count(key)) {
-        return termDefinitions.at(key);
+    if (m_termDefinitions.count(key)) {
+        return m_termDefinitions.at(key);
     }
     else
         return json::object();
@@ -613,28 +613,28 @@ json Context::expandValue(const std::string & activeProperty, const json& value)
             }
         }
             // 5.2)
-        else if (contextMap.count(JsonLdConsts::LANGUAGE)) {
-            rval[JsonLdConsts::LANGUAGE] = contextMap.at(JsonLdConsts::LANGUAGE);
+        else if (m_contextMap.count(JsonLdConsts::LANGUAGE)) {
+            rval[JsonLdConsts::LANGUAGE] = m_contextMap.at(JsonLdConsts::LANGUAGE);
         }
     }
     return rval;
 }
 
-Context::Context(JsonLdOptions ioptions)
-        : options(std::move(ioptions))
+Context::Context(const std::shared_ptr<JsonLdOptions>& options)
+        : m_options(options)
 {
     init();
 }
 
-Context::Context(std::map<std::string, std::string> map, JsonLdOptions ioptions)
-        : options(std::move(ioptions)), contextMap(std::move(map)) {
-    checkEmptyKey(contextMap);
+Context::Context(std::map<std::string, std::string> map, const std::shared_ptr<JsonLdOptions>& options)
+        : m_options(options), m_contextMap(std::move(map)) {
+    checkEmptyKey(m_contextMap);
     init();
 }
 
 Context::Context(std::map<std::string, std::string> map)
-        : contextMap(std::move(map)) {
-    checkEmptyKey(contextMap);
+        : m_contextMap(std::move(map)) {
+    checkEmptyKey(m_contextMap);
     init();
 }
 

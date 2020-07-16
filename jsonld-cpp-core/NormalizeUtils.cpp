@@ -11,11 +11,11 @@ NormalizeUtils::NormalizeUtils(
         std::vector<RDF::Quad> iquads,
         std::map<std::string, std::map<std::string, std::vector<RDF::Quad>>> ibnodes,
         UniqueNamer iuniqueNamer,
-        JsonLdOptions iopts)
-        : quads(std::move(iquads)),
-          bnodes(std::move(ibnodes)),
-          uniqueNamer(std::move(iuniqueNamer)),
-          opts(std::move(iopts))
+        const std::shared_ptr<JsonLdOptions>& options)
+        : m_quads(std::move(iquads)),
+          m_bnodes(std::move(ibnodes)),
+          m_uniqueNamer(std::move(iuniqueNamer)),
+          m_options(options)
 {}
 
 
@@ -44,7 +44,7 @@ std::string NormalizeUtils::hashBlankNodes(const std::vector<std::string> & unna
 
                 for (const auto & hash : hashes) {
                     std::string bnode = unique.at(hash);
-                    uniqueNamer.get(bnode);
+                    m_uniqueNamer.get(bnode);
                     named = true;
                 }
 
@@ -89,14 +89,14 @@ std::string NormalizeUtils::hashBlankNodes(const std::vector<std::string> & unna
                             // via the 'uniqueNamer' object.
 
                             // update bnode names in each quad and serialize
-                            for (const auto& quad : quads) {
+                            for (const auto& quad : m_quads) {
                                 // todo: replace this with an iteration over function pointers
                                 auto n = quad.getSubject();
                                 if(n != nullptr) {
                                     if(n->isBlankNode()) {
                                         std::string id = n->getValue();
                                         if(id.find("_:c14n") != 0){
-                                            n->setValue(uniqueNamer.get(id));
+                                            n->setValue(m_uniqueNamer.get(id));
                                         }
                                     }
                                 }
@@ -105,7 +105,7 @@ std::string NormalizeUtils::hashBlankNodes(const std::vector<std::string> & unna
                                     if(n->isBlankNode()) {
                                         std::string id = n->getValue();
                                         if(id.find("_:c14n") != 0){
-                                            n->setValue(uniqueNamer.get(id));
+                                            n->setValue(m_uniqueNamer.get(id));
                                         }
                                     }
                                 }
@@ -114,7 +114,7 @@ std::string NormalizeUtils::hashBlankNodes(const std::vector<std::string> & unna
                                     if(n->isBlankNode()) {
                                         std::string id = n->getValue();
                                         if(id.find("_:c14n") != 0){
-                                            n->setValue(uniqueNamer.get(id));
+                                            n->setValue(m_uniqueNamer.get(id));
                                         }
                                     }
                                 }
@@ -167,14 +167,14 @@ std::string NormalizeUtils::hashBlankNodes(const std::vector<std::string> & unna
                                 for (auto r : results) {
                                     // name all bnodes in path namer in key-entry order
                                     for (const auto& key : r.pathNamer.getKeys()) {
-                                        auto s = uniqueNamer.get(key);
+                                        auto s = m_uniqueNamer.get(key);
                                     }
                                 }
                                 break;
                             } else {
                                 // skip already-named bnodes
                                 std::string bnode = group.at(n);
-                                if (uniqueNamer.exists(bnode)) {
+                                if (m_uniqueNamer.exists(bnode)) {
                                     continue;
                                 }
 
@@ -214,7 +214,7 @@ std::string NormalizeUtils::hashBlankNodes(const std::vector<std::string> & unna
 NormalizeUtils::HashResult NormalizeUtils::hashPaths(const std::string& id, UniqueNamer pathUniqueNamer) {
 
     std::map<std::string, std::vector<std::string>> groups;
-    std::vector<RDF::Quad> bnode_quads = bnodes.at(id).at("quads");
+    std::vector<RDF::Quad> bnode_quads = m_bnodes.at(id).at("quads");
     SHA1 md;
 
     for (size_t hpi = 0;; hpi++) {
@@ -255,8 +255,8 @@ NormalizeUtils::HashResult NormalizeUtils::hashPaths(const std::string& id, Uniq
                     std::vector<std::string> recurse;
                     for (const auto& bnode : permutation) {
                         // use canonical name if available
-                        if (uniqueNamer.exists(bnode)) {
-                            path += uniqueNamer.get(bnode);
+                        if (m_uniqueNamer.exists(bnode)) {
+                            path += m_uniqueNamer.get(bnode);
                         } else {
                             // recurse if bnode isn't named in the path yet
                             if (!pathUniqueNamerCopy.exists(bnode)) {
@@ -351,8 +351,8 @@ NormalizeUtils::HashResult NormalizeUtils::hashPaths(const std::string& id, Uniq
         if (bnode != nullptr) {
             // get bnode name (try canonical, path, then hash)
             std::string name;
-            if (uniqueNamer.exists(*bnode)) {
-                name = uniqueNamer.get(*bnode);
+            if (m_uniqueNamer.exists(*bnode)) {
+                name = m_uniqueNamer.get(*bnode);
             } else if (pathUniqueNamer.exists(*bnode)) {
                 name = pathUniqueNamer.get(*bnode);
             } else {
@@ -378,11 +378,11 @@ NormalizeUtils::HashResult NormalizeUtils::hashPaths(const std::string& id, Uniq
 
 std::string NormalizeUtils::hashQuads(std::string id) {
     // return cached hash
-    if(cachedHashes.count(id))
-        return cachedHashes[id];
+    if (m_cachedHashes.count(id))
+        return m_cachedHashes[id];
 
     // serialize all of bnode's quads
-    std::vector<RDF::Quad> bnode_quads = bnodes.at(id).at("quads");
+    std::vector<RDF::Quad> bnode_quads = m_bnodes.at(id).at("quads");
     std::vector<std::string> nquads;
     for (const auto & quad : bnode_quads) {
         std::string graphName;
@@ -396,7 +396,7 @@ std::string NormalizeUtils::hashQuads(std::string id) {
     std::sort(nquads.begin(), nquads.end());
     // return hashed quads
     std::string hash = sha1(nquads);
-    cachedHashes[id] = hash;
+    m_cachedHashes[id] = hash;
     return hash;
 }
 
