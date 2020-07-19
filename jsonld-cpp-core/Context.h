@@ -15,14 +15,14 @@ public:
 
 private:
 
-    JsonLdOptions options;
-    nlohmann::json termDefinitions;
-    nlohmann::json inverse;
-    StringMap contextMap;
+    std::shared_ptr<JsonLdOptions> m_options;
+    nlohmann::json m_termDefinitions;
+    nlohmann::json m_inverse;
+    StringMap m_contextMap;
 
     static void checkEmptyKey(const nlohmann::json& map);
     static void checkEmptyKey(const StringMap& map);
-    void createTermDefinition(nlohmann::json context, const std::string& term, std::map<std::string, bool> & defined);
+    void createTermDefinition(nlohmann::json context, const std::string& term, std::map<std::string, bool>& defined);
     nlohmann::json getTermDefinition(const std::string & key);
 
     void init();
@@ -30,8 +30,8 @@ private:
 public:
 
     Context() = default;
-    explicit Context(JsonLdOptions options);
-    Context(std::map<std::string, std::string> map, JsonLdOptions options);
+    explicit Context(const std::shared_ptr<JsonLdOptions>& options);
+    Context(std::map<std::string, std::string> map, const std::shared_ptr<JsonLdOptions>& options);
     explicit Context(std::map<std::string, std::string> map);
 
 // todo: should these be static constructors?

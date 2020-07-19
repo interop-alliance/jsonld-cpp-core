@@ -6,14 +6,14 @@
 using RDF::RDFDataset;
 using nlohmann::json;
 
-nlohmann::json JsonLdProcessor::expand(nlohmann::json input, JsonLdOptions opts) {
+nlohmann::json JsonLdProcessor::expand(nlohmann::json input, const std::shared_ptr<JsonLdOptions> options) {
 
     // 3)
-    Context activeCtx(opts);
+    Context activeCtx(options);
 
     // 4)
-    if (!opts.getExpandContext().empty()) {
-        json exCtx = opts.getExpandContext();
+    if (!options->getExpandContext().empty()) {
+        json exCtx = options->getExpandContext();
         if (exCtx.contains(JsonLdConsts::CONTEXT)) {
             exCtx = exCtx[JsonLdConsts::CONTEXT];
         }
@@ -26,7 +26,7 @@ nlohmann::json JsonLdProcessor::expand(nlohmann::json input, JsonLdOptions opts)
     // jsonld::network::CurlHttpRequest request;
 
     // 6)
-    JsonLdApi api(opts);
+    JsonLdApi api(options);
     json expanded = api.expand(activeCtx, input);
 
     // final step of Expansion Algorithm
@@ -47,12 +47,12 @@ nlohmann::json JsonLdProcessor::expand(nlohmann::json input, JsonLdOptions opts)
     return expanded;
 }
 
-nlohmann::json JsonLdProcessor::expand(const std::string& input, JsonLdOptions opts) {
+nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shared_ptr<JsonLdOptions> options) {
 
     // 2) TODO: better verification of DOMString IRI
     if (input.find(':') != std::string::npos) {
         try {
-            RemoteDocument tmp = opts.getDocumentLoader().loadDocument(input);
+            RemoteDocument tmp = options->getDocumentLoader().loadDocument(input);
             const json& json_input = tmp.getDocument();
             // TODO: figure out how to deal with remote context
 
@@ -60,24 +60,23 @@ nlohmann::json JsonLdProcessor::expand(const std::string& input, JsonLdOptions o
             // active context
             // thus only set this as the base iri if it's not already set in
             // options
-            if (opts.getBase().empty()) {
-                opts.setBase(input);
+            if (options->getBase().empty()) {
+                options->setBase(input);
             }
 
-            return expand(json_input, opts);
+            return expand(json_input, options);
 
         }
         catch (const std::exception &e) {
             throw JsonLdError(JsonLdError::LoadingDocumentFailed, e.what());
         }
-
     }
     else
         return json::array(); // todo: what else should happen?
 }
 
 
-RDFDataset JsonLdProcessor::toRDF(const std::string& input, const JsonLdOptions& options) {
+RDFDataset JsonLdProcessor::toRDF(const std::string& input, const std::shared_ptr<JsonLdOptions> options) {
 
     nlohmann::json expandedInput = expand(input, options);
 
@@ -108,7 +107,7 @@ RDFDataset JsonLdProcessor::toRDF(const std::string& input, const JsonLdOptions&
     return dataset;
 }
 
-std::string JsonLdProcessor::toRDFString(const std::string& input, const JsonLdOptions& options) {
+std::string JsonLdProcessor::toRDFString(const std::string& input, const std::shared_ptr<JsonLdOptions> options) {
 
     nlohmann::json expandedInput = expand(input, options);
 
@@ -139,7 +138,7 @@ std::string JsonLdProcessor::toRDFString(const std::string& input, const JsonLdO
     return RDFDatasetUtils::toNQuads(dataset);
 }
 
-std::string JsonLdProcessor::normalize(const std::string& input, const JsonLdOptions& options) {
+std::string JsonLdProcessor::normalize(const std::string& input, const std::shared_ptr<JsonLdOptions> options) {
 
     RDFDataset dataset = toRDF(input, options);
     JsonLdApi api(options);
@@ -147,11 +146,11 @@ std::string JsonLdProcessor::normalize(const std::string& input, const JsonLdOpt
 }
 
 nlohmann::json JsonLdProcessor::expand(nlohmann::json input) {
-    JsonLdOptions opts;
-    return expand(std::move(input), opts);
+    std::shared_ptr<JsonLdOptions> options = std::make_shared<JsonLdOptions>();
+    return expand(std::move(input), options);
 }
 
 nlohmann::json JsonLdProcessor::expand(std::string input) {
-    JsonLdOptions opts;
-    return expand(std::move(input), opts);
+    std::shared_ptr<JsonLdOptions> options = std::make_shared<JsonLdOptions>();
+    return expand(std::move(input), options);
 }

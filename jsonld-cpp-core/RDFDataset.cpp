@@ -8,8 +8,8 @@ using nlohmann::json;
 
 namespace RDF {
 
-    RDF::RDFDataset::RDFDataset(JsonLdOptions ioptions, UniqueNamer *iblankNodeUniqueNamer)
-            : options(std::move(ioptions)), blankNodeUniqueNamer(iblankNodeUniqueNamer) {
+    RDF::RDFDataset::RDFDataset(const std::shared_ptr<JsonLdOptions>& options, UniqueNamer *iblankNodeUniqueNamer)
+            : m_options(options), blankNodeUniqueNamer(iblankNodeUniqueNamer) {
 
     }
 
@@ -78,7 +78,7 @@ namespace RDF {
                     continue;
                 }
                     // 4.3.2.3)
-                else if (property.find_first_of("_:") == 0 && !options.getProduceGeneralizedRdf()) {
+                else if (property.find_first_of("_:") == 0 && !m_options->getProduceGeneralizedRdf()) {
                     continue;
                 }
                     // 4.3.2.4)

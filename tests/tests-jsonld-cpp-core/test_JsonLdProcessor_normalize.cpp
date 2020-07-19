@@ -1,8 +1,9 @@
+#include <fstream>
+#include <gtest/gtest.h>
+
 #include "JsonLdProcessor.h"
 #include "testHelpers.h"
-#include <fstream>
-
-#include <gtest/gtest.h>
+#include "JsonLdProcessorTest.h"
 
 #ifndef _WIN32
 #pragma clang diagnostic push
@@ -14,21 +15,21 @@
 #pragma GCC diagnostic pop
 #endif
 
-void performNormalizeTest(int testNumber) {
+void performNormalizeTest(int testNumber, const std::shared_ptr<JsonLdOptions>& options = std::make_shared<JsonLdOptions>()) {
 
     std::string testName = "normalize";
     std::string testNumberStr = getTestNumberStr(testNumber);
 
-    std::string baseUri = getBaseUri(testName, testNumberStr);
+    std::string documentUri = getDocumentUri(testName, testNumberStr);
     std::string inputStr = getInputStr(testName, testNumberStr);
     std::string expected = getExpectedRDF(testName, testNumberStr);
 
     DocumentLoader dl;
-    dl.addDocumentToCache(baseUri, inputStr);
-    JsonLdOptions opts(baseUri);
-    opts.setDocumentLoader(dl);
+    dl.addDocumentToCache(documentUri, inputStr);
 
-    std::string str = JsonLdProcessor::normalize(baseUri, opts);
+    options->setDocumentLoader(dl);
+
+    std::string str = JsonLdProcessor::normalize(documentUri, std::move(options));
 
     EXPECT_EQ(expected, str);
 }
@@ -260,4 +261,3 @@ TEST(JsonLdProcessorTest, normalize_0056) {
 TEST(JsonLdProcessorTest, normalize_0057) {
     performNormalizeTest(57);
 }
-

@@ -8,12 +8,12 @@
 
 using nlohmann::json;
 
-JsonLdApi::JsonLdApi(JsonLdOptions ioptions)
-        : options(std::move(ioptions)) {
+JsonLdApi::JsonLdApi(const std::shared_ptr<JsonLdOptions>& options)
+        : m_options(options) {
 }
 
-JsonLdOptions JsonLdApi::getOptions() const {
-    return options;
+const std::shared_ptr<JsonLdOptions> JsonLdApi::getOptions() const {
+    return m_options;
 }
 
 json JsonLdApi::expand(Context activeCtx, json element) {
@@ -116,7 +116,7 @@ json JsonLdApi::expandObjectElement(Context activeCtx, std::string * activePrope
             if (expandedProperty == JsonLdConsts::ID) {
                 if (element_value.is_string()) {
                     expandedValue = activeCtx.expandIri(element_value.get<std::string>(), true, false);
-                } else if (options.getFrameExpansion()) {
+                } else if (m_options->getFrameExpansion()) {
                     if (element_value.is_object()) {
                         if (!element_value.empty()) {
                             throw JsonLdError(JsonLdError::InvalidIdValue,
@@ -155,7 +155,7 @@ json JsonLdApi::expandObjectElement(Context activeCtx, std::string * activePrope
                     expandedValue = activeCtx.expandIri(element_value.get<std::string>(), true, true);
                 }
                 // TODO: SPEC: no mention of empty map check
-                else if (options.getFrameExpansion() && element_value.is_object()) {
+                else if (m_options->getFrameExpansion() && element_value.is_object()) {
                     if (!element_value.empty()) {
                         throw JsonLdError(JsonLdError::InvalidTypeValue,
                                           "@type value must be a an empty object for framing");
@@ -300,7 +300,7 @@ json JsonLdApi::expandObjectElement(Context activeCtx, std::string * activePrope
                 continue;
             }
                 // TODO: SPEC no mention of @explicit etc in spec
-            else if (options.getFrameExpansion() && (expandedProperty == JsonLdConsts::EXPLICIT
+            else if (m_options->getFrameExpansion() && (expandedProperty == JsonLdConsts::EXPLICIT
                                         || expandedProperty == JsonLdConsts::DEFAULT
                                         || expandedProperty == JsonLdConsts::EMBED
                                         || expandedProperty == JsonLdConsts::REQUIRE_ALL
@@ -527,7 +527,7 @@ json JsonLdApi::expandObjectElement(Context activeCtx, std::string * activePrope
             result = j;
         }
             // 12.2)
-        else if (!result.is_null() && !options.getFrameExpansion() && result.contains(JsonLdConsts::ID)
+        else if (!result.is_null() && !m_options->getFrameExpansion() && result.contains(JsonLdConsts::ID)
                  && result.size() == 1) {
             result = j;
         }
@@ -540,7 +540,7 @@ RDF::RDFDataset JsonLdApi::toRDF(nlohmann::json element) {
     auto nodeMap = ObjUtils::newMap();
     nodeMap[JsonLdConsts::DEFAULT] = ObjUtils::newMap();
     generateNodeMap(element, nodeMap);
-    RDF::RDFDataset dataset(options, &blankNodeUniqueNamer);
+    RDF::RDFDataset dataset(m_options, &m_blankNodeUniqueNamer);
 
     std::vector<std::string> keys;
     for (json::iterator it = nodeMap.begin(); it != nodeMap.end(); ++it) {
@@ -592,7 +592,7 @@ void JsonLdApi::generateNodeMap(json & element, json &nodeMap, std::string *acti
         for (const auto& item : oldTypes) {
             std::string s = item.get<std::string>();
             if (s.find_first_of("_:") == 0) {
-                newTypes.push_back(blankNodeUniqueNamer.get(item));
+                newTypes.push_back(m_blankNodeUniqueNamer.get(item));
             } else {
                 newTypes.push_back(item);
             }
@@ -639,12 +639,12 @@ void JsonLdApi::generateNodeMap(json & element, json &nodeMap, std::string *acti
             id = element[JsonLdConsts::ID];
             element.erase(JsonLdConsts::ID);
             if (id.find_first_of("_:") == 0) {
-                id = blankNodeUniqueNamer.get(id);
+                id = m_blankNodeUniqueNamer.get(id);
             }
         }
         // 6.2)
         else {
-            id = blankNodeUniqueNamer.get();
+            id = m_blankNodeUniqueNamer.get();
         }
         // 6.3)
         if (!graph.contains(id)) {
@@ -731,7 +731,7 @@ void JsonLdApi::generateNodeMap(json & element, json &nodeMap, std::string *acti
             json & propertyValue = element[property];
             // 6.11.1)
             if (property.find_first_of("_:") == 0) {
-                property = blankNodeUniqueNamer.get(property);
+                property = m_blankNodeUniqueNamer.get(property);
             }
             // 6.11.2)
             if (node != nullptr && !node->contains(property)) {
@@ -811,7 +811,7 @@ std::string JsonLdApi::normalize(const RDF::RDFDataset& dataset) {
     }
 
     // mapping complete, start canonical naming
-    NormalizeUtils normalizeUtils(quads, bnodes, UniqueNamer("_:c14n"), options);
+    NormalizeUtils normalizeUtils(quads, bnodes, UniqueNamer("_:c14n"), m_options);
     std::vector<std::string> ids;
     ids.reserve(bnodes.size()); // todo: need to make a keySet() function...
     for(auto const & i : bnodes) {

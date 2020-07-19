@@ -43,7 +43,7 @@ std::string getTestNumberStr(int i) {
     return ss.str();
 }
 
-std::string getBaseUri(const std::string& testName, const std::string& testNumber) {
+std::string getDocumentUri(const std::string& testName, const std::string& testNumber) {
     return "http://json-ld.org/test-suite/tests/" + testName + "-" + testNumber + "-in.jsonld";
 }
 

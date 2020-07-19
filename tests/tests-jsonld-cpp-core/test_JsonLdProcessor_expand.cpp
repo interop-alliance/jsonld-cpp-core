@@ -1,10 +1,10 @@
-#include "JsonLdProcessor.h"
-#include "testHelpers.h"
 #include <fstream>
 
-using nlohmann::json;
+#include "JsonLdProcessor.h"
+#include "testHelpers.h"
+#include "JsonLdProcessorTest.h"
 
-#include <gtest/gtest.h>
+using nlohmann::json;
 
 #ifndef _WIN32
 #pragma clang diagnostic push
@@ -16,20 +16,20 @@ using nlohmann::json;
 #pragma GCC diagnostic pop
 #endif // !_WIN32
 
-void performExpandTest(int testNumber) {
+void performExpandTest(int testNumber, const std::shared_ptr<JsonLdOptions>& options = std::make_shared<JsonLdOptions>()) {
     std::string testName = "expand";
     std::string testNumberStr = getTestNumberStr(testNumber);
 
-    std::string baseUri = getBaseUri(testName, testNumberStr);
+    std::string documentUri = getDocumentUri(testName, testNumberStr);
     std::string inputStr = getInputStr(testName, testNumberStr);
     json expected = getExpectedJson(testName, testNumberStr);
 
     DocumentLoader dl;
-    dl.addDocumentToCache(baseUri, inputStr);
-    JsonLdOptions opts(baseUri);
-    opts.setDocumentLoader(dl);
+    dl.addDocumentToCache(documentUri, inputStr);
 
-    json expanded = JsonLdProcessor::expand(baseUri, opts);
+    options->setDocumentLoader(dl);
+
+    json expanded = JsonLdProcessor::expand(documentUri, std::move(options));
     EXPECT_TRUE(JsonLdUtils::deepCompare(expected, expanded));
 }
 
@@ -333,11 +333,10 @@ TEST(JsonLdProcessorTest, expand_0075) {
     performExpandTest(75);
 }
 
-// Disabled this test because we need to implement the standard testing scaffold to pass in an
-// extra @base option at the last minute
-//TEST(JsonLdProcessorTest, expand_0076) {
-//    performExpandTest(76);
-//}
+TEST_F(JsonLdProcessorTestWithOptions, expand_0076) {
+    m_jsonLdOptions->setBase("http://example/base/");
+    performExpandTest(76, m_jsonLdOptions);
+}
 
 // Disabled this test because we need to implement standard testing scaffold and the
 // expandContext option

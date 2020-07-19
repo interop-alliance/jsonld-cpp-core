@@ -30,8 +30,8 @@ namespace JsonLdProcessor {
      * @throws JsonLdError
      *             If there is an error while expanding.
      */
-    nlohmann::json expand(nlohmann::json input, JsonLdOptions opts);
-    nlohmann::json expand(const std::string& input, JsonLdOptions opts);
+    nlohmann::json expand(nlohmann::json input, const std::shared_ptr<JsonLdOptions> options);
+    nlohmann::json expand(const std::string& input, const std::shared_ptr<JsonLdOptions> options);
 
     /**
      * Expands the given input according to the steps in the
@@ -47,10 +47,9 @@ namespace JsonLdProcessor {
     nlohmann::json expand(nlohmann::json input);
     nlohmann::json expand(std::string input);
 
-    RDF::RDFDataset toRDF(const std::string& input, const JsonLdOptions& options);
-    std::string toRDFString(const std::string& input, const JsonLdOptions& options);
-
-    std::string normalize(const std::string& input, const JsonLdOptions& options);
+    RDF::RDFDataset toRDF(const std::string& input, const std::shared_ptr<JsonLdOptions> options);
+    std::string toRDFString(const std::string& input, const std::shared_ptr<JsonLdOptions> options);
+    std::string normalize(const std::string& input, const std::shared_ptr<JsonLdOptions> options);
 }
 
 #endif //LIBJSONLD_CPP_JSONLDPROCESSOR_H
