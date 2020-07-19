@@ -123,12 +123,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CURL_STATICLIB;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdparty/curl-7.71.1/build/win/include;../jsonld-cpp-core/network/curl;../jsonld-cpp-core/network/curl/impl;../include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -136,6 +136,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>../3rdparty/curl-7.71.1/build/win/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -147,7 +150,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>../include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../jsonld-cpp-core/network/curl;../jsonld-cpp-core/network/curl/impl;../3rdparty/curl-7.71.1/build/win/include;../include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -158,6 +161,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>../3rdparty/curl-7.71.1/build/win/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\jsonld-cpp-core\Context.h" />
@@ -171,6 +177,9 @@
     <ClInclude Include="..\jsonld-cpp-core\JsonLdProcessor.h" />
     <ClInclude Include="..\jsonld-cpp-core\JsonLdUrl.h" />
     <ClInclude Include="..\jsonld-cpp-core\JsonLdUtils.h" />
+    <ClInclude Include="..\jsonld-cpp-core\network\curl\IHttpRequest.h" />
+    <ClInclude Include="..\jsonld-cpp-core\network\curl\impl\CurlHelper.h" />
+    <ClInclude Include="..\jsonld-cpp-core\network\curl\impl\CurlHttpRequest.h" />
     <ClInclude Include="..\jsonld-cpp-core\NormalizeUtils.h" />
     <ClInclude Include="..\jsonld-cpp-core\ObjUtils.h" />
     <ClInclude Include="..\jsonld-cpp-core\Permutator.h" />
@@ -193,6 +202,7 @@
     <ClCompile Include="..\jsonld-cpp-core\JsonLdProcessor.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\JsonLdUrl.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\JsonLdUtils.cpp" />
+    <ClCompile Include="..\jsonld-cpp-core\network\curl\impl\CurlHttpRequest.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\NormalizeUtils.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\ObjUtils.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\Permutator.cpp" />

@@ -48,6 +48,9 @@
 		7C1F518624A6076600732FCC /* test_IriUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F7E24A606FD00732FCC /* test_IriUtils.cpp */; };
 		7C1F518724A6076600732FCC /* testHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F8024A606FD00732FCC /* testHelpers.cpp */; };
 		7C1F518824A6076600732FCC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F518424A606FF00732FCC /* main.cpp */; };
+		7C338A1C24B89C290055B949 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1924B89C290055B949 /* libssl.a */; };
+		7C338A1D24B89C290055B949 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1A24B89C290055B949 /* libcrypto.a */; };
+		7C338A1E24B89C290055B949 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1B24B89C290055B949 /* libcurl.a */; };
 		7C35470624B1AFE200D78C21 /* test_DocumentLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FA24B1AFE100D78C21 /* test_DocumentLoader.cpp */; };
 		7C35470724B1AFE200D78C21 /* test_JsonLdProcessor_normalize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FB24B1AFE100D78C21 /* test_JsonLdProcessor_normalize.cpp */; };
 		7C35470824B1AFE200D78C21 /* test_DoubleFormatter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FC24B1AFE100D78C21 /* test_DoubleFormatter.cpp */; };
@@ -137,7 +140,6 @@
 		7C1F4F7C24A606FD00732FCC /* testHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testHelpers.h; sourceTree = "<group>"; };
 		7C1F4F7D24A606FD00732FCC /* test_JsonLdProcessor_expand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_JsonLdProcessor_expand.cpp; sourceTree = "<group>"; };
 		7C1F4F7E24A606FD00732FCC /* test_IriUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_IriUtils.cpp; sourceTree = "<group>"; };
-		7C1F4F7F24A606FD00732FCC /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		7C1F4F8024A606FD00732FCC /* testHelpers.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testHelpers.cpp; sourceTree = "<group>"; };
 		7C1F4F8224A606FD00732FCC /* normalize-0034-in.jsonld */ = {isa = PBXFileReference; lastKnownFileType = text; path = "normalize-0034-in.jsonld"; sourceTree = "<group>"; };
 		7C1F4F8324A606FD00732FCC /* toRdf-0036-out.nq */ = {isa = PBXFileReference; lastKnownFileType = text; path = "toRdf-0036-out.nq"; sourceTree = "<group>"; };
@@ -655,6 +657,9 @@
 		7C1F518324A606FF00732FCC /* expand-0030-out.jsonld */ = {isa = PBXFileReference; lastKnownFileType = text; path = "expand-0030-out.jsonld"; sourceTree = "<group>"; };
 		7C1F518424A606FF00732FCC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7C25057F24A3DAE3005F7F28 /* libjsonld-cpp-core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjsonld-cpp-core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C338A1924B89C290055B949 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../3rdparty/curl-7.71.1/build/mac/libssl.a"; sourceTree = "<group>"; };
+		7C338A1A24B89C290055B949 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../3rdparty/curl-7.71.1/build/mac/libcrypto.a"; sourceTree = "<group>"; };
+		7C338A1B24B89C290055B949 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../3rdparty/curl-7.71.1/build/mac/libcurl.a"; sourceTree = "<group>"; };
 		7C3546FA24B1AFE100D78C21 /* test_DocumentLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_DocumentLoader.cpp; sourceTree = "<group>"; };
 		7C3546FB24B1AFE100D78C21 /* test_JsonLdProcessor_normalize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_JsonLdProcessor_normalize.cpp; sourceTree = "<group>"; };
 		7C3546FC24B1AFE100D78C21 /* test_DoubleFormatter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_DoubleFormatter.cpp; sourceTree = "<group>"; };
@@ -689,6 +694,9 @@
 			files = (
 				7C4082A124A5CA60007A6266 /* libjsonld-cpp-core.a in Frameworks */,
 				7C40829D24A5C569007A6266 /* libgmock.a in Frameworks */,
+				7C338A1C24B89C290055B949 /* libssl.a in Frameworks */,
+				7C338A1D24B89C290055B949 /* libcrypto.a in Frameworks */,
+				7C338A1E24B89C290055B949 /* libcurl.a in Frameworks */,
 				7C40829E24A5C569007A6266 /* libgtest.a in Frameworks */,
 				7C40829F24A5C569007A6266 /* libgtest_main.a in Frameworks */,
 				7C4082A024A5C569007A6266 /* libgmock_main.a in Frameworks */,
@@ -762,7 +770,6 @@
 				7C35470224B1AFE200D78C21 /* test_Sha1.cpp */,
 				7C3546FE24B1AFE100D78C21 /* test_UniqueNamer.cpp */,
 				7C1F4F7E24A606FD00732FCC /* test_IriUtils.cpp */,
-				7C1F4F7F24A606FD00732FCC /* CMakeLists.txt */,
 				7C1F4F8024A606FD00732FCC /* testHelpers.cpp */,
 				7C1F4F8124A606FD00732FCC /* test_data */,
 				7C1F518424A606FF00732FCC /* main.cpp */,
@@ -1315,6 +1322,9 @@
 		7C40829824A5C569007A6266 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C338A1A24B89C290055B949 /* libcrypto.a */,
+				7C338A1B24B89C290055B949 /* libcurl.a */,
+				7C338A1924B89C290055B949 /* libssl.a */,
 				7C40829C24A5C569007A6266 /* libgmock_main.a */,
 				7C40829924A5C569007A6266 /* libgmock.a */,
 				7C40829B24A5C569007A6266 /* libgtest_main.a */,
@@ -1625,7 +1635,11 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../include",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl/impl",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl",
+				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1641,7 +1655,11 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../include",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl/impl",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl",
+				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1659,7 +1677,10 @@
 					"$(PROJECT_DIR)/../../include",
 					"$(PROJECT_DIR)/../../jsonld-cpp-core",
 				);
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../tests/googletest/build/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../tests/googletest/build/lib",
+					"$(PROJECT_DIR)/../../3rdparty/curl-7.71.1/build/mac",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1675,7 +1696,10 @@
 					"$(PROJECT_DIR)/../../include",
 					"$(PROJECT_DIR)/../../jsonld-cpp-core",
 				);
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../tests/googletest/build/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../tests/googletest/build/lib",
+					"$(PROJECT_DIR)/../../3rdparty/curl-7.71.1/build/mac",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

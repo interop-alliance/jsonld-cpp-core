@@ -9,6 +9,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
   set(DCD_CXX_FLAGS -Wall -Wextra -Wpedantic -Wno-unknown-pragmas)
+  set(LINKAGE_OPTIONS stdc++fs)
 elseif(CMAKE_CXX_COMPILER_ID MATCHES Clang)
   set(DCD_CXX_FLAGS -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-missing-prototypes)
 endif()

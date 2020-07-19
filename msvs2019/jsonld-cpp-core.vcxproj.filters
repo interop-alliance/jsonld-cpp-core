@@ -78,6 +78,15 @@
     <ClInclude Include="..\jsonld-cpp-core\UniqueNamer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\jsonld-cpp-core\network\curl\impl\CurlHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonld-cpp-core\network\curl\impl\CurlHttpRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\jsonld-cpp-core\network\curl\IHttpRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -135,6 +144,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\jsonld-cpp-core\UniqueNamer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\jsonld-cpp-core\network\curl\impl\CurlHttpRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
