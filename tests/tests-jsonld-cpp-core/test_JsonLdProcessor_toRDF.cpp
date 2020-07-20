@@ -4,6 +4,7 @@
 #include "JsonLdProcessor.h"
 #include "testHelpers.h"
 #include "JsonLdProcessorTest.h"
+#include "testConstants.h"
 
 #ifndef _WIN32
 #pragma clang diagnostic push
@@ -15,38 +16,37 @@
 #pragma GCC diagnostic pop
 #endif
 
-void performToRDFTest(int testNumber, const std::shared_ptr<JsonLdOptions>& options = std::make_shared<JsonLdOptions>()) {
+void performToRDFTest(int testNumber, const std::string& testPrefix = jsonld::test::defaultExpandTestPrefix, const std::shared_ptr<JsonLdOptions>& options = std::make_shared<JsonLdOptions>()) {
 
-    std::string testName = "toRdf";
-    std::string testNumberStr = getTestNumberStr(testNumber);
+    const std::string testNumberStr = getTestNumberStr(testNumber);
+    const std::string testIdStr = testPrefix + testNumberStr;
 
-    std::string documentUri = getDocumentUri(testName, testNumberStr);
-    std::string inputStr = getInputStr(testName, testNumberStr);
-    std::string expected = getExpectedRDF(testName, testNumberStr);
+    const std::string documentUri = getDocumentUri(jsonld::test::toRDFTestName, testNumberStr);
+    const std::string inputStr = getInputJsonContent(jsonld::test::toRDFTestName, jsonld::test::toRDFTestDirectory, testIdStr);
+    const std::string expected = getExpectedRDF(jsonld::test::toRDFTestName, jsonld::test::toRDFTestDirectory, testIdStr);
 
     DocumentLoader dl;
     dl.addDocumentToCache(documentUri, inputStr);
 
     options->setDocumentLoader(dl);
 
-    std::string str = JsonLdProcessor::toRDFString(documentUri, std::move(options));
-
+    const std::string str = JsonLdProcessor::toRDFString(documentUri, std::move(options));
     EXPECT_EQ(expected, str);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0001) {
+TEST(JsonLdProcessorTest, toRDF_t0001) {
     performToRDFTest(1);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0002) {
+TEST(JsonLdProcessorTest, toRDF_t0002) {
     performToRDFTest(2);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0003) {
+TEST(JsonLdProcessorTest, toRDF_t0003) {
     performToRDFTest(3);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0004) {
+TEST(JsonLdProcessorTest, toRDF_t0004) {
     performToRDFTest(4);
 }
 
@@ -55,243 +55,243 @@ TEST(JsonLdProcessorTest, toRDF_0004) {
 //    performToRDFTest(5);
 //}
 
-TEST(JsonLdProcessorTest, toRDF_0006) {
+TEST(JsonLdProcessorTest, toRDF_t0006) {
     performToRDFTest(6);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0007) {
+TEST(JsonLdProcessorTest, toRDF_t0007) {
     performToRDFTest(7);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0008) {
+TEST(JsonLdProcessorTest, toRDF_t0008) {
     performToRDFTest(8);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0009) {
+TEST(JsonLdProcessorTest, toRDF_t0009) {
     performToRDFTest(9);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0010) {
+TEST(JsonLdProcessorTest, toRDF_t0010) {
     performToRDFTest(10);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0011) {
+TEST(JsonLdProcessorTest, toRDF_t0011) {
     performToRDFTest(11);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0012) {
+TEST(JsonLdProcessorTest, toRDF_t0012) {
     performToRDFTest(12);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0013) {
+TEST(JsonLdProcessorTest, toRDF_t0013) {
     performToRDFTest(13);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0014) {
+TEST(JsonLdProcessorTest, toRDF_t0014) {
     performToRDFTest(14);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0015) {
+TEST(JsonLdProcessorTest, toRDF_t0015) {
     performToRDFTest(15);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0016) {
+TEST(JsonLdProcessorTest, toRDF_t0016) {
     performToRDFTest(16);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0017) {
+TEST(JsonLdProcessorTest, toRDF_t0017) {
     performToRDFTest(17);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0018) {
+TEST(JsonLdProcessorTest, toRDF_t0018) {
     performToRDFTest(18);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0019) {
+TEST(JsonLdProcessorTest, toRDF_t0019) {
     performToRDFTest(19);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0020) {
+TEST(JsonLdProcessorTest, toRDF_t0020) {
     performToRDFTest(20);
 }
 
 // case 21 doesn't exist
 
-TEST(JsonLdProcessorTest, toRDF_0022) {
+TEST(JsonLdProcessorTest, toRDF_t0022) {
     performToRDFTest(22);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0023) {
+TEST(JsonLdProcessorTest, toRDF_t0023) {
     performToRDFTest(23);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0024) {
+TEST(JsonLdProcessorTest, toRDF_t0024) {
     performToRDFTest(24);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0025) {
+TEST(JsonLdProcessorTest, toRDF_t0025) {
     performToRDFTest(25);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0026) {
+TEST(JsonLdProcessorTest, toRDF_t0026) {
     performToRDFTest(26);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0027) {
+TEST(JsonLdProcessorTest, toRDF_t0027) {
     performToRDFTest(27);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0028) {
+TEST(JsonLdProcessorTest, toRDF_t0028) {
     performToRDFTest(28);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0029) {
+TEST(JsonLdProcessorTest, toRDF_t0029) {
     performToRDFTest(29);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0030) {
+TEST(JsonLdProcessorTest, toRDF_t0030) {
     performToRDFTest(30);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0031) {
+TEST(JsonLdProcessorTest, toRDF_t0031) {
     performToRDFTest(31);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0032) {
+TEST(JsonLdProcessorTest, toRDF_t0032) {
     performToRDFTest(32);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0033) {
+TEST(JsonLdProcessorTest, toRDF_t0033) {
     performToRDFTest(33);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0034) {
+TEST(JsonLdProcessorTest, toRDF_t0034) {
     performToRDFTest(34);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0035) {
+TEST(JsonLdProcessorTest, toRDF_t0035) {
     performToRDFTest(35);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0036) {
+TEST(JsonLdProcessorTest, toRDF_t0036) {
     performToRDFTest(36);
 }
 
 // cases 37-40 don't exist
 
-TEST(JsonLdProcessorTest, toRDF_0041) {
+TEST(JsonLdProcessorTest, toRDF_t0041) {
     performToRDFTest(41);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0042) {
+TEST(JsonLdProcessorTest, toRDF_t0042) {
     performToRDFTest(42);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0043) {
+TEST(JsonLdProcessorTest, toRDF_t0043) {
     performToRDFTest(43);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0044) {
+TEST(JsonLdProcessorTest, toRDF_t0044) {
     performToRDFTest(44);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0045) {
+TEST(JsonLdProcessorTest, toRDF_t0045) {
     performToRDFTest(45);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0046) {
+TEST(JsonLdProcessorTest, toRDF_t0046) {
     performToRDFTest(46);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0047) {
+TEST(JsonLdProcessorTest, toRDF_t0047) {
     performToRDFTest(47);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0048) {
+TEST(JsonLdProcessorTest, toRDF_t0048) {
     performToRDFTest(48);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0049) {
+TEST(JsonLdProcessorTest, toRDF_t0049) {
     performToRDFTest(49);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0050) {
+TEST(JsonLdProcessorTest, toRDF_t0050) {
     performToRDFTest(50);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0051) {
+TEST(JsonLdProcessorTest, toRDF_t0051) {
     performToRDFTest(51);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0052) {
+TEST(JsonLdProcessorTest, toRDF_t0052) {
     performToRDFTest(52);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0053) {
+TEST(JsonLdProcessorTest, toRDF_t0053) {
     performToRDFTest(53);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0054) {
+TEST(JsonLdProcessorTest, toRDF_t0054) {
     performToRDFTest(54);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0055) {
+TEST(JsonLdProcessorTest, toRDF_t0055) {
     performToRDFTest(55);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0056) {
+TEST(JsonLdProcessorTest, toRDF_t0056) {
     performToRDFTest(56);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0057) {
+TEST(JsonLdProcessorTest, toRDF_t0057) {
     performToRDFTest(57);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0058) {
+TEST(JsonLdProcessorTest, toRDF_t0058) {
     performToRDFTest(58);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0059) {
+TEST(JsonLdProcessorTest, toRDF_t0059) {
     performToRDFTest(59);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0060) {
+TEST(JsonLdProcessorTest, toRDF_t0060) {
     performToRDFTest(60);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0061) {
+TEST(JsonLdProcessorTest, toRDF_t0061) {
     performToRDFTest(61);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0062) {
+TEST(JsonLdProcessorTest, toRDF_t0062) {
     performToRDFTest(62);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0063) {
+TEST(JsonLdProcessorTest, toRDF_t0063) {
     performToRDFTest(63);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0064) {
+TEST(JsonLdProcessorTest, toRDF_t0064) {
     performToRDFTest(64);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0065) {
+TEST(JsonLdProcessorTest, toRDF_t0065) {
     performToRDFTest(65);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0066) {
+TEST(JsonLdProcessorTest, toRDF_t0066) {
     performToRDFTest(66);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0067) {
+TEST(JsonLdProcessorTest, toRDF_t0067) {
     performToRDFTest(67);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0068) {
+TEST(JsonLdProcessorTest, toRDF_t0068) {
     performToRDFTest(68);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0069) {
+TEST(JsonLdProcessorTest, toRDF_t0069) {
     performToRDFTest(69);
 }
 
@@ -300,19 +300,19 @@ TEST(JsonLdProcessorTest, toRDF_0069) {
 //    performToRDFTest(70);
 //}
 
-TEST(JsonLdProcessorTest, toRDF_0071) {
+TEST(JsonLdProcessorTest, toRDF_t0071) {
     performToRDFTest(71);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0072) {
+TEST(JsonLdProcessorTest, toRDF_t0072) {
     performToRDFTest(72);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0073) {
+TEST(JsonLdProcessorTest, toRDF_t0073) {
     performToRDFTest(73);
 }
 
-TEST(JsonLdProcessorTest, toRDF_0074) {
+TEST(JsonLdProcessorTest, toRDF_t0074) {
     performToRDFTest(74);
 }
 
@@ -321,75 +321,75 @@ TEST(JsonLdProcessorTest, toRDF_0074) {
 //    performToRDFTest(75);
 //}
 
-TEST(JsonLdProcessorTest, toRdf_0076) {
+TEST(JsonLdProcessorTest, toRdf_t0076) {
     performToRDFTest(76);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0077) {
+TEST(JsonLdProcessorTest, toRdf_t0077) {
     performToRDFTest(77);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0078) {
+TEST(JsonLdProcessorTest, toRdf_t0078) {
     performToRDFTest(78);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0079) {
+TEST(JsonLdProcessorTest, toRdf_t0079) {
     performToRDFTest(79);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0080) {
+TEST(JsonLdProcessorTest, toRdf_t0080) {
     performToRDFTest(80);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0081) {
+TEST(JsonLdProcessorTest, toRdf_t0081) {
     performToRDFTest(81);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0082) {
+TEST(JsonLdProcessorTest, toRdf_t0082) {
     performToRDFTest(82);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0083) {
+TEST(JsonLdProcessorTest, toRdf_t0083) {
     performToRDFTest(83);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0084) {
+TEST(JsonLdProcessorTest, toRdf_t0084) {
     performToRDFTest(84);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0085) {
+TEST(JsonLdProcessorTest, toRdf_t0085) {
     performToRDFTest(85);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0086) {
+TEST(JsonLdProcessorTest, toRdf_t0086) {
     performToRDFTest(86);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0087) {
+TEST(JsonLdProcessorTest, toRdf_t0087) {
     performToRDFTest(87);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0088) {
+TEST(JsonLdProcessorTest, toRdf_t0088) {
     performToRDFTest(88);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0089) {
+TEST(JsonLdProcessorTest, toRdf_t0089) {
     performToRDFTest(89);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0090) {
+TEST(JsonLdProcessorTest, toRdf_t0090) {
     performToRDFTest(90);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0091) {
+TEST(JsonLdProcessorTest, toRdf_t0091) {
     performToRDFTest(91);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0092) {
+TEST(JsonLdProcessorTest, toRdf_t0092) {
     performToRDFTest(92);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0093) {
+TEST(JsonLdProcessorTest, toRdf_t0093) {
     performToRDFTest(93);
 }
 
@@ -397,95 +397,95 @@ TEST(JsonLdProcessorTest, toRdf_0094) {
     performToRDFTest(94);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0095) {
+TEST(JsonLdProcessorTest, toRdf_t0095) {
     performToRDFTest(95);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0096) {
+TEST(JsonLdProcessorTest, toRdf_t0096) {
     performToRDFTest(96);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0097) {
+TEST(JsonLdProcessorTest, toRdf_t0097) {
     performToRDFTest(97);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0098) {
+TEST(JsonLdProcessorTest, toRdf_t0098) {
     performToRDFTest(98);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0099) {
+TEST(JsonLdProcessorTest, toRdf_t0099) {
     performToRDFTest(99);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0100) {
+TEST(JsonLdProcessorTest, toRdf_t0100) {
     performToRDFTest(100);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0101) {
+TEST(JsonLdProcessorTest, toRdf_t0101) {
     performToRDFTest(101);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0102) {
+TEST(JsonLdProcessorTest, toRdf_t0102) {
     performToRDFTest(102);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0103) {
+TEST(JsonLdProcessorTest, toRdf_t0103) {
     performToRDFTest(103);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0104) {
+TEST(JsonLdProcessorTest, toRdf_t0104) {
     performToRDFTest(104);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0105) {
+TEST(JsonLdProcessorTest, toRdf_t0105) {
     performToRDFTest(105);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0106) {
+TEST(JsonLdProcessorTest, toRdf_t0106) {
     performToRDFTest(106);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0107) {
+TEST(JsonLdProcessorTest, toRdf_t0107) {
     performToRDFTest(107);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0108) {
+TEST(JsonLdProcessorTest, toRdf_t0108) {
     performToRDFTest(108);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0109) {
+TEST(JsonLdProcessorTest, toRdf_t0109) {
     performToRDFTest(109);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0110) {
+TEST(JsonLdProcessorTest, toRdf_t0110) {
     performToRDFTest(110);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0111) {
+TEST(JsonLdProcessorTest, toRdf_t0111) {
     performToRDFTest(111);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0112) {
+TEST(JsonLdProcessorTest, toRdf_t0112) {
     performToRDFTest(112);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0113) {
+TEST(JsonLdProcessorTest, toRdf_t0113) {
     performToRDFTest(113);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0114) {
+TEST(JsonLdProcessorTest, toRdf_t0114) {
     performToRDFTest(114);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0115) {
+TEST(JsonLdProcessorTest, toRdf_t0115) {
     performToRDFTest(115);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0116) {
+TEST(JsonLdProcessorTest, toRdf_t0116) {
     performToRDFTest(116);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0117) {
+TEST(JsonLdProcessorTest, toRdf_t0117) {
     performToRDFTest(117);
 }
 
@@ -494,7 +494,7 @@ TEST(JsonLdProcessorTest, toRdf_0117) {
 //    performToRDFTest(118);
 //}
 
-TEST(JsonLdProcessorTest, toRdf_0119) {
+TEST(JsonLdProcessorTest, toRdf_t0119) {
     performToRDFTest(119);
 }
 
@@ -518,18 +518,18 @@ TEST(JsonLdProcessorTest, toRdf_0119) {
 //    }
 //}
 
-TEST(JsonLdProcessorTest, toRdf_0300) {
+TEST(JsonLdProcessorTest, toRdf_our0300) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0008
-    performToRDFTest(300);
+    performToRDFTest(300, jsonld::test::ourExpandTestPrefix);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0301) {
+TEST(JsonLdProcessorTest, toRdf_our0301) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0020
-    performToRDFTest(301);
+    performToRDFTest(301, jsonld::test::ourExpandTestPrefix);
 }
 
-TEST(JsonLdProcessorTest, toRdf_0302) {
+TEST(JsonLdProcessorTest, toRdf_our0302) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0044
-    performToRDFTest(302);
+    performToRDFTest(302, jsonld::test::ourExpandTestPrefix);
 }
 

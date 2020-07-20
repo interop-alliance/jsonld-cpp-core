@@ -10,11 +10,11 @@ std::string getTestNumberStr(int i);
 
 std::string getDocumentUri(const std::string& testName, const std::string& testNumber);
 
-std::string getInputStr(const std::string& testName, const std::string& testNumber);
+std::string getInputJsonContent(const std::string& testName, const std::string& testDirectory, const std::string& testNumber);
 
-nlohmann::json getExpectedJson(const std::string& testName, const std::string& testNumber);
+nlohmann::json getExpectedJson(const std::string& testName, const std::string& testDirectory, const std::string& testNumber);
 
-std::string getExpectedRDF(const std::string& testName, const std::string& testNumber);
+std::string getExpectedRDF(const std::string& testName, const std::string& testDirectory, const std::string& testNumber);
 
 
 #endif //LIBJSONLD_CPP_TESTHELPERS_H

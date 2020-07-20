@@ -13,7 +13,7 @@ private:
 
 public:
 
-    JsonLdApi() = default;
+    JsonLdApi();
     explicit JsonLdApi(const std::shared_ptr<JsonLdOptions>& options);
 
     const std::shared_ptr<JsonLdOptions> getOptions() const;
