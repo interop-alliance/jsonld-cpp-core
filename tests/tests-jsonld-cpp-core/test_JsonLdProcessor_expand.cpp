@@ -34,7 +34,7 @@ void performExpandTest(int testNumber, const std::string& testPrefix = jsonld::t
     EXPECT_TRUE(JsonLdUtils::deepCompare(expected, expanded));
 }
 
-/*TEST(JsonLdProcessorTest, expand_t0001) {
+TEST(JsonLdProcessorTest, expand_t0001) {
     performExpandTest(1);
 }
 
@@ -332,7 +332,7 @@ TEST(JsonLdProcessorTest, expand_t0074) {
 
 TEST(JsonLdProcessorTest, expand_t0075) {
     performExpandTest(75);
-}*/
+}
 
 //TEST_F(JsonLdProcessorTestWithOptions, expand_t0076) {
 //    m_jsonLdOptions->setBase("http://example/base/");
@@ -345,7 +345,7 @@ TEST(JsonLdProcessorTest, expand_t0075) {
 //    performExpandTest(77);
 //}
 
-/*TEST(JsonLdProcessorTest, expand_our0300) {
+TEST(JsonLdProcessorTest, expand_our0300) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0008
     performExpandTest(300, jsonld::test::ourExpandTestPrefix);
 }
@@ -358,7 +358,7 @@ TEST(JsonLdProcessorTest, expand_our0301) {
 TEST(JsonLdProcessorTest, expand_our0302) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0044
     performExpandTest(302, jsonld::test::ourExpandTestPrefix);
-}*/
+}
 
 TEST(JsonLdProcessorTest, expand_our0401) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0044
