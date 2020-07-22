@@ -8,11 +8,17 @@
 
 using nlohmann::json;
 
+JsonLdApi::JsonLdApi() : m_options(std::make_shared<JsonLdOptions>()) {
+}
+
 JsonLdApi::JsonLdApi(const std::shared_ptr<JsonLdOptions>& options)
         : m_options(options) {
 }
 
 const std::shared_ptr<JsonLdOptions> JsonLdApi::getOptions() const {
+    if (!m_options)
+        throw std::runtime_error("JsonLdApi::No JsonLdOptions created.");
+
     return m_options;
 }
 

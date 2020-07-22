@@ -9,8 +9,10 @@ namespace
 {
 #ifdef _WIN32
     const std::string testPath = "tests\\tests-jsonld-cpp-core\\test_data\\";
+    const std::string slashSymbol = "\\";
 #else
     const std::string testPath = "test_data/";
+    const std::string slashSymbol = "/";
 #endif
 }
 
@@ -47,21 +49,21 @@ std::string getDocumentUri(const std::string& testName, const std::string& testN
     return "http://json-ld.org/test-suite/tests/" + testName + "-" + testNumber + "-in.jsonld";
 }
 
-std::string getInputStr(const std::string& testName, const std::string& testNumber) {
-    std::ifstream fsIn {resolvePath(testPath + testName + "-" + testNumber + "-in.jsonld") };
+std::string getInputJsonContent(const std::string& testName, const std::string& testDirectory, const std::string& testNumber) {
+    std::ifstream fsIn {resolvePath(testPath + testDirectory + slashSymbol + testName + "-" + testNumber + "-in.jsonld") };
     std::string inputStr {std::istreambuf_iterator<char>(fsIn), std::istreambuf_iterator<char>() };
     return inputStr;
 }
 
-nlohmann::json getExpectedJson(const std::string& testName, const std::string& testNumber) {
-    std::ifstream fsOut {resolvePath(testPath + testName + "-" + testNumber + "-out.jsonld") };
+nlohmann::json getExpectedJson(const std::string& testName, const std::string& testDirectory, const std::string& testNumber) {
+    std::ifstream fsOut {resolvePath(testPath + testDirectory + slashSymbol + testName + "-" + testNumber + "-out.jsonld") };
     std::string outputStr { std::istreambuf_iterator<char>(fsOut), std::istreambuf_iterator<char>() };
     nlohmann::json expected = nlohmann::json::parse(outputStr);
     return expected;
 }
 
-std::string getExpectedRDF(const std::string& testName, const std::string& testNumber) {
-    std::ifstream fsOut {resolvePath(testPath + testName + "-" + testNumber + "-out.nq") };
+std::string getExpectedRDF(const std::string& testName, const std::string& testDirectory, const std::string& testNumber) {
+    std::ifstream fsOut {resolvePath(testPath + testDirectory + slashSymbol + testName + "-" + testNumber + "-out.nq") };
     std::string outputStr { std::istreambuf_iterator<char>(fsOut), std::istreambuf_iterator<char>() };
     return outputStr;
 }

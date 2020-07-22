@@ -3,6 +3,7 @@
 #include "JsonLdProcessor.h"
 #include "testHelpers.h"
 #include "JsonLdProcessorTest.h"
+#include "testConstants.h"
 
 using nlohmann::json;
 
@@ -16,196 +17,196 @@ using nlohmann::json;
 #pragma GCC diagnostic pop
 #endif // !_WIN32
 
-void performExpandTest(int testNumber, const std::shared_ptr<JsonLdOptions>& options = std::make_shared<JsonLdOptions>()) {
-    std::string testName = "expand";
-    std::string testNumberStr = getTestNumberStr(testNumber);
+void performExpandTest(int testNumber, const std::string& testPrefix = jsonld::test::defaultExpandTestPrefix, const std::shared_ptr<JsonLdOptions>& options = std::make_shared<JsonLdOptions>()) {
+    const std::string testNumberStr = getTestNumberStr(testNumber);
+    const std::string testIdStr = testPrefix + testNumberStr;
 
-    std::string documentUri = getDocumentUri(testName, testNumberStr);
-    std::string inputStr = getInputStr(testName, testNumberStr);
-    json expected = getExpectedJson(testName, testNumberStr);
+    const std::string documentUri = getDocumentUri(jsonld::test::expandTestName, testNumberStr);
+    const std::string inputStr = getInputJsonContent(jsonld::test::expandTestName, jsonld::test::expandTestDirectory, testIdStr);
+    const json expected = getExpectedJson(jsonld::test::expandTestName, jsonld::test::expandTestDirectory, testIdStr);
 
     DocumentLoader dl;
     dl.addDocumentToCache(documentUri, inputStr);
 
     options->setDocumentLoader(dl);
 
-    json expanded = JsonLdProcessor::expand(documentUri, std::move(options));
+    const json expanded = JsonLdProcessor::expand(documentUri, std::move(options));
     EXPECT_TRUE(JsonLdUtils::deepCompare(expected, expanded));
 }
 
-TEST(JsonLdProcessorTest, expand_0001) {
+TEST(JsonLdProcessorTest, expand_t0001) {
     performExpandTest(1);
 }
 
-TEST(JsonLdProcessorTest, expand_0002) {
+TEST(JsonLdProcessorTest, expand_t0002) {
     performExpandTest(2);
 }
 
-TEST(JsonLdProcessorTest, expand_0003) {
+TEST(JsonLdProcessorTest, expand_t0003) {
     performExpandTest(3);
 }
 
-TEST(JsonLdProcessorTest, expand_0004) {
+TEST(JsonLdProcessorTest, expand_t0004) {
     performExpandTest(4);
 }
 
-TEST(JsonLdProcessorTest, expand_0005) {
+TEST(JsonLdProcessorTest, expand_t0005) {
     performExpandTest(5);
 }
 
-TEST(JsonLdProcessorTest, expand_0006) {
+TEST(JsonLdProcessorTest, expand_t0006) {
     performExpandTest(6);
 }
 
-TEST(JsonLdProcessorTest, expand_0007) {
+TEST(JsonLdProcessorTest, expand_t0007) {
     performExpandTest(7);
 }
 
-TEST(JsonLdProcessorTest, expand_0008) {
+TEST(JsonLdProcessorTest, expand_t0008) {
     performExpandTest(8);
 }
 
-TEST(JsonLdProcessorTest, expand_0009) {
+TEST(JsonLdProcessorTest, expand_t0009) {
     performExpandTest(9);
 }
 
-TEST(JsonLdProcessorTest, expand_0010) {
+TEST(JsonLdProcessorTest, expand_t0010) {
     performExpandTest(10);
 }
 
-TEST(JsonLdProcessorTest, expand_0011) {
+TEST(JsonLdProcessorTest, expand_t0011) {
     performExpandTest(11);
 }
 
-TEST(JsonLdProcessorTest, expand_0012) {
+TEST(JsonLdProcessorTest, expand_t0012) {
     performExpandTest(12);
 }
 
-TEST(JsonLdProcessorTest, expand_0013) {
+TEST(JsonLdProcessorTest, expand_t0013) {
     performExpandTest(13);
 }
 
-TEST(JsonLdProcessorTest, expand_0014) {
+TEST(JsonLdProcessorTest, expand_t0014) {
     performExpandTest(14);
 }
 
-TEST(JsonLdProcessorTest, expand_0015) {
+TEST(JsonLdProcessorTest, expand_t0015) {
     performExpandTest(15);
 }
 
-TEST(JsonLdProcessorTest, expand_0016) {
+TEST(JsonLdProcessorTest, expand_t0016) {
     performExpandTest(16);
 }
 
-TEST(JsonLdProcessorTest, expand_0017) {
+TEST(JsonLdProcessorTest, expand_t0017) {
     performExpandTest(17);
 }
 
-TEST(JsonLdProcessorTest, expand_0018) {
+TEST(JsonLdProcessorTest, expand_t0018) {
     performExpandTest(18);
 }
 
-TEST(JsonLdProcessorTest, expand_0019) {
+TEST(JsonLdProcessorTest, expand_t0019) {
     performExpandTest(19);
 }
 
-TEST(JsonLdProcessorTest, expand_0020) {
+TEST(JsonLdProcessorTest, expand_t0020) {
     performExpandTest(20);
 }
 
-TEST(JsonLdProcessorTest, expand_0021) {
+TEST(JsonLdProcessorTest, expand_t0021) {
     performExpandTest(21);
 }
 
-TEST(JsonLdProcessorTest, expand_0022) {
+TEST(JsonLdProcessorTest, expand_t0022) {
     performExpandTest(22);
 }
 
-TEST(JsonLdProcessorTest, expand_0023) {
+TEST(JsonLdProcessorTest, expand_t0023) {
     performExpandTest(23);
 }
 
-TEST(JsonLdProcessorTest, expand_0024) {
+TEST(JsonLdProcessorTest, expand_t0024) {
     performExpandTest(24);
 }
 
-TEST(JsonLdProcessorTest, expand_0025) {
+TEST(JsonLdProcessorTest, expand_t0025) {
     performExpandTest(25);
 }
 
-TEST(JsonLdProcessorTest, expand_0026) {
+TEST(JsonLdProcessorTest, expand_t0026) {
     performExpandTest(26);
 }
 
-TEST(JsonLdProcessorTest, expand_0027) {
+TEST(JsonLdProcessorTest, expand_t0027) {
     performExpandTest(27);
 }
 
-TEST(JsonLdProcessorTest, expand_0028) {
+TEST(JsonLdProcessorTest, expand_t0028) {
     performExpandTest(28);
 }
 
-TEST(JsonLdProcessorTest, expand_0029) {
+TEST(JsonLdProcessorTest, expand_t0029) {
     performExpandTest(29);
 }
 
-TEST(JsonLdProcessorTest, expand_0030) {
+TEST(JsonLdProcessorTest, expand_t0030) {
     performExpandTest(30);
 }
 
-TEST(JsonLdProcessorTest, expand_0031) {
+TEST(JsonLdProcessorTest, expand_t0031) {
     performExpandTest(31);
 }
 
-TEST(JsonLdProcessorTest, expand_0032) {
+TEST(JsonLdProcessorTest, expand_t0032) {
     performExpandTest(32);
 }
 
-TEST(JsonLdProcessorTest, expand_0033) {
+TEST(JsonLdProcessorTest, expand_t0033) {
     performExpandTest(33);
 }
 
-TEST(JsonLdProcessorTest, expand_0034) {
+TEST(JsonLdProcessorTest, expand_t0034) {
     performExpandTest(34);
 }
 
-TEST(JsonLdProcessorTest, expand_0035) {
+TEST(JsonLdProcessorTest, expand_t0035) {
     performExpandTest(35);
 }
 
-TEST(JsonLdProcessorTest, expand_0036) {
+TEST(JsonLdProcessorTest, expand_t0036) {
     performExpandTest(36);
 }
 
-TEST(JsonLdProcessorTest, expand_0037) {
+TEST(JsonLdProcessorTest, expand_t0037) {
     performExpandTest(37);
 }
 
-TEST(JsonLdProcessorTest, expand_0038) {
+TEST(JsonLdProcessorTest, expand_t0038) {
     performExpandTest(38);
 }
 
-TEST(JsonLdProcessorTest, expand_0039) {
+TEST(JsonLdProcessorTest, expand_t0039) {
     performExpandTest(39);
 }
 
-TEST(JsonLdProcessorTest, expand_0040) {
+TEST(JsonLdProcessorTest, expand_t0040) {
     performExpandTest(40);
 }
 
-TEST(JsonLdProcessorTest, expand_0041) {
+TEST(JsonLdProcessorTest, expand_t0041) {
     performExpandTest(41);
 }
 
-TEST(JsonLdProcessorTest, expand_0042) {
+TEST(JsonLdProcessorTest, expand_t0042) {
     performExpandTest(42);
 }
 
-TEST(JsonLdProcessorTest, expand_0043) {
+TEST(JsonLdProcessorTest, expand_t0043) {
     performExpandTest(43);
 }
 
-TEST(JsonLdProcessorTest, expand_0044) {
+TEST(JsonLdProcessorTest, expand_t0044) {
     performExpandTest(44);
 }
 
@@ -213,129 +214,129 @@ TEST(JsonLdProcessorTest, expand_0045) {
     performExpandTest(45);
 }
 
-TEST(JsonLdProcessorTest, expand_0046) {
+TEST(JsonLdProcessorTest, expand_t0046) {
     performExpandTest(46);
 }
 
-TEST(JsonLdProcessorTest, expand_0047) {
+TEST(JsonLdProcessorTest, expand_t0047) {
     performExpandTest(47);
 }
 
-TEST(JsonLdProcessorTest, expand_0048) {
+TEST(JsonLdProcessorTest, expand_t0048) {
     performExpandTest(48);
 }
 
-TEST(JsonLdProcessorTest, expand_0049) {
+TEST(JsonLdProcessorTest, expand_t0049) {
     performExpandTest(49);
 }
 
-TEST(JsonLdProcessorTest, expand_0050) {
+TEST(JsonLdProcessorTest, expand_t0050) {
     performExpandTest(50);
 }
 
-TEST(JsonLdProcessorTest, expand_0051) {
+TEST(JsonLdProcessorTest, expand_t0051) {
     performExpandTest(51);
 }
 
-TEST(JsonLdProcessorTest, expand_0052) {
+TEST(JsonLdProcessorTest, expand_t0052) {
     performExpandTest(52);
 }
 
-TEST(JsonLdProcessorTest, expand_0053) {
+TEST(JsonLdProcessorTest, expand_t0053) {
     performExpandTest(53);
 }
 
-TEST(JsonLdProcessorTest, expand_0054) {
+TEST(JsonLdProcessorTest, expand_t0054) {
     performExpandTest(54);
 }
 
-TEST(JsonLdProcessorTest, expand_0055) {
+TEST(JsonLdProcessorTest, expand_t0055) {
     performExpandTest(55);
 }
 
-TEST(JsonLdProcessorTest, expand_0056) {
+TEST(JsonLdProcessorTest, expand_t0056) {
     performExpandTest(56);
 }
 
-TEST(JsonLdProcessorTest, expand_0057) {
+TEST(JsonLdProcessorTest, expand_t0057) {
     performExpandTest(57);
 }
 
-TEST(JsonLdProcessorTest, expand_0058) {
+TEST(JsonLdProcessorTest, expand_t0058) {
     performExpandTest(58);
 }
 
-TEST(JsonLdProcessorTest, expand_0059) {
+TEST(JsonLdProcessorTest, expand_t0059) {
     performExpandTest(59);
 }
 
-TEST(JsonLdProcessorTest, expand_0060) {
+TEST(JsonLdProcessorTest, expand_t0060) {
     performExpandTest(60);
 }
 
-TEST(JsonLdProcessorTest, expand_0061) {
+TEST(JsonLdProcessorTest, expand_t0061) {
     performExpandTest(61);
 }
 
-TEST(JsonLdProcessorTest, expand_0062) {
+TEST(JsonLdProcessorTest, expand_t0062) {
     performExpandTest(62);
 }
 
-TEST(JsonLdProcessorTest, expand_0063) {
+TEST(JsonLdProcessorTest, expand_t0063) {
     performExpandTest(63);
 }
 
-TEST(JsonLdProcessorTest, expand_0064) {
+TEST(JsonLdProcessorTest, expand_t0064) {
     performExpandTest(64);
 }
 
-TEST(JsonLdProcessorTest, expand_0065) {
+TEST(JsonLdProcessorTest, expand_t0065) {
     performExpandTest(65);
 }
 
-TEST(JsonLdProcessorTest, expand_0066) {
+TEST(JsonLdProcessorTest, expand_t0066) {
     performExpandTest(66);
 }
 
-TEST(JsonLdProcessorTest, expand_0067) {
+TEST(JsonLdProcessorTest, expand_t0067) {
     performExpandTest(67);
 }
 
-TEST(JsonLdProcessorTest, expand_0068) {
+TEST(JsonLdProcessorTest, expand_t0068) {
     performExpandTest(68);
 }
 
-TEST(JsonLdProcessorTest, expand_0069) {
+TEST(JsonLdProcessorTest, expand_t0069) {
     performExpandTest(69);
 }
 
-TEST(JsonLdProcessorTest, expand_0070) {
+TEST(JsonLdProcessorTest, expand_t0070) {
     performExpandTest(70);
 }
 
-TEST(JsonLdProcessorTest, expand_0071) {
+TEST(JsonLdProcessorTest, expand_t0071) {
     performExpandTest(71);
 }
 
-TEST(JsonLdProcessorTest, expand_0072) {
+TEST(JsonLdProcessorTest, expand_t0072) {
     performExpandTest(72);
 }
 
-TEST(JsonLdProcessorTest, expand_0073) {
+TEST(JsonLdProcessorTest, expand_t0073) {
     performExpandTest(73);
 }
 
-TEST(JsonLdProcessorTest, expand_0074) {
+TEST(JsonLdProcessorTest, expand_t0074) {
     performExpandTest(74);
 }
 
-TEST(JsonLdProcessorTest, expand_0075) {
+TEST(JsonLdProcessorTest, expand_t0075) {
     performExpandTest(75);
 }
 
-TEST_F(JsonLdProcessorTestWithOptions, expand_0076) {
+TEST_F(JsonLdProcessorTestWithOptions, expand_t0076) {
     m_jsonLdOptions->setBase("http://example/base/");
-    performExpandTest(76, m_jsonLdOptions);
+    performExpandTest(76, jsonld::test::defaultExpandTestPrefix, m_jsonLdOptions);
 }
 
 // Disabled this test because we need to implement standard testing scaffold and the
@@ -344,18 +345,18 @@ TEST_F(JsonLdProcessorTestWithOptions, expand_0076) {
 //    performExpandTest(77);
 //}
 
-TEST(JsonLdProcessorTest, expand_0300) {
+TEST(JsonLdProcessorTest, expand_our0300) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0008
-    performExpandTest(300);
+    performExpandTest(300, jsonld::test::ourExpandTestPrefix);
 }
 
-TEST(JsonLdProcessorTest, expand_0301) {
+TEST(JsonLdProcessorTest, expand_our0301) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0020
-    performExpandTest(301);
+    performExpandTest(301, jsonld::test::ourExpandTestPrefix);
 }
 
-TEST(JsonLdProcessorTest, expand_0302) {
+TEST(JsonLdProcessorTest, expand_our0302) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0044
-    performExpandTest(302);
+    performExpandTest(302, jsonld::test::ourExpandTestPrefix);
 }
 
