@@ -334,10 +334,10 @@ TEST(JsonLdProcessorTest, expand_t0075) {
     performExpandTest(75);
 }
 
-//TEST_F(JsonLdProcessorTestWithOptions, expand_t0076) {
-//    m_jsonLdOptions->setBase("http://example/base/");
-//    performExpandTest(76, jsonld::test::defaultExpandTestPrefix, m_jsonLdOptions);
-//}
+TEST_F(JsonLdProcessorTestWithOptions, expand_t0076) {
+    m_jsonLdOptions->setBase("http://example/base/");
+    performExpandTest(76, jsonld::test::defaultExpandTestPrefix, m_jsonLdOptions);
+}
 
 // Disabled this test because we need to implement standard testing scaffold and the
 // expandContext option
