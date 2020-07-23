@@ -44,7 +44,6 @@ RemoteDocument DocumentLoader::loadDocument(const std::string &url) {
         ss << "Error: Url not found: [" << url << "]";
         throw std::runtime_error(ss.str());
     }
-
 }
 
 void DocumentLoader::addDocumentToCache(const std::string &url, const std::string &contents) {

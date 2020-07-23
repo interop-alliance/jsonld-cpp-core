@@ -76,8 +76,7 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
  * @throws JsonLdError
  *             If there is an error parsing the contexts.
  */
- Context Context::parse(const json & localContext, const std::vector<std::string> & remoteContexts,
-                      bool parsingARemoteContext) {
+ Context Context::parse(const json& localContext, const std::vector<std::string>& remoteContexts, bool parsingARemoteContext) {
 
 //    if (remoteContexts == null) {
 //        remoteContexts = new ArrayList<String>();

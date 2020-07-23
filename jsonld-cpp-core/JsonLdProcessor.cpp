@@ -54,6 +54,7 @@ nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shar
         try {
             RemoteDocument tmp = options->getDocumentLoader().loadDocument(input);
             const json& json_input = tmp.getDocument();
+            std::string jsonInputString = json_input.dump();
             // TODO: figure out how to deal with remote context
 
             // if set the base in options should override the base iri in the

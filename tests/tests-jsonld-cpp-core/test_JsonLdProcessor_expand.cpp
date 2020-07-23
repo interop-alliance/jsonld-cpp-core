@@ -31,10 +31,12 @@ void performExpandTest(int testNumber, const std::string& testPrefix = jsonld::t
     options->setDocumentLoader(dl);
 
     const json expanded = JsonLdProcessor::expand(documentUri, std::move(options));
+    std::string expandedString = expanded.dump();
+
     EXPECT_TRUE(JsonLdUtils::deepCompare(expected, expanded));
 }
 
-TEST(JsonLdProcessorTest, expand_t0001) {
+/*TEST(JsonLdProcessorTest, expand_t0001) {
     performExpandTest(1);
 }
 
@@ -337,7 +339,7 @@ TEST(JsonLdProcessorTest, expand_t0075) {
 TEST_F(JsonLdProcessorTestWithOptions, expand_t0076) {
     m_jsonLdOptions->setBase("http://example/base/");
     performExpandTest(76, jsonld::test::defaultExpandTestPrefix, m_jsonLdOptions);
-}
+}*/
 
 // Disabled this test because we need to implement standard testing scaffold and the
 // expandContext option
@@ -345,7 +347,7 @@ TEST_F(JsonLdProcessorTestWithOptions, expand_t0076) {
 //    performExpandTest(77);
 //}
 
-TEST(JsonLdProcessorTest, expand_our0300) {
+/*TEST(JsonLdProcessorTest, expand_our0300) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0008
     performExpandTest(300, jsonld::test::ourExpandTestPrefix);
 }
@@ -358,5 +360,9 @@ TEST(JsonLdProcessorTest, expand_our0301) {
 TEST(JsonLdProcessorTest, expand_our0302) {
     // this is an extra test Dan added while trying to debug issues with normalize test 0044
     performExpandTest(302, jsonld::test::ourExpandTestPrefix);
-}
+}*/
 
+TEST(JsonLdProcessorTest, expand_our0400) {
+    // this is an extra test for testing remote context
+    performExpandTest(400, jsonld::test::ourExpandTestPrefix);
+}
