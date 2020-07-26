@@ -81,10 +81,10 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
 //    if (remoteContexts == null) {
 //        remoteContexts = new ArrayList<String>();
 //    }
-    // 1. Initialize result to the result of cloning active context.
+    // 1) Initialize result to the result of cloning active context.
     Context result = *this;
-    // 2)
 
+    // 2) If local context is not an array, set it to an array containing only local context.
     // set up an array for the loop in 3)
     json myContext = json::array();
     if (!localContext.is_array()) {
@@ -94,9 +94,10 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
         myContext.insert(myContext.end(), localContext.begin(), localContext.end());
     }
 
-    // 3)
+    // 3) For each item context in local context:
     for (auto context : myContext) {
-        // 3.1)
+        // 3.1) If context is null, set result to a newly-initialized active context and continue with the next context.
+        // In JSON-LD 1.0, the base IRI was given a default value here; this is now described conditionally in § 9. The Application Programming Interface.
         if (context.is_null()) {
             Context c(m_options);
             result = c;
@@ -105,18 +106,25 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
 //        else if (context instanceof Context) { // todo: will this happen in c++ version?
 //            result = ((Context) context).clone();
 //        }
-        // 3.2)
+
+        // 3.2) If context is a string,
         else if (context.is_string()) {
+            // 3.2.1) Set context to the result of resolving value against the base IRI which is established as specified in section 5.1 Establishing a Base URI of [RFC3986].
+            // Only the basic algorithm in section 5.2 of [RFC3986] is used; neither Syntax-Based Normalization nor Scheme-Based Normalization are performed.
+            // Characters additionally allowed in IRI references are treated in the same way that unreserved characters are treated in URI references, per section 6.5 of [RFC3987].
+
             throw JsonLdError(JsonLdError::NotImplemented, "context.is_string() not implemented: ");
 //            std::string uri = result->get(JsonLdConsts::BASE);
 //            uri = JsonLdUrl.resolve(uri, (String) context);
-//            // 3.2.2
+
+//            // 3.2.2) If context is in the remote contexts array, a recursive context inclusion error has been detected
+//            and processing is aborted; otherwise, add context to remote contexts.
 //            if (remoteContexts.contains(uri)) {
 //                throw new JsonLdError(Error.RECURSIVE_CONTEXT_INCLUSION, uri);
 //            }
 //            remoteContexts.add(uri);
 //
-//            // 3.2.3: Dereference context
+//            // 3.2.3) If context was previously dereferenced, then the processor MUST NOT do a further dereference, and context is set to the previously established internal representation.
 //            final RemoteDocument rd = this.options.getDocumentLoader().loadDocument(uri);
 //            final Object remoteContext = rd.getDocument();
 //            if (!(remoteContext instanceof Map) || !((Map<String, Object>) remoteContext)
@@ -128,28 +136,38 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
 //            final Object tempContext = ((Map<String, Object>) remoteContext)
 //                    .get(JsonLdConsts.CONTEXT);
 //
-//            // 3.2.4
+//            // 3.2.4) Otherwise, dereference context, transforming into the internal representation.
+//            If context cannot be dereferenced, or cannot be transformed into the internal representation,
+//            a loading remote context failed error has been detected and processing is aborted.
+//            If the dereferenced document has no top-level dictionary with an @context member, an invalid remote context has been detected and processing is aborted;
+//            otherwise, set context to the value of that member.
 //            result = result.parse(tempContext, remoteContexts, true);
-//            // 3.2.5
+
+//            // 3.2.5) Set result to the result of recursively calling this algorithm,
+//            passing result for active context, context for local context, and a copy of remote contexts.
+
+            // 3.2.6) Continue with the next context.
 //            continue;
         } else if (!(context.is_object())) {
-            // 3.3
+            // 3.3) If context is not a dictionary, an invalid local context error has been detected and processing is aborted.
             throw JsonLdError(JsonLdError::InvalidLocalContext, context);
         }
         checkEmptyKey(context);
-        // 3.4
+        // 3.4) If context has an @base key and remote contexts is empty, i.e., the currently being processed context is not a remote context:
         if (!parsingARemoteContext && context.contains(JsonLdConsts::BASE)) {
-            // 3.4.1
+            // 3.4.1) Initialize value to the value associated with the @base key.
             auto value = context.at(JsonLdConsts::BASE);
-            // 3.4.2
+
+            // 3.4.2) If value is null, remove the base IRI of result.
             if (value.is_null()) {
                 result.erase(JsonLdConsts::BASE);
             } else if (value.is_string()) {
-                // 3.4.3
+                // 3.4.3) Otherwise, if value is an absolute IRI, the base IRI of result is set to value.
                 if (JsonLdUtils::isAbsoluteIri(value)) {
                     result.insert(std::make_pair(JsonLdConsts::BASE, value.get<std::string>()));
                 } else {
-                    // 3.4.4
+                    // 3.4.4) Otherwise, if value is a relative IRI and the base IRI of result is not null,
+                    // set the base IRI of result to the result of resolving value against the current base IRI of result.
                     std::string baseUri = result.at(JsonLdConsts::BASE);
                     if (!JsonLdUtils::isAbsoluteIri(baseUri)) {
                         throw JsonLdError(JsonLdError::InvalidBaseIri, baseUri);
@@ -158,12 +176,23 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
                     result.insert(std::make_pair(JsonLdConsts::BASE, JsonLdUrl::resolve(&baseUri, &tmpIri)));
                 }
             } else {
-                // 3.4.5
+                // 3.4.5) Otherwise, an invalid base IRI error has been detected and processing is aborted.
                 throw JsonLdError(JsonLdError::InvalidBaseIri, "@base must be a string");
             }
         }
 
-        // 3.5
+        // 3.5) If context has an @version key:
+        // 3.5.1) If the associated value is not 1.1, an invalid @version value has been detected, and processing is aborted.
+        // 3.5.2) If processing mode is set to json-ld-1.0, a processing mode conflict error has been detected and processing is aborted.
+        // 3.5.3) Set processing mode, to json-ld-1.1, if not already set.
+        // TODO: 3.5 is completely missed
+
+        // 3.6) If context has an @vocab key:
+        // 3.6.1) Initialize value to the value associated with the @vocab key.
+        // 3.6.2) If value is null, remove any vocabulary mapping from result.
+        // 3.6.3) Otherwise, if value the empty string (""), the effective value is the current base IRI.
+        // 3.6.4) Otherwise, if value is an absolute IRI or blank node identifier, the vocabulary mapping of result is set to value.
+        // If it is not an absolute IRI, or a blank node identifier, an invalid vocab mapping error has been detected and processing is aborted.
         if (context.contains(JsonLdConsts::VOCAB)) {
             auto value = context.at(JsonLdConsts::VOCAB);
             if (value.is_null()) {
@@ -181,7 +210,11 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
             }
         }
 
-        // 3.6
+        // 3.7) If context has an @language key:
+        // 3.7.1) Initialize value to the value associated with the @language key.
+        // 3.7.2) If value is null, remove any default language from result.
+        // 3.7.3) Otherwise, if value is string, the default language of result is set to lowercased value.
+        // If it is not a string, an invalid default language error has been detected and processing is aborted.
         if (context.contains(JsonLdConsts::LANGUAGE)) {
             auto value = context.at(JsonLdConsts::LANGUAGE);
             if (value.is_null()) {
@@ -193,9 +226,11 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
             }
         }
 
-        // 3.7
+        // 3.8) Create a dictionary defined to use to keep track of whether or not a term has already been defined or currently being defined during recursion.
         std::map<std::string, bool> defined; //todo: thrown out?
         for (const auto& el : context.items()) {
+            // 3.9) For each key-value pair in context where key is not @base, @vocab, or @language,
+            // invoke the Create Term Definition algorithm, passing result for active context, context for local context, key, and defined.
             const auto& key = el.key();
             if (key == JsonLdConsts::BASE || key == JsonLdConsts::VOCAB || key == JsonLdConsts::LANGUAGE) {
                 continue;
@@ -204,6 +239,7 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
         }
     }
 
+    // 4) Return result.
     return result;
 }
 
