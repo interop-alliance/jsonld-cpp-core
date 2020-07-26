@@ -360,3 +360,7 @@ TEST(JsonLdProcessorTest, expand_our0302) {
     performExpandTest(302, jsonld::test::ourExpandTestPrefix);
 }
 
+TEST(JsonLdProcessorTest, expand_our0401) {
+    // this is an extra test Dan added while trying to debug issues with normalize test 0044
+    performExpandTest(401, jsonld::test::ourExpandTestPrefix);
+}
