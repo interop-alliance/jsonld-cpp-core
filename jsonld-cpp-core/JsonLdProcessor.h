@@ -7,6 +7,7 @@
 #include "Context.h"
 #include "RDFDataset.h"
 #include "JsonLdApi.h"
+#include "JsonldPromise.h"
 
 /**
  * This class implements the

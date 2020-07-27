@@ -39,6 +39,9 @@ public:
     Context parse(const nlohmann::json & localContext, const std::vector<std::string> & remoteContexts);
     Context parse(const nlohmann::json & localContext);
 
+    // Updated 1.1 Context Processing Algorithms
+    Context _parse(const nlohmann::json& localContext, const std::string& baseUrl);
+
     /**
      * Retrieve container mapping.
      *

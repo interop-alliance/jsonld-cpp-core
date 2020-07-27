@@ -55,7 +55,7 @@ Context Context::parse(const json & localContext)  {
  * @throws JsonLdError
  *             If there is an error parsing the contexts.
  */
-Context Context::parse(const json & localContext, const std::vector<std::string> & remoteContexts)  {
+Context Context::parse(const json& localContext, const std::vector<std::string>& remoteContexts) {
     return parse(localContext, remoteContexts, false);
 }
 
@@ -243,6 +243,64 @@ Context Context::parse(const json & localContext, const std::vector<std::string>
     return result;
 }
 
+Context Context::_parse(const json& localContext, const std::string& baseUrl) {
+    // 1) Initialize result to the result of cloning active context, with inverse context set to null..
+    Context result = *this;
+    result.m_inverse = {};
+
+    // 2) If local context is an object containing the member @propagate,
+    // its value MUST be boolean true or false, set propagate to that value.
+
+    // 3) If propagate is false, and result does not have a previous context,
+    // set previous context in result to active context.
+
+    // 4) If local context is not an array, set local context to an array containing only local context.
+    json myContext = json::array();
+    if (!localContext.is_array()) {
+        myContext.push_back(localContext);
+    }
+    else {
+        myContext.insert(myContext.end(), localContext.begin(), localContext.end());
+    }
+
+    // 5) For each item context in local context:
+    for (auto context : myContext) {
+        // 5.1) If context is null:
+
+        // 5.2) If context is a string,
+
+        // 5.3) If context is not a map, an invalid local context error has been detected and processing is aborted.
+
+        // 5.4) Otherwise, context is a context definition.
+
+        // 5.5) If context has an @version entry:
+
+        // 5.6) If context has an @import entry:
+
+        // 5.7) If context has an @base entry and remote contexts is empty, i.e.,
+        // the currently being processed context is not a remote context:
+
+        // 5.8) If context has an @vocab entry:
+
+        // 5.9) If context has an @language entry:
+
+        // 5.10) If context has an @direction entry:
+
+        // 5.11) If context has an @propagate entry:
+
+        // 5.12) Create a map defined to keep track of whether or not a term has
+        // already been defined or is currently being defined during recursion.
+
+        // 5.13) For each key-value pair in context where key is not @base, @direction, @import, @language, @propagate,
+        // @protected, @version, or @vocab, invoke the Create Term Definition algorithm, passing result for active context,
+        // context for local context, key, defined, base URL, the value of the @protected entry from context, if any,
+        // for protected, override protected, and a copy of remote contexts.
+    }
+
+    // 6) Return result.
+    return result;
+}
+
 std::string Context::getContainer(std::string property) {
 //        if (property == null) {
 //            return null;
@@ -259,7 +317,7 @@ std::string Context::getContainer(std::string property) {
 //        if (td == null) {
 //            return null;
 //        }
-    if(td.empty())
+    if (td.empty())
         return "";
     auto c = td[JsonLdConsts::CONTAINER];
     if(!c.is_string()) {
