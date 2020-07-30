@@ -35,12 +35,14 @@ public:
     explicit Context(std::map<std::string, std::string> map);
 
 // todo: should these be static constructors?
-    Context parse(const nlohmann::json & localContext, const std::vector<std::string> & remoteContexts, bool parsingARemoteContext);
-    Context parse(const nlohmann::json & localContext, const std::vector<std::string> & remoteContexts);
-    Context parse(const nlohmann::json & localContext);
+    Context parse(const std::string& baseUrl, const nlohmann::json & localContext, const std::vector<std::string> & remoteContexts);
+    Context parse(const std::string& baseUrl, const nlohmann::json & localContext);
+    Context parseDeprecated(const nlohmann::json& localContext, const std::vector<std::string>& remoteContexts, bool parsingARemoteContext);
 
     // Updated 1.1 Context Processing Algorithms
-    Context _parse(const nlohmann::json& localContext, const std::string& baseUrl);
+    Context applyContextProcessingAlgorithm(const std::string& baseUrl,
+                                            const nlohmann::json& localContext,
+                                            const std::vector<std::string>& remoteContexts = std::vector<std::string>());
 
     /**
      * Retrieve container mapping.

@@ -6,7 +6,7 @@
 using RDF::RDFDataset;
 using nlohmann::json;
 
-nlohmann::json JsonLdProcessor::expand(nlohmann::json input, const std::shared_ptr<JsonLdOptions> options) {
+nlohmann::json JsonLdProcessor::expand(nlohmann::json input, const std::shared_ptr<JsonLdOptions> options, const std::string& baseUrl) {
     std::string jsonInputString = input.dump();
     // 3) Initialize a new empty active context.
     // The base IRI of the active context is set to the IRI of the currently being processed document,
@@ -21,7 +21,8 @@ nlohmann::json JsonLdProcessor::expand(nlohmann::json input, const std::shared_p
         if (exCtx.contains(JsonLdConsts::CONTEXT)) {
             exCtx = exCtx[JsonLdConsts::CONTEXT];
         }
-        activeCtx = activeCtx.parse(exCtx);
+
+        activeCtx = activeCtx.parse(baseUrl, exCtx);
     }
 
     // 5) Once input has been retrieved, the response has an HTTP Link Header [RFC5988] using
@@ -67,7 +68,7 @@ nlohmann::json JsonLdProcessor::expand(nlohmann::json input, const std::shared_p
     return expanded;
 }
 
-nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shared_ptr<JsonLdOptions> options) {
+nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shared_ptr<JsonLdOptions> options, const std::string& baseUrl) {
     // 1) Create a new Promise promise and return it. The following steps are then executed asynchronously.
 
     // 2) If the passed input is a string representing the IRI of a remote document, dereference it.
@@ -90,7 +91,7 @@ nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shar
                 options->setBase(input);
             }
 
-            return expand(json_input, options);
+            return expand(json_input, options, baseUrl);
 
         }
         catch (const std::exception &e) {
@@ -103,7 +104,7 @@ nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shar
 
 RDFDataset JsonLdProcessor::toRDF(const std::string& input, const std::shared_ptr<JsonLdOptions> options) {
 
-    nlohmann::json expandedInput = expand(input, options);
+    nlohmann::json expandedInput = expand(input, options, "");
 
     JsonLdApi api(options);
     RDFDataset dataset = api.toRDF(expandedInput);
@@ -134,7 +135,7 @@ RDFDataset JsonLdProcessor::toRDF(const std::string& input, const std::shared_pt
 
 std::string JsonLdProcessor::toRDFString(const std::string& input, const std::shared_ptr<JsonLdOptions> options) {
 
-    nlohmann::json expandedInput = expand(input, options);
+    nlohmann::json expandedInput = expand(input, options, "");
 
     JsonLdApi api(options);
     RDFDataset dataset = api.toRDF(expandedInput);
@@ -170,12 +171,12 @@ std::string JsonLdProcessor::normalize(const std::string& input, const std::shar
     return api.normalize(dataset);
 }
 
-nlohmann::json JsonLdProcessor::expand(nlohmann::json input) {
+nlohmann::json JsonLdProcessor::expand(nlohmann::json input, const std::string& baseUrl) {
     std::shared_ptr<JsonLdOptions> options = std::make_shared<JsonLdOptions>();
-    return expand(std::move(input), options);
+    return expand(std::move(input), options, baseUrl);
 }
 
-nlohmann::json JsonLdProcessor::expand(std::string input) {
+nlohmann::json JsonLdProcessor::expand(std::string input, const std::string& baseUrl) {
     std::shared_ptr<JsonLdOptions> options = std::make_shared<JsonLdOptions>();
-    return expand(std::move(input), options);
+    return expand(std::move(input), options, baseUrl);
 }

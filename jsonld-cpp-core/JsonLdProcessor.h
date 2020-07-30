@@ -31,8 +31,8 @@ namespace JsonLdProcessor {
      * @throws JsonLdError
      *             If there is an error while expanding.
      */
-    nlohmann::json expand(nlohmann::json input, const std::shared_ptr<JsonLdOptions> options);
-    nlohmann::json expand(const std::string& input, const std::shared_ptr<JsonLdOptions> options);
+    nlohmann::json expand(nlohmann::json input, const std::shared_ptr<JsonLdOptions> options, const std::string& baseUrl = "");
+    nlohmann::json expand(const std::string& input, const std::shared_ptr<JsonLdOptions> options, const std::string& baseUrl = "");
 
     /**
      * Expands the given input according to the steps in the
@@ -45,8 +45,8 @@ namespace JsonLdProcessor {
      * @throws JsonLdError
      *             If there is an error while expanding.
      */
-    nlohmann::json expand(nlohmann::json input);
-    nlohmann::json expand(std::string input);
+    nlohmann::json expand(nlohmann::json input, const std::string& baseUrl = "");
+    nlohmann::json expand(std::string input, const std::string& baseUrl = "");
 
     RDF::RDFDataset toRDF(const std::string& input, const std::shared_ptr<JsonLdOptions> options);
     std::string toRDFString(const std::string& input, const std::shared_ptr<JsonLdOptions> options);

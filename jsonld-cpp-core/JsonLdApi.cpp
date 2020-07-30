@@ -80,7 +80,8 @@ json JsonLdApi::expandObjectElement(Context activeCtx, std::string * activePrope
     // access helper
     // 5)
     if (element.contains(JsonLdConsts::CONTEXT)) {
-        activeCtx = activeCtx.parse(element[JsonLdConsts::CONTEXT]);
+        // TODO: pass valid baseUrl
+        activeCtx = activeCtx.parse("", element[JsonLdConsts::CONTEXT]);
     }
     // 6)
     json result = ObjUtils::newMap();

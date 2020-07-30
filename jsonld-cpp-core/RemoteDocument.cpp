@@ -14,5 +14,3 @@ const std::string &RemoteDocument::getUrl() const {
 const nlohmann::json &RemoteDocument::getDocument() const {
     return document;
 }
-
-
