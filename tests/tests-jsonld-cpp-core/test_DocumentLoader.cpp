@@ -1,7 +1,7 @@
-#include "DocumentLoader.cpp"
-#include "testHelpers.h"
-
 #include <gtest/gtest.h>
+
+#include "CurlLoadDocumentCallback.h"
+#include "testHelpers.h"
 
 #ifndef _WIN32
 #pragma clang diagnostic push
@@ -13,6 +13,8 @@
 #pragma GCC diagnostic pop
 #endif
 
+using json = nlohmann::json;
+
 namespace
 {
 #ifdef _WIN32
@@ -23,31 +25,28 @@ namespace
 }
 
 TEST(DocumentLoaderTest, load_sample_document_from_filesystem) {
-    DocumentLoader dl;
+    std::unique_ptr<CurlLoadDocumentCallback> dl = std::make_unique<CurlLoadDocumentCallback>();
 
     std::string docPath = resolvePath(sampleDocumentPath);
 
-    RemoteDocument d = dl.loadDocument(docPath);
-    json j = d.getDocument();
+    auto d = dl->retrieveRemoteDocument(docPath);
+    json j = d->getDocument();
     EXPECT_FALSE(j == nullptr);
     EXPECT_FALSE(j.is_null());
     EXPECT_EQ(4, j["pi"]);
 }
 
 TEST(DocumentLoaderTest, load_sample_document_from_cache) {
-    DocumentLoader dl;
-    dl.addDocumentToCache("foo.json", R"({ "pi": 3 })");
+    std::unique_ptr<CurlLoadDocumentCallback> dl = std::make_unique<CurlLoadDocumentCallback>();
+    dl->addDocumentToCache("foo.json", R"({ "pi": 3 })");
 
-    RemoteDocument d = dl.loadDocument("foo.json");
-    EXPECT_EQ(3, d.getDocument()["pi"]);
+    auto d = dl->retrieveRemoteDocument("foo.json");
+    EXPECT_EQ(3, d->getDocument()["pi"]);
 }
 
 TEST(DocumentLoaderTest, load_document_from_cache_miss) {
-    DocumentLoader dl;
-    dl.addDocumentToCache("foo.json", R"({ "pi": 3 })");
+    std::unique_ptr<CurlLoadDocumentCallback> dl = std::make_unique<CurlLoadDocumentCallback>();
+    dl->addDocumentToCache("foo.json", R"({ "pi": 3 })");
 
-    EXPECT_THROW(dl.loadDocument("bar.json"), std::runtime_error);
+    EXPECT_THROW(dl->retrieveRemoteDocument("bar.json"), std::runtime_error);
 }
-
-
-

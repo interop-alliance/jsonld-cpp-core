@@ -4,10 +4,11 @@
 // The JsonLdOptions type as specified in "JSON-LD-API specification":
 // http://www.w3.org/TR/json-ld-api/#the-jsonldoptions-type
 
-#include "DocumentLoader.h"
-#include "JsonLdConsts.h"
 #include <string>
 #include <sstream>
+
+#include "JsonLdConsts.h"
+#include "ILoadDocumentCallback.h"
 
 class JsonLdOptions {
 private:
@@ -33,7 +34,7 @@ private:
     /**
      * http://www.w3.org/TR/json-ld-api/#widl-JsonLdOptions-documentLoader
      */
-    DocumentLoader documentLoader_;
+    std::unique_ptr<ILoadDocumentCallback> documentLoader_;
 
     // Frame options : https://w3c.github.io/json-ld-framing/
 
@@ -231,11 +232,11 @@ public:
         this->produceGeneralizedRdf_ = produceGeneralizedRdf;
     }
 
-    DocumentLoader getDocumentLoader() {
+    std::unique_ptr<ILoadDocumentCallback>& getDocumentLoader() {
         return documentLoader_;
     }
 
-    void setDocumentLoader(DocumentLoader documentLoader) {
+    void setDocumentLoader(std::unique_ptr<ILoadDocumentCallback>& documentLoader) {
         this->documentLoader_ = std::move(documentLoader);
     }
 

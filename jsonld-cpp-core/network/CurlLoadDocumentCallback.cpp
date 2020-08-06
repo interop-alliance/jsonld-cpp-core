@@ -1,9 +1,14 @@
+//
+// Created by user on 06.08.20.
+//
+
 #include <iostream>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 
-#include "DocumentLoader.h"
+#include "CurlLoadDocumentCallback.h"
+#include "RemoteDocument.h"
 
 using json = nlohmann::json;
 using namespace std::filesystem;
@@ -18,11 +23,10 @@ namespace {
     }
 }
 
-RemoteDocument DocumentLoader::loadDocument(const std::string &url) {
-
+std::optional<RemoteDocument> CurlLoadDocumentCallback::retrieveRemoteDocument(const std::string& url, const LoadDocumentOptions& loadDocumentOptions) {
     // first check the cache
-    auto it = cache.find(url);
-    if (it != cache.end())
+    auto it = m_cache.find(url);
+    if (it != m_cache.end())
         return RemoteDocument(url, it->second);
 
     // do something to load
@@ -35,7 +39,7 @@ RemoteDocument DocumentLoader::loadDocument(const std::string &url) {
         json j = json::parse(fileContents);
 
         // add to cache
-        cache[url] = j;
+        m_cache[url] = j;
 
         return RemoteDocument(url, j);
     }
@@ -46,7 +50,7 @@ RemoteDocument DocumentLoader::loadDocument(const std::string &url) {
     }
 }
 
-void DocumentLoader::addDocumentToCache(const std::string &url, const std::string &contents) {
+void CurlLoadDocumentCallback::addDocumentToCache(const std::string& url, const std::string& contents) {
     json j = json::parse(contents);
-    cache.insert(std::make_pair(url, j));
+    m_cache.insert(std::make_pair(url, j));
 }

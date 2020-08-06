@@ -78,8 +78,10 @@ nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shar
     // TODO: better verification of DOMString IRI
     if (input.find(':') != std::string::npos) {
         try {
-            RemoteDocument tmp = options->getDocumentLoader().loadDocument(input);
-            const json& json_input = tmp.getDocument();
+            auto remoteDocument = options->getDocumentLoader()->retrieveRemoteDocument(input);
+            if (!remoteDocument)
+                throw std::runtime_error("Error: remote document is empty!");
+            const json& json_input = remoteDocument->getDocument();
             std::string jsonInputString = json_input.dump();
             // TODO: figure out how to deal with remote context
 

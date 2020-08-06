@@ -30,6 +30,11 @@ bool JsonLdUtils::isAbsoluteIri(const std::string &value) {
     return value.find(':') != std::string::npos;
 }
 
+bool isValidIri(const std::string& value) {
+    // TODO: RFC3987 (https://www.ietf.org/rfc/rfc3987.txt)
+    return value.find(':') != std::string::npos;
+}
+
 bool JsonLdUtils::isRelativeIri(const std::string &value) {
     return !(isKeyword(value) || isAbsoluteIri(value));
 }

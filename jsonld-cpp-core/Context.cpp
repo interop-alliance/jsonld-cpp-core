@@ -4,6 +4,8 @@
 #include <iostream>
 #include <utility>
 
+#include "ILoadDocumentCallback.h"
+
 using nlohmann::json;
 
 void Context::checkEmptyKey(const json& map) {
@@ -39,7 +41,8 @@ void Context::init() {
  *             If there is an error parsing the contexts.
  */
 Context Context::parse(const std::string& baseUrl, const json& localContext)  {
-    return applyContextProcessingAlgorithm(baseUrl, localContext);
+    auto passedRemoteContexts = std::vector<std::string>();
+    return applyContextProcessingAlgorithm(baseUrl, localContext, passedRemoteContexts);
 //    return parseDeprecated(localContext, std::vector<std::string>(), false);
 }
 
@@ -78,8 +81,7 @@ Context Context::parse(const std::string& baseUrl, const json& localContext, con
  * @throws JsonLdError
  *             If there is an error parsing the contexts.
  */
- Context Context::parseDeprecated(const json& localContext, const std::vector<std::string>& remoteContexts, bool parsingARemoteContext) {
-
+ /*Context Context::parseDeprecated(const json& localContext, const std::vector<std::string>& remoteContexts, bool parsingARemoteContext) {
 //    if (remoteContexts == null) {
 //        remoteContexts = new ArrayList<String>();
 //    }
@@ -243,9 +245,11 @@ Context Context::parse(const std::string& baseUrl, const json& localContext, con
 
     // 4) Return result.
     return result;
-}
+}*/
 
 Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, const json& localContext, const std::vector<std::string>& remoteContexts) {
+    const std::string localContextString = localContext.dump();
+
     // 1) Initialize result to the result of cloning active context, with inverse context set to null..
     Context result = *this;
     result.m_inverse = {};
@@ -285,7 +289,9 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, con
 
         // 5.2) If context is a string,
         else if (context.is_string()) {
-            throw JsonLdError(JsonLdError::NotImplemented, "context.is_string() not implemented: ");
+//            throw JsonLdError(JsonLdError::NotImplemented, "context.is_string() not implemented: ");
+            auto tempContext = json::parse(context.dump());
+            result = result.parse(baseUrl, tempContext.at(JsonLdConsts::CONTEXT), remoteContexts);
 
             // 5.2.1) Initialize context to the result of resolving context against base URL.
             // If base URL is not a valid IRI, then context MUST be a valid IRI,
@@ -318,6 +324,7 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, con
             // the documentUrl of context document for base URL, a copy of remote contexts, and validate scoped context.
 
             // 5.2.7) Continue with the next context.
+            continue;
         }
         // 5.3) If context is not a map, an invalid local context error has been detected and processing is aborted.
         else if (!(context.is_object())) {
@@ -591,8 +598,9 @@ std::string Context::expandIri(
  * @param defined map of defined values
  * @throws JsonLdError
  */
-void Context::createTermDefinition(json context, const std::string& term, std::map<std::string, bool> & defined)
+void Context::createTermDefinition(json context, const std::string& term, std::map<std::string, bool>& defined)
 {
+    const std::string contextString = context.dump();
     // 1) has term been defined already?
     if (defined.find(term) != defined.end()) {
         if (defined.at(term)) {
@@ -681,118 +689,117 @@ void Context::createTermDefinition(json context, const std::string& term, std::m
         }
     }
 
-        // 11)
-        if (value.contains(JsonLdConsts::REVERSE)) {
-            if (value.contains(JsonLdConsts::ID)) {
-                throw JsonLdError(JsonLdError::InvalidReverseProperty, value);
-            }
-            auto reverse = value.at(JsonLdConsts::REVERSE);
-
-            if (!(reverse.is_string())) {
-                throw  JsonLdError(JsonLdError::InvalidIriMapping,
-                                      "Expected String for @reverse value.");
-            }
-            std::string reverseStr = reverse.get<std::string>();
-
-            reverseStr = expandIri(reverseStr, false, true, context, defined);
-            if (!JsonLdUtils::isAbsoluteIri(reverseStr)) {
-                throw JsonLdError(JsonLdError::InvalidIriMapping,
-                                      "Non-absolute @reverse IRI: " + reverseStr);
-            }
-            definition[JsonLdConsts::ID] = reverseStr;
-            if (value.contains(JsonLdConsts::CONTAINER)) {
-                std::string container = value.at(JsonLdConsts::CONTAINER);
-                if (container == JsonLdConsts::SET || container == JsonLdConsts::INDEX) { // todo was container == null
-                    definition[JsonLdConsts::CONTAINER] = container;
-                } else {
-                    throw JsonLdError(JsonLdError::InvalidReverseProperty,
-                                          "reverse properties only support set- and index-containers");
-                }
-            }
-            definition[JsonLdConsts::REVERSE] = true;
-            m_termDefinitions[term] = definition;
-            defined[term] = true;
-            return;
+    // 11)
+    if (value.contains(JsonLdConsts::REVERSE)) {
+        if (value.contains(JsonLdConsts::ID)) {
+            throw JsonLdError(JsonLdError::InvalidReverseProperty, value);
         }
+        auto reverse = value.at(JsonLdConsts::REVERSE);
 
-        // 12)
-        definition[JsonLdConsts::REVERSE] = false;
-
-        // 13)
-        if (value.contains(JsonLdConsts::ID) && term != value.at(JsonLdConsts::ID)) {
-            auto id = value.at(JsonLdConsts::ID);
-            if (!id.is_string()) {
-                throw JsonLdError(JsonLdError::InvalidIriMapping, "expected value of @id to be a string");
-            }
-
-            std::string idStr = id.get<std::string>();
-
-            idStr = expandIri(idStr, false, true, context, defined);
-            if (JsonLdUtils::isKeyword(idStr) || JsonLdUtils::isAbsoluteIri(idStr)) {
-                if (idStr == JsonLdConsts::CONTEXT) {
-                    throw JsonLdError(JsonLdError::InvalidKeywordAlias, "cannot alias @context");
-                }
-                definition[JsonLdConsts::ID] = idStr;
-            } else {
-                throw JsonLdError(JsonLdError::InvalidIriMapping,
-                                  "resulting IRI mapping should be a keyword, absolute IRI or blank node");
-            }
+        if (!(reverse.is_string())) {
+            throw  JsonLdError(JsonLdError::InvalidIriMapping,
+                               "Expected String for @reverse value.");
         }
+        std::string reverseStr = reverse.get<std::string>();
 
-        // 14)
-        else if (term.find(':') != std::string::npos) { // todo: use isabsoluteiri?
-            auto colIndex = term.find(':');
-            std::string prefix(term, 0, colIndex);
-            std::string suffix(term, colIndex+1);
-            if (context.contains(prefix)) {
-                createTermDefinition(context, prefix, defined);
-            }
-            if (m_termDefinitions.find(prefix) != m_termDefinitions.end()) {
-                auto id = m_termDefinitions.at(prefix).at(JsonLdConsts::ID);
-                id = id.get<std::string>() + suffix;
-                definition[JsonLdConsts::ID] = id;
-            } else {
-                definition[JsonLdConsts::ID] = term;
-            }
-            // 15)
-        } else if (m_contextMap.find(JsonLdConsts::VOCAB) != m_contextMap.end()) {
-            definition[JsonLdConsts::ID] = m_contextMap.at(JsonLdConsts::VOCAB) + term;
-        } else if (term != JsonLdConsts::TYPE) {
+        reverseStr = expandIri(reverseStr, false, true, context, defined);
+        if (!JsonLdUtils::isAbsoluteIri(reverseStr)) {
             throw JsonLdError(JsonLdError::InvalidIriMapping,
-                                  "relative term definition without vocab mapping");
+                              "Non-absolute @reverse IRI: " + reverseStr);
         }
-
-        // 16)
+        definition[JsonLdConsts::ID] = reverseStr;
         if (value.contains(JsonLdConsts::CONTAINER)) {
             std::string container = value.at(JsonLdConsts::CONTAINER);
-            if(container != JsonLdConsts::LIST &&
-               container != JsonLdConsts::SET &&
-               container != JsonLdConsts::INDEX &&
-               container != JsonLdConsts::LANGUAGE) {
-                throw JsonLdError(JsonLdError::InvalidContainerMapping,
-                                  "@container must be either @list, @set, @index, or @language");
-            }
-            definition[JsonLdConsts::CONTAINER] = container;
-            if (term == JsonLdConsts::TYPE) {
-                definition[JsonLdConsts::ID] = "type";
-            }
-        }
-
-        // 17)
-        if (value.contains(JsonLdConsts::LANGUAGE) && !value.contains(JsonLdConsts::TYPE)) {
-            auto language = value.at(JsonLdConsts::LANGUAGE);
-            if (language.is_null() || language.is_string()) {
-                definition[JsonLdConsts::LANGUAGE] = language; // todo: tolowercase or null?
+            if (container == JsonLdConsts::SET || container == JsonLdConsts::INDEX) { // todo was container == null
+                definition[JsonLdConsts::CONTAINER] = container;
             } else {
-                throw JsonLdError(JsonLdError::InvalidLanguageMapping,
-                                      "@language must be a string or null");
+                throw JsonLdError(JsonLdError::InvalidReverseProperty,
+                                  "reverse properties only support set- and index-containers");
             }
         }
-
-        // 18)
+        definition[JsonLdConsts::REVERSE] = true;
         m_termDefinitions[term] = definition;
         defined[term] = true;
+        return;
+    }
 
+    // 12)
+    definition[JsonLdConsts::REVERSE] = false;
+
+    // 13)
+    if (value.contains(JsonLdConsts::ID) && term != value.at(JsonLdConsts::ID)) {
+        auto id = value.at(JsonLdConsts::ID);
+        if (!id.is_string()) {
+            throw JsonLdError(JsonLdError::InvalidIriMapping, "expected value of @id to be a string");
+        }
+
+        std::string idStr = id.get<std::string>();
+
+        idStr = expandIri(idStr, false, true, context, defined);
+        if (JsonLdUtils::isKeyword(idStr) || JsonLdUtils::isAbsoluteIri(idStr)) {
+            if (idStr == JsonLdConsts::CONTEXT) {
+                throw JsonLdError(JsonLdError::InvalidKeywordAlias, "cannot alias @context");
+            }
+            definition[JsonLdConsts::ID] = idStr;
+        } else {
+            throw JsonLdError(JsonLdError::InvalidIriMapping,
+                              "resulting IRI mapping should be a keyword, absolute IRI or blank node");
+        }
+    }
+
+        // 14)
+    else if (term.find(':') != std::string::npos) { // todo: use isabsoluteiri?
+        auto colIndex = term.find(':');
+        std::string prefix(term, 0, colIndex);
+        std::string suffix(term, colIndex+1);
+        if (context.contains(prefix)) {
+            createTermDefinition(context, prefix, defined);
+        }
+        if (m_termDefinitions.find(prefix) != m_termDefinitions.end()) {
+            auto id = m_termDefinitions.at(prefix).at(JsonLdConsts::ID);
+            id = id.get<std::string>() + suffix;
+            definition[JsonLdConsts::ID] = id;
+        } else {
+            definition[JsonLdConsts::ID] = term;
+        }
+        // 15)
+    } else if (m_contextMap.find(JsonLdConsts::VOCAB) != m_contextMap.end()) {
+        definition[JsonLdConsts::ID] = m_contextMap.at(JsonLdConsts::VOCAB) + term;
+    } else if (term != JsonLdConsts::TYPE) {
+        throw JsonLdError(JsonLdError::InvalidIriMapping,
+                          "relative term definition without vocab mapping");
+    }
+
+    // 16)
+    if (value.contains(JsonLdConsts::CONTAINER)) {
+        std::string container = value.at(JsonLdConsts::CONTAINER);
+        if(container != JsonLdConsts::LIST &&
+           container != JsonLdConsts::SET &&
+           container != JsonLdConsts::INDEX &&
+           container != JsonLdConsts::LANGUAGE) {
+            throw JsonLdError(JsonLdError::InvalidContainerMapping,
+                              "@container must be either @list, @set, @index, or @language");
+        }
+        definition[JsonLdConsts::CONTAINER] = container;
+        if (term == JsonLdConsts::TYPE) {
+            definition[JsonLdConsts::ID] = "type";
+        }
+    }
+
+    // 17)
+    if (value.contains(JsonLdConsts::LANGUAGE) && !value.contains(JsonLdConsts::TYPE)) {
+        auto language = value.at(JsonLdConsts::LANGUAGE);
+        if (language.is_null() || language.is_string()) {
+            definition[JsonLdConsts::LANGUAGE] = language; // todo: tolowercase or null?
+        } else {
+            throw JsonLdError(JsonLdError::InvalidLanguageMapping,
+                              "@language must be a string or null");
+        }
+    }
+
+    // 18)
+    m_termDefinitions[term] = definition;
+    defined[term] = true;
 }
 
 std::string & Context::at(const std::string &s) {

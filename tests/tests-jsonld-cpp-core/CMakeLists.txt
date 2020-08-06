@@ -30,6 +30,7 @@ set_target_properties(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core PROPERTIE
 
 target_include_directories(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core
         PUBLIC
+        ${PROJECT_SOURCE_DIR}/jsonld-cpp-core/network
         ${PROJECT_SOURCE_DIR}/jsonld-cpp-core)
 
 target_link_libraries(UnitTests_JsonLdProcessor_expand_jsonld-cpp-core jsonld-cpp-core gtest gmock rapidcheck_gtest ${LIB_SSL} ${LIB_CRYPTO} ${LIB_CURL} ${LINKAGE_OPTIONS})
