@@ -5,6 +5,7 @@
 #include "testHelpers.h"
 #include "JsonLdProcessorTest.h"
 #include "testConstants.h"
+#include "CurlLoadDocumentCallback.h"
 
 #ifndef _WIN32
 #pragma clang diagnostic push
@@ -25,8 +26,8 @@ void performToRDFTest(int testNumber, const std::string& testPrefix = jsonld::te
     const std::string inputStr = getInputJsonContent(jsonld::test::toRDFTestName, jsonld::test::toRDFTestDirectory, testIdStr);
     const std::string expected = getExpectedRDF(jsonld::test::toRDFTestName, jsonld::test::toRDFTestDirectory, testIdStr);
 
-    DocumentLoader dl;
-    dl.addDocumentToCache(documentUri, inputStr);
+    std::unique_ptr<ILoadDocumentCallback> dl = std::make_unique<CurlLoadDocumentCallback>();
+    dl->addDocumentToCache(documentUri, inputStr);
 
     options->setDocumentLoader(dl);
 
