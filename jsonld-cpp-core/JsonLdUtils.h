@@ -22,8 +22,6 @@ namespace JsonLdUtils {
 
     bool isRelativeIri(const std::string& value);
 
-    bool isValidIri(const std::string& value);
-
     bool isList(const json& j);
 
     bool isValue(const json& j);

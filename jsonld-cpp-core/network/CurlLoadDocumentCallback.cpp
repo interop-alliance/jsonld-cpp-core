@@ -9,6 +9,8 @@
 
 #include "CurlLoadDocumentCallback.h"
 #include "RemoteDocument.h"
+#include "IriUtils.h"
+#include "CurlHttpRequest.h"
 
 using json = nlohmann::json;
 using namespace std::filesystem;
@@ -24,6 +26,29 @@ namespace {
 }
 
 std::optional<RemoteDocument> CurlLoadDocumentCallback::retrieveRemoteDocument(const std::string& url, const LoadDocumentOptions& loadDocumentOptions) {
+    // 1) Create a new Promise promise and return it. The following steps are then deferred.
+
+    // 2) Set document to the body retrieved from the resource identified by url,
+    // or by otherwise locating a resource associated with url. When requesting remote
+    // documents the request MUST prefer Content-Type application/ld+json followed by application/json.
+    // If requestProfile is set, it MUST be added as a profile on application/ld+json.
+    // Processors MAY include other media types using a +json suffix as defined in [RFC6839].
+
+    // 3) Set documentUrl to the location of the retrieved resource considering redirections (exclusive
+    // of HTTP status 303 "See Other" redirects as discussed in [cooluris]).
+
+    // 4) If the retrieved resource's Content-Type is not application/json nor any media type with
+    // a +json suffix as defined in [RFC6839], and the response has an HTTP Link Header [RFC8288] using
+    // the alternate link relation with type application/ld+json, set url to the associated href relative
+    // to the previous url and restart the algorithm from step 2.
+
+    // 5) If the retrieved resource's Content-Type is application/json or any media type with
+    // a +json suffix as defined in [RFC6839] except application/ld+json, and the response has
+    // an HTTP Link Header [RFC8288] using the http://www.w3.org/ns/json-ld#context link relation,
+    // set contextUrl to the associated href.
+    // If multiple HTTP Link Headers using the http://www.w3.org/ns/json-ld#context link relation are found,
+    // the promise is rejected with a JsonLdError whose code is set to multiple context link headers and processing is terminated.
+
     // first check the cache
     auto it = m_cache.find(url);
     if (it != m_cache.end())
@@ -42,6 +67,17 @@ std::optional<RemoteDocument> CurlLoadDocumentCallback::retrieveRemoteDocument(c
         m_cache[url] = j;
 
         return RemoteDocument(url, j);
+    }
+    else if (IriUtils::isValidIri(url)) {
+        std::unique_ptr<jsonld::network::IHttpRequest> httpRequest = std::make_unique<jsonld::network::CurlHttpRequest>();
+        jsonld::network::HttpRequestParameters parameters;
+        parameters.host = url;
+        std::string remoteContext;
+        httpRequest->performRequest(parameters, [&remoteContext](const uint32_t errorCode, std::string response, jsonld::network::HttpHeader responseHeaders) {
+            remoteContext = response;
+        });
+
+        return RemoteDocument(url, json::parse(remoteContext));
     }
     else {
         std::stringstream ss;

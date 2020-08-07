@@ -290,8 +290,15 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, con
         // 5.2) If context is a string,
         else if (context.is_string()) {
 //            throw JsonLdError(JsonLdError::NotImplemented, "context.is_string() not implemented: ");
-            auto tempContext = json::parse(context.dump());
-            result = result.parse(baseUrl, tempContext.at(JsonLdConsts::CONTEXT), remoteContexts);
+
+            if (m_options) {
+                auto& documentLoader = m_options->getDocumentLoader();
+
+                if (documentLoader) {
+                    auto remoteDocument = documentLoader->retrieveRemoteDocument(localContext.dump());
+                    result = result.parse(baseUrl, remoteDocument->getDocument().at(JsonLdConsts::CONTEXT), remoteContexts);
+                }
+            }
 
             // 5.2.1) Initialize context to the result of resolving context against base URL.
             // If base URL is not a valid IRI, then context MUST be a valid IRI,

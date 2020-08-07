@@ -15,12 +15,9 @@ public:
                                                     const LoadDocumentOptions& loadDocumentOptions = LoadDocumentOptions()) override;
 
     void addDocumentToCache(const std::string& url, const std::string& contents) override;
-private:
-
 
 private:
     std::map<std::string, json> m_cache;
 };
-
 
 #endif //JSONLD_CPP_CORE_CURLLOADDOCUMENTCALLBACK_H
