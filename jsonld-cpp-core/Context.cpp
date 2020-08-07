@@ -248,8 +248,6 @@ Context Context::parse(const std::string& baseUrl, const json& localContext, con
 }*/
 
 Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, const json& localContext, const std::vector<std::string>& remoteContexts) {
-    const std::string localContextString = localContext.dump();
-
     // 1) Initialize result to the result of cloning active context, with inverse context set to null..
     Context result = *this;
     result.m_inverse = {};
@@ -295,7 +293,8 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, con
                 auto& documentLoader = m_options->getDocumentLoader();
 
                 if (documentLoader) {
-                    auto remoteDocument = documentLoader->retrieveRemoteDocument(localContext.dump());
+                    std::string contextUrl = localContext.get<std::string>();
+                    auto remoteDocument = documentLoader->retrieveRemoteDocument(contextUrl);
                     result = result.parse(baseUrl, remoteDocument->getDocument().at(JsonLdConsts::CONTEXT), remoteContexts);
                 }
             }

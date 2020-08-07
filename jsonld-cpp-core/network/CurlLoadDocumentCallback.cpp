@@ -72,10 +72,16 @@ std::optional<RemoteDocument> CurlLoadDocumentCallback::retrieveRemoteDocument(c
         std::unique_ptr<jsonld::network::IHttpRequest> httpRequest = std::make_unique<jsonld::network::CurlHttpRequest>();
         jsonld::network::HttpRequestParameters parameters;
         parameters.host = url;
+
         std::string remoteContext;
-        httpRequest->performRequest(parameters, [&remoteContext](const uint32_t errorCode, std::string response, jsonld::network::HttpHeader responseHeaders) {
-            remoteContext = response;
-        });
+        try {
+            httpRequest->performRequest(parameters, [&remoteContext](const uint32_t errorCode, std::string response, jsonld::network::HttpHeader responseHeaders) {
+                remoteContext = response;
+            });
+        }
+        catch (const std::exception& e) {
+            throw;
+        }
 
         return RemoteDocument(url, json::parse(remoteContext));
     }
