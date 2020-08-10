@@ -33,10 +33,10 @@ public:
     Context(std::map<std::string, std::string> map, const std::shared_ptr<JsonLdOptions>& options);
     explicit Context(std::map<std::string, std::string> map);
 
-// todo: should these be static constructors?
+    // TODO: should these be static constructors?
     Context parse(const std::string& baseUrl,
                   const nlohmann::json& localContext,
-                  const std::vector<std::string>& remoteContexts,
+                  std::vector<std::string>& remoteContexts,
                   const bool overrideProtected = false,
                   const bool propagate = true,
                   const bool validateScopedContext = true);
@@ -50,7 +50,7 @@ public:
     // Updated 1.1 Context Processing Algorithms
     Context applyContextProcessingAlgorithm(const std::string& baseUrl,
                                             const nlohmann::json& localContext,
-                                            const std::vector<std::string>& remoteContexts,
+                                            std::vector<std::string>& remoteContexts,
                                             const bool overrideProtected,
                                             const bool propagate,
                                             const bool validateScopedContext);

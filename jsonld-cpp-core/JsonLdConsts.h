@@ -70,6 +70,7 @@ namespace JsonLdConsts {
         ALWAYS, NEVER, ONCE, LINK
     };
 
+    const size_t processorDefinedLimit = 1000;
 }
 
 #endif //LIBJSONLD_CPP_JSONLDCONSTS_H
