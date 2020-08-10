@@ -40,9 +40,11 @@ void Context::init() {
  * @throws JsonLdError
  *             If there is an error parsing the contexts.
  */
-Context Context::parse(const std::string& baseUrl, const json& localContext)  {
+Context Context::parse(const std::string& baseUrl, const json& localContext, const bool overrideProtected,
+                       const bool propagate,
+                       const bool validateScopedContext)  {
     auto passedRemoteContexts = std::vector<std::string>();
-    return applyContextProcessingAlgorithm(baseUrl, localContext, passedRemoteContexts);
+    return applyContextProcessingAlgorithm(baseUrl, localContext, passedRemoteContexts, overrideProtected, propagate, validateScopedContext);
 //    return parseDeprecated(localContext, std::vector<std::string>(), false);
 }
 
@@ -59,8 +61,10 @@ Context Context::parse(const std::string& baseUrl, const json& localContext)  {
  * @throws JsonLdError
  *             If there is an error parsing the contexts.
  */
-Context Context::parse(const std::string& baseUrl, const json& localContext, const std::vector<std::string>& remoteContexts) {
-    return applyContextProcessingAlgorithm(baseUrl, localContext, remoteContexts);
+Context Context::parse(const std::string& baseUrl, const json& localContext, const std::vector<std::string>& remoteContexts, const bool overrideProtected,
+                       const bool propagate,
+                       const bool validateScopedContext) {
+    return applyContextProcessingAlgorithm(baseUrl, localContext, remoteContexts, overrideProtected, propagate, validateScopedContext);
 //    return parseDeprecated(localContext, remoteContexts, false);
 }
 
@@ -247,7 +251,12 @@ Context Context::parse(const std::string& baseUrl, const json& localContext, con
     return result;
 }*/
 
-Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, const json& localContext, const std::vector<std::string>& remoteContexts) {
+Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl,
+                                                 const json& localContext,
+                                                 const std::vector<std::string>& remoteContexts,
+                                                 const bool overrideProtected,
+                                                 const bool propagate,
+                                                 const bool validateScopedContext) {
     // 1) Initialize result to the result of cloning active context, with inverse context set to null..
     Context result = *this;
     result.m_inverse = {};
@@ -284,11 +293,8 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, con
             // 5.1.3) Continue with the next context.
             continue;
         }
-
-        // 5.2) If context is a string,
         else if (context.is_string()) {
-//            throw JsonLdError(JsonLdError::NotImplemented, "context.is_string() not implemented: ");
-
+            // 5.2) If context is a string,
             if (m_options) {
                 auto& documentLoader = m_options->getDocumentLoader();
 
@@ -339,26 +345,30 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, con
 
         // 5.4) Otherwise, context is a context definition.
         // TODO: do we need this?
-        checkEmptyKey(context);
+//        checkEmptyKey(context);
 
         // 5.5) If context has an @version entry:
-        // 5.5.1) If the associated value is not 1.1, an invalid @version value has been detected, and processing is aborted.
-        // 5.5.2) If processing mode is set to json-ld-1.0, a processing mode conflict error has been detected and processing is aborted.
+        if (context.contains(JsonLdConsts::VERSION)) {
+            // 5.5.1) If the associated value is not 1.1, an invalid @version value has been detected, and processing is aborted.
+            // 5.5.2) If processing mode is set to json-ld-1.0, a processing mode conflict error has been detected and processing is aborted.
+        }
 
         // 5.6) If context has an @import entry:
-        // 5.6.1) If processing mode is json-ld-1.0, an invalid context entry error has been detected and processing is aborted.
-        // 5.6.2) Otherwise, if the value of @import is not a string, an invalid @import value error has been detected and processing is aborted.
-        // 5.6.3) Initialize import to the result of resolving the value of @import against base URL.
-        // 5.6.4) Dereference import using the LoadDocumentCallback, passing import for url,
-        // and http://www.w3.org/ns/json-ld#context for profile and for requestProfile.
-        // 5.6.5) If import cannot be dereferenced, or cannot be transformed into the internal representation,
-        // a loading remote context failed error has been detected and processing is aborted.
-        // 5.6.6) If the dereferenced document has no top-level map with an @context entry,
-        // or if the value of @context is not a context definition (i.e., it is not an map),
-        // an invalid remote context has been detected and processing is aborted; otherwise, set import context to the value of that entry.
-        // 5.6.7) If import context has a @import entry, an invalid context entry error has been detected and processing is aborted.
-        // 5.6.8) Set context to the result of merging context into import context,
-        // replacing common entries with those from context.
+        if (context.contains(JsonLdConsts::IMPORT)) {
+            // 5.6.1) If processing mode is json-ld-1.0, an invalid context entry error has been detected and processing is aborted.
+            // 5.6.2) Otherwise, if the value of @import is not a string, an invalid @import value error has been detected and processing is aborted.
+            // 5.6.3) Initialize import to the result of resolving the value of @import against base URL.
+            // 5.6.4) Dereference import using the LoadDocumentCallback, passing import for url,
+            // and http://www.w3.org/ns/json-ld#context for profile and for requestProfile.
+            // 5.6.5) If import cannot be dereferenced, or cannot be transformed into the internal representation,
+            // a loading remote context failed error has been detected and processing is aborted.
+            // 5.6.6) If the dereferenced document has no top-level map with an @context entry,
+            // or if the value of @context is not a context definition (i.e., it is not an map),
+            // an invalid remote context has been detected and processing is aborted; otherwise, set import context to the value of that entry.
+            // 5.6.7) If import context has a @import entry, an invalid context entry error has been detected and processing is aborted.
+            // 5.6.8) Set context to the result of merging context into import context,
+            // replacing common entries with those from context.
+        }
 
         // 5.7) If context has an @base entry and remote contexts is empty, i.e.,
         // the currently being processed context is not a remote context:
@@ -436,18 +446,25 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl, con
             }
         }
 
-        // 5.10) If context has an @direction entry:
-        // 5.10.1) If processing mode is json-ld-1.0, an invalid context entry error has been detected and processing is aborted.
-        // 5.10.2) Initialize value to the value associated with the @direction entry.
-        // 5.10.3) If value is null, remove any base direction from result.
-        // 5.10.4) Otherwise, if value is a string, the base direction of result is set to value.
-        // If it is not null, "ltr", or "rtl", an invalid base direction error has been detected and processing is aborted.
+        if (context.contains(JsonLdConsts::DIRECTION)) {
+            throw JsonLdError(JsonLdError::NotImplemented, "@direction entry not implemented: ");
+
+            // 5.10) If context has an @direction entry:
+            // 5.10.1) If processing mode is json-ld-1.0, an invalid context entry error has been detected and processing is aborted.
+            // 5.10.2) Initialize value to the value associated with the @direction entry.
+            // 5.10.3) If value is null, remove any base direction from result.
+            // 5.10.4) Otherwise, if value is a string, the base direction of result is set to value.
+            // If it is not null, "ltr", or "rtl", an invalid base direction error has been detected and processing is aborted.
+        }
 
         // 5.11) If context has an @propagate entry:
-        // 5.11.1) If processing mode is json-ld-1.0, an invalid context entry error has
-        // been detected and processing is aborted.
-        // 5.11.2) Otherwise, if the value of @propagate is not boolean true or false,
-        // an invalid @propagate value error has been detected and processing is aborted.
+        if (context.contains(JsonLdConsts::PROPAGATE)) {
+
+            // 5.11.1) If processing mode is json-ld-1.0, an invalid context entry error has
+            // been detected and processing is aborted.
+            // 5.11.2) Otherwise, if the value of @propagate is not boolean true or false,
+            // an invalid @propagate value error has been detected and processing is aborted.
+        }
 
         // 5.12) Create a map defined to keep track of whether or not a term has
         // already been defined or is currently being defined during recursion.
