@@ -5,6 +5,8 @@
 #ifndef JSONLD_CPP_CORE_ILOADDOCUMENTCALLBACK_H
 #define JSONLD_CPP_CORE_ILOADDOCUMENTCALLBACK_H
 
+#include <optional>
+
 #include "RemoteDocument.h"
 #include "LoadDocumentOptions.h"
 

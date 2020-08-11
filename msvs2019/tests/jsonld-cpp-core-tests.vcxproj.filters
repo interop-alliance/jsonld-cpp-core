@@ -63,9 +63,24 @@
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_UniqueNamer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\network\curl\CurlHttpRequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\network\curl\CurlLoadDocumentCallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\tests\tests-jsonld-cpp-core\testHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\network\curl\CurlHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\network\curl\CurlHttpRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\network\curl\CurlLoadDocumentCallback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

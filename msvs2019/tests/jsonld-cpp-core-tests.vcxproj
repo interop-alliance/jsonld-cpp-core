@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../tests/googletest/googletest/include;../../jsonld-cpp-core;../../include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../3rdparty/curl-7.71.1/build/win/include;../../tests/googletest/googletest/include;../../jsonld-cpp-core/network;../../jsonld-cpp-core;../../network/curl;../../include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -124,7 +124,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../../3rdparty/curl-7.71.1/build/win/lib;../../tests/googletest/build/win_lib/Debug;../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtestd.lib;gmockd.lib;gtest_maind.lib;gmock_maind.lib;jsonld-cpp-cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtestd.lib;gmockd.lib;gtest_maind.lib;gmock_maind.lib;libcurl_a_debug.lib;jsonld-cpp-cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -135,7 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../include;../../jsonld-cpp-core;../../tests/googletest/googletest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../jsonld-cpp-core/network;../../include;../../jsonld-cpp-core;../../tests/googletest/googletest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -149,6 +149,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\network\curl\CurlHttpRequest.cpp" />
+    <ClCompile Include="..\..\network\curl\CurlLoadDocumentCallback.cpp" />
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\main.cpp" />
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\testHelpers.cpp" />
     <ClCompile Include="..\..\tests\tests-jsonld-cpp-core\test_DocumentLoader.cpp" />
@@ -172,6 +174,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\network\curl\CurlHelper.h" />
+    <ClInclude Include="..\..\network\curl\CurlHttpRequest.h" />
+    <ClInclude Include="..\..\network\curl\CurlLoadDocumentCallback.h" />
     <ClInclude Include="..\..\tests\tests-jsonld-cpp-core\testHelpers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

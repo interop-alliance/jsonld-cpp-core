@@ -128,7 +128,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../3rdparty/curl-7.71.1/build/win/include;../jsonld-cpp-core/network/curl;../jsonld-cpp-core/network/curl/impl;../include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../jsonld-cpp-core/network;../include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -137,7 +137,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>../3rdparty/curl-7.71.1/build/win/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -179,7 +179,6 @@
     <ClInclude Include="..\jsonld-cpp-core\JsonLdUtils.h" />
     <ClInclude Include="..\jsonld-cpp-core\network\curl\IHttpRequest.h" />
     <ClInclude Include="..\jsonld-cpp-core\network\curl\impl\CurlHelper.h" />
-    <ClInclude Include="..\jsonld-cpp-core\network\curl\impl\CurlHttpRequest.h" />
     <ClInclude Include="..\jsonld-cpp-core\NormalizeUtils.h" />
     <ClInclude Include="..\jsonld-cpp-core\ObjUtils.h" />
     <ClInclude Include="..\jsonld-cpp-core\Permutator.h" />
@@ -193,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\jsonld-cpp-core\Context.cpp" />
-    <ClCompile Include="..\jsonld-cpp-core\DocumentLoader.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\DoubleFormatter.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\IriUtils.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\JsonLdApi.cpp" />
@@ -202,7 +200,6 @@
     <ClCompile Include="..\jsonld-cpp-core\JsonLdProcessor.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\JsonLdUrl.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\JsonLdUtils.cpp" />
-    <ClCompile Include="..\jsonld-cpp-core\network\curl\impl\CurlHttpRequest.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\NormalizeUtils.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\ObjUtils.cpp" />
     <ClCompile Include="..\jsonld-cpp-core\Permutator.cpp" />
