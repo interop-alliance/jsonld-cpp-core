@@ -381,6 +381,10 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl,
         // 5.6) If context has an @import entry:
         if (context.contains(JsonLdConsts::IMPORT)) {
             // 5.6.1) If processing mode is json-ld-1.0, an invalid context entry error has been detected and processing is aborted.
+            if (m_options->getProcessingMode() == JsonLdOptions::JSON_LD_1_0) {
+                throw JsonLdError(JsonLdError::InvalidVersionValueError, context);
+            }
+
             // 5.6.2) Otherwise, if the value of @import is not a string, an invalid @import value error has been detected and processing is aborted.
             // 5.6.3) Initialize import to the result of resolving the value of @import against base URL.
             // 5.6.4) Dereference import using the LoadDocumentCallback, passing import for url,
@@ -393,6 +397,7 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl,
             // 5.6.7) If import context has a @import entry, an invalid context entry error has been detected and processing is aborted.
             // 5.6.8) Set context to the result of merging context into import context,
             // replacing common entries with those from context.
+            // TODO:
         }
 
         // 5.7) If context has an @base entry and remote contexts is empty, i.e.,
@@ -486,6 +491,8 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl,
         if (context.contains(JsonLdConsts::PROPAGATE)) {
             // 5.11.1) If processing mode is json-ld-1.0, an invalid context entry error has
             // been detected and processing is aborted.
+
+
             // 5.11.2) Otherwise, if the value of @propagate is not boolean true or false,
             // an invalid @propagate value error has been detected and processing is aborted.
         }

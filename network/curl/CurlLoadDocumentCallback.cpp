@@ -48,6 +48,7 @@ std::optional<RemoteDocument> CurlLoadDocumentCallback::retrieveRemoteDocument(c
     // set contextUrl to the associated href.
     // If multiple HTTP Link Headers using the http://www.w3.org/ns/json-ld#context link relation are found,
     // the promise is rejected with a JsonLdError whose code is set to multiple context link headers and processing is terminated.
+    // TODO: now it is very simplistic
 
     // first check the cache
     auto it = m_cache.find(url);
