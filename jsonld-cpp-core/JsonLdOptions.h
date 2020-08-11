@@ -56,9 +56,9 @@ private:
 
 public:
 
-    static constexpr const char JSON_LD_1_0[] = "json-ld-1.0";
+    static constexpr const char JSON_LD_1_0[] = "1.0";
 
-    static constexpr const char JSON_LD_1_1[] = "json-ld-1.1";
+    static constexpr const char JSON_LD_1_1[] = "1.1";
 
     static constexpr bool DEFAULT_COMPACT_ARRAYS = true;
 

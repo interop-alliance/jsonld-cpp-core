@@ -30,6 +30,8 @@ namespace JsonLdUtils {
 
     bool deepContains(const json& values, const json& value);
 
+    std::string getStringVersionFromNumericValue(const float version);
+
     void mergeValue(json & obj, const std::string& key, const json& value);
 }
 

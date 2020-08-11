@@ -366,8 +366,16 @@ Context Context::applyContextProcessingAlgorithm(const std::string& baseUrl,
 
         // 5.5) If context has an @version entry:
         if (context.contains(JsonLdConsts::VERSION)) {
+            auto currentProcessingVersion = JsonLdUtils::getStringVersionFromNumericValue(context.at(JsonLdConsts::VERSION).get<float>());
             // 5.5.1) If the associated value is not 1.1, an invalid @version value has been detected, and processing is aborted.
+            if (currentProcessingVersion != JsonLdOptions::JSON_LD_1_1) {
+                throw JsonLdError(JsonLdError::InvalidVersionValueError, context);
+            }
+
             // 5.5.2) If processing mode is set to json-ld-1.0, a processing mode conflict error has been detected and processing is aborted.
+            if (currentProcessingVersion == JsonLdOptions::JSON_LD_1_0) {
+                throw JsonLdError(JsonLdError::InvalidVersionValueError, context);
+            }
         }
 
         // 5.6) If context has an @import entry:

@@ -363,12 +363,12 @@ TEST(JsonLdProcessorTest, expand_our0302) {
     performExpandTest(302, jsonld::test::ourExpandTestPrefix);
 }*/
 
-//TEST(JsonLdProcessorTest, expand_our0400) {
-//    // this is an extra test for testing remote context
-//    performExpandTest(400, jsonld::test::ourExpandTestPrefix);
-//}
+TEST(JsonLdProcessorTest, expand_our0400) {
+    // this is an extra test for testing remote context
+    performExpandTest(400, jsonld::test::ourExpandTestPrefix);
+}
 
-//TEST(JsonLdProcessorTest, expand_our0401) {
-//    // this is an extra test for testing nested context
-//    performExpandTest(401, jsonld::test::ourExpandTestPrefix);
-//}
+TEST(JsonLdProcessorTest, expand_our0401) {
+    // this is an extra test for testing nested context
+    performExpandTest(401, jsonld::test::ourExpandTestPrefix);
+}

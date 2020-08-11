@@ -19,6 +19,8 @@ public:
     static const char InvalidBaseIri[];
     static const char InvalidVocabMapping[];
     static const char InvalidDefaultLanguage[];
+    static const char InvalidVersionValueError[];
+    static const char ProcessingModeConflictError[];
     static const char KeywordRedefinition[];
     static const char InvalidTermDefinition[];
     static const char InvalidReverseProperty[];
