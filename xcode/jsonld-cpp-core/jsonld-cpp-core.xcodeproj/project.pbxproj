@@ -7,49 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C1F4F5624A606DB00732FCC /* JsonLdError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3024A606DB00732FCC /* JsonLdError.cpp */; };
-		7C1F4F5724A606DB00732FCC /* RDFDataset.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F3124A606DB00732FCC /* RDFDataset.h */; };
-		7C1F4F5824A606DB00732FCC /* JsonLdUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F3224A606DB00732FCC /* JsonLdUtils.h */; };
-		7C1F4F5924A606DB00732FCC /* ObjUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3324A606DB00732FCC /* ObjUtils.cpp */; };
-		7C1F4F5A24A606DB00732FCC /* DocumentLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F3424A606DB00732FCC /* DocumentLoader.h */; };
-		7C1F4F5B24A606DB00732FCC /* JsonLdProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3624A606DB00732FCC /* JsonLdProcessor.cpp */; };
-		7C1F4F5C24A606DB00732FCC /* JsonLdError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F3724A606DB00732FCC /* JsonLdError.h */; };
-		7C1F4F5D24A606DB00732FCC /* JsonLdOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F3824A606DB00732FCC /* JsonLdOptions.h */; };
-		7C1F4F5E24A606DB00732FCC /* RDFDataset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3924A606DB00732FCC /* RDFDataset.cpp */; };
-		7C1F4F5F24A606DB00732FCC /* JsonLdApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3A24A606DB00732FCC /* JsonLdApi.cpp */; };
-		7C1F4F6024A606DB00732FCC /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3B24A606DB00732FCC /* Context.cpp */; };
-		7C1F4F6124A606DB00732FCC /* RDFDatasetUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3C24A606DB00732FCC /* RDFDatasetUtils.cpp */; };
-		7C1F4F6224A606DB00732FCC /* DocumentLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3D24A606DB00732FCC /* DocumentLoader.cpp */; };
-		7C1F4F6324A606DB00732FCC /* JsonLdUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F3E24A606DB00732FCC /* JsonLdUtils.cpp */; };
-		7C1F4F6424A606DB00732FCC /* Context.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F3F24A606DB00732FCC /* Context.h */; };
-		7C1F4F6524A606DB00732FCC /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F4024A606DB00732FCC /* sha1.cpp */; };
-		7C1F4F6624A606DB00732FCC /* DoubleFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4124A606DB00732FCC /* DoubleFormatter.h */; };
-		7C1F4F6724A606DB00732FCC /* JsonLdUrl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F4224A606DB00732FCC /* JsonLdUrl.cpp */; };
-		7C1F4F6824A606DB00732FCC /* RemoteDocument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F4324A606DB00732FCC /* RemoteDocument.cpp */; };
-		7C1F4F6924A606DB00732FCC /* Permutator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F4424A606DB00732FCC /* Permutator.cpp */; };
-		7C1F4F6A24A606DB00732FCC /* IriUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F4524A606DB00732FCC /* IriUtils.cpp */; };
-		7C1F4F6B24A606DB00732FCC /* JsonLdOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F4624A606DB00732FCC /* JsonLdOptions.cpp */; };
-		7C1F4F6C24A606DB00732FCC /* RDFDatasetUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4724A606DB00732FCC /* RDFDatasetUtils.h */; };
-		7C1F4F6D24A606DB00732FCC /* NormalizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F4824A606DB00732FCC /* NormalizeUtils.cpp */; };
-		7C1F4F6E24A606DB00732FCC /* RemoteDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4924A606DB00732FCC /* RemoteDocument.h */; };
-		7C1F4F6F24A606DB00732FCC /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4A24A606DB00732FCC /* sha1.h */; };
-		7C1F4F7024A606DB00732FCC /* JsonLdApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4B24A606DB00732FCC /* JsonLdApi.h */; };
-		7C1F4F7124A606DB00732FCC /* IriUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4C24A606DB00732FCC /* IriUtils.h */; };
-		7C1F4F7224A606DB00732FCC /* Permutator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4D24A606DB00732FCC /* Permutator.h */; };
-		7C1F4F7324A606DB00732FCC /* JsonLdConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4E24A606DB00732FCC /* JsonLdConsts.h */; };
-		7C1F4F7424A606DB00732FCC /* NormalizeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F4F24A606DB00732FCC /* NormalizeUtils.h */; };
-		7C1F4F7524A606DB00732FCC /* JsonLdUrl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F5024A606DB00732FCC /* JsonLdUrl.h */; };
-		7C1F4F7624A606DB00732FCC /* DoubleFormatter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F5124A606DB00732FCC /* DoubleFormatter.cpp */; };
-		7C1F4F7724A606DB00732FCC /* UniqueNamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F5224A606DB00732FCC /* UniqueNamer.cpp */; };
-		7C1F4F7824A606DB00732FCC /* JsonLdProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F5324A606DB00732FCC /* JsonLdProcessor.h */; };
-		7C1F4F7924A606DB00732FCC /* UniqueNamer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F5424A606DB00732FCC /* UniqueNamer.h */; };
-		7C1F4F7A24A606DB00732FCC /* ObjUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1F4F5524A606DB00732FCC /* ObjUtils.h */; };
 		7C1F518524A6076600732FCC /* test_JsonLdProcessor_expand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F7D24A606FD00732FCC /* test_JsonLdProcessor_expand.cpp */; };
 		7C1F518624A6076600732FCC /* test_IriUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F7E24A606FD00732FCC /* test_IriUtils.cpp */; };
 		7C1F518724A6076600732FCC /* testHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F4F8024A606FD00732FCC /* testHelpers.cpp */; };
 		7C1F518824A6076600732FCC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F518424A606FF00732FCC /* main.cpp */; };
-		7C338A1C24B89C290055B949 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1924B89C290055B949 /* libssl.a */; };
-		7C338A1D24B89C290055B949 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1A24B89C290055B949 /* libcrypto.a */; };
 		7C338A1E24B89C290055B949 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1B24B89C290055B949 /* libcurl.a */; };
 		7C35470624B1AFE200D78C21 /* test_DocumentLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FA24B1AFE100D78C21 /* test_DocumentLoader.cpp */; };
 		7C35470724B1AFE200D78C21 /* test_JsonLdProcessor_normalize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C3546FB24B1AFE100D78C21 /* test_JsonLdProcessor_normalize.cpp */; };
@@ -69,6 +30,49 @@
 		7C4082A024A5C569007A6266 /* libgmock_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C40829C24A5C569007A6266 /* libgmock_main.a */; };
 		7C4082A124A5CA60007A6266 /* libjsonld-cpp-core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25057F24A3DAE3005F7F28 /* libjsonld-cpp-core.a */; };
 		7C5DDE2424AA34B900173363 /* copy_test_data.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C5DDE2224AA337D00173363 /* copy_test_data.sh */; };
+		7C91F45C24E3FEDD0071C31C /* JsonLdError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43124E3FEDD0071C31C /* JsonLdError.cpp */; };
+		7C91F45D24E3FEDD0071C31C /* RDFDataset.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F43224E3FEDD0071C31C /* RDFDataset.h */; };
+		7C91F45E24E3FEDD0071C31C /* JsonLdUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F43324E3FEDD0071C31C /* JsonLdUtils.h */; };
+		7C91F45F24E3FEDD0071C31C /* ObjUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43424E3FEDD0071C31C /* ObjUtils.cpp */; };
+		7C91F46024E3FEDD0071C31C /* JsonLdProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43624E3FEDD0071C31C /* JsonLdProcessor.cpp */; };
+		7C91F46124E3FEDD0071C31C /* JsonLdError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F43724E3FEDD0071C31C /* JsonLdError.h */; };
+		7C91F46224E3FEDD0071C31C /* JsonLdOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F43824E3FEDD0071C31C /* JsonLdOptions.h */; };
+		7C91F46324E3FEDD0071C31C /* RDFDataset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43924E3FEDD0071C31C /* RDFDataset.cpp */; };
+		7C91F46424E3FEDD0071C31C /* JsonLdApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43A24E3FEDD0071C31C /* JsonLdApi.cpp */; };
+		7C91F46524E3FEDD0071C31C /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43B24E3FEDD0071C31C /* Context.cpp */; };
+		7C91F46624E3FEDD0071C31C /* RDFDatasetUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43C24E3FEDD0071C31C /* RDFDatasetUtils.cpp */; };
+		7C91F46724E3FEDD0071C31C /* JsonLdUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F43D24E3FEDD0071C31C /* JsonLdUtils.cpp */; };
+		7C91F46824E3FEDD0071C31C /* ILoadDocumentCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F43F24E3FEDD0071C31C /* ILoadDocumentCallback.h */; };
+		7C91F46924E3FEDD0071C31C /* IHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F44224E3FEDD0071C31C /* IHttpRequest.h */; };
+		7C91F46A24E3FEDD0071C31C /* Context.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F44324E3FEDD0071C31C /* Context.h */; };
+		7C91F46B24E3FEDD0071C31C /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F44424E3FEDD0071C31C /* sha1.cpp */; };
+		7C91F46C24E3FEDD0071C31C /* DoubleFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F44524E3FEDD0071C31C /* DoubleFormatter.h */; };
+		7C91F46D24E3FEDD0071C31C /* JsonLdUrl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F44624E3FEDD0071C31C /* JsonLdUrl.cpp */; };
+		7C91F46E24E3FEDD0071C31C /* RemoteDocument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F44724E3FEDD0071C31C /* RemoteDocument.cpp */; };
+		7C91F46F24E3FEDD0071C31C /* LoadDocumentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F44824E3FEDD0071C31C /* LoadDocumentOptions.h */; };
+		7C91F47024E3FEDD0071C31C /* Permutator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F44924E3FEDD0071C31C /* Permutator.cpp */; };
+		7C91F47124E3FEDD0071C31C /* IriUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F44A24E3FEDD0071C31C /* IriUtils.cpp */; };
+		7C91F47224E3FEDD0071C31C /* JsonLdOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F44B24E3FEDD0071C31C /* JsonLdOptions.cpp */; };
+		7C91F47324E3FEDD0071C31C /* RDFDatasetUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F44C24E3FEDD0071C31C /* RDFDatasetUtils.h */; };
+		7C91F47424E3FEDD0071C31C /* NormalizeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F44D24E3FEDD0071C31C /* NormalizeUtils.cpp */; };
+		7C91F47524E3FEDD0071C31C /* RemoteDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F44E24E3FEDD0071C31C /* RemoteDocument.h */; };
+		7C91F47624E3FEDD0071C31C /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F44F24E3FEDD0071C31C /* sha1.h */; };
+		7C91F47724E3FEDD0071C31C /* JsonLdApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45024E3FEDD0071C31C /* JsonLdApi.h */; };
+		7C91F47824E3FEDD0071C31C /* IriUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45124E3FEDD0071C31C /* IriUtils.h */; };
+		7C91F47924E3FEDD0071C31C /* Permutator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45224E3FEDD0071C31C /* Permutator.h */; };
+		7C91F47A24E3FEDD0071C31C /* JsonLdConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45324E3FEDD0071C31C /* JsonLdConsts.h */; };
+		7C91F47B24E3FEDD0071C31C /* NormalizeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45424E3FEDD0071C31C /* NormalizeUtils.h */; };
+		7C91F47C24E3FEDD0071C31C /* JsonLdUrl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45524E3FEDD0071C31C /* JsonLdUrl.h */; };
+		7C91F47D24E3FEDD0071C31C /* DoubleFormatter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F45624E3FEDD0071C31C /* DoubleFormatter.cpp */; };
+		7C91F47E24E3FEDD0071C31C /* JsonldPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45724E3FEDD0071C31C /* JsonldPromise.h */; };
+		7C91F47F24E3FEDD0071C31C /* UniqueNamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F45824E3FEDD0071C31C /* UniqueNamer.cpp */; };
+		7C91F48024E3FEDD0071C31C /* JsonLdProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45924E3FEDD0071C31C /* JsonLdProcessor.h */; };
+		7C91F48124E3FEDD0071C31C /* UniqueNamer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45A24E3FEDD0071C31C /* UniqueNamer.h */; };
+		7C91F48224E3FEDD0071C31C /* ObjUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C91F45B24E3FEDD0071C31C /* ObjUtils.h */; };
+		7C91F48A24E3FF250071C31C /* CurlLoadDocumentCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F48624E3FF250071C31C /* CurlLoadDocumentCallback.cpp */; };
+		7C91F48B24E3FF250071C31C /* CurlHttpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F48824E3FF250071C31C /* CurlHttpRequest.cpp */; };
+		7C91F49224E40CB10071C31C /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1A24B89C290055B949 /* libcrypto.a */; };
+		7C91F49324E40CB10071C31C /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C338A1924B89C290055B949 /* libssl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -99,44 +103,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7C1F4F3024A606DB00732FCC /* JsonLdError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdError.cpp; sourceTree = "<group>"; };
-		7C1F4F3124A606DB00732FCC /* RDFDataset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFDataset.h; sourceTree = "<group>"; };
-		7C1F4F3224A606DB00732FCC /* JsonLdUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdUtils.h; sourceTree = "<group>"; };
-		7C1F4F3324A606DB00732FCC /* ObjUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjUtils.cpp; sourceTree = "<group>"; };
-		7C1F4F3424A606DB00732FCC /* DocumentLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentLoader.h; sourceTree = "<group>"; };
-		7C1F4F3524A606DB00732FCC /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		7C1F4F3624A606DB00732FCC /* JsonLdProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdProcessor.cpp; sourceTree = "<group>"; };
-		7C1F4F3724A606DB00732FCC /* JsonLdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdError.h; sourceTree = "<group>"; };
-		7C1F4F3824A606DB00732FCC /* JsonLdOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdOptions.h; sourceTree = "<group>"; };
-		7C1F4F3924A606DB00732FCC /* RDFDataset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RDFDataset.cpp; sourceTree = "<group>"; };
-		7C1F4F3A24A606DB00732FCC /* JsonLdApi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdApi.cpp; sourceTree = "<group>"; };
-		7C1F4F3B24A606DB00732FCC /* Context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Context.cpp; sourceTree = "<group>"; };
-		7C1F4F3C24A606DB00732FCC /* RDFDatasetUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RDFDatasetUtils.cpp; sourceTree = "<group>"; };
-		7C1F4F3D24A606DB00732FCC /* DocumentLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DocumentLoader.cpp; sourceTree = "<group>"; };
-		7C1F4F3E24A606DB00732FCC /* JsonLdUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdUtils.cpp; sourceTree = "<group>"; };
-		7C1F4F3F24A606DB00732FCC /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Context.h; sourceTree = "<group>"; };
-		7C1F4F4024A606DB00732FCC /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
-		7C1F4F4124A606DB00732FCC /* DoubleFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleFormatter.h; sourceTree = "<group>"; };
-		7C1F4F4224A606DB00732FCC /* JsonLdUrl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdUrl.cpp; sourceTree = "<group>"; };
-		7C1F4F4324A606DB00732FCC /* RemoteDocument.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemoteDocument.cpp; sourceTree = "<group>"; };
-		7C1F4F4424A606DB00732FCC /* Permutator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Permutator.cpp; sourceTree = "<group>"; };
-		7C1F4F4524A606DB00732FCC /* IriUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IriUtils.cpp; sourceTree = "<group>"; };
-		7C1F4F4624A606DB00732FCC /* JsonLdOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdOptions.cpp; sourceTree = "<group>"; };
-		7C1F4F4724A606DB00732FCC /* RDFDatasetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFDatasetUtils.h; sourceTree = "<group>"; };
-		7C1F4F4824A606DB00732FCC /* NormalizeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalizeUtils.cpp; sourceTree = "<group>"; };
-		7C1F4F4924A606DB00732FCC /* RemoteDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDocument.h; sourceTree = "<group>"; };
-		7C1F4F4A24A606DB00732FCC /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		7C1F4F4B24A606DB00732FCC /* JsonLdApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdApi.h; sourceTree = "<group>"; };
-		7C1F4F4C24A606DB00732FCC /* IriUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IriUtils.h; sourceTree = "<group>"; };
-		7C1F4F4D24A606DB00732FCC /* Permutator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Permutator.h; sourceTree = "<group>"; };
-		7C1F4F4E24A606DB00732FCC /* JsonLdConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdConsts.h; sourceTree = "<group>"; };
-		7C1F4F4F24A606DB00732FCC /* NormalizeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalizeUtils.h; sourceTree = "<group>"; };
-		7C1F4F5024A606DB00732FCC /* JsonLdUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdUrl.h; sourceTree = "<group>"; };
-		7C1F4F5124A606DB00732FCC /* DoubleFormatter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DoubleFormatter.cpp; sourceTree = "<group>"; };
-		7C1F4F5224A606DB00732FCC /* UniqueNamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UniqueNamer.cpp; sourceTree = "<group>"; };
-		7C1F4F5324A606DB00732FCC /* JsonLdProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdProcessor.h; sourceTree = "<group>"; };
-		7C1F4F5424A606DB00732FCC /* UniqueNamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniqueNamer.h; sourceTree = "<group>"; };
-		7C1F4F5524A606DB00732FCC /* ObjUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjUtils.h; sourceTree = "<group>"; };
 		7C1F4F7C24A606FD00732FCC /* testHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testHelpers.h; sourceTree = "<group>"; };
 		7C1F4F7D24A606FD00732FCC /* test_JsonLdProcessor_expand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_JsonLdProcessor_expand.cpp; sourceTree = "<group>"; };
 		7C1F4F7E24A606FD00732FCC /* test_IriUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_IriUtils.cpp; sourceTree = "<group>"; };
@@ -678,6 +644,54 @@
 		7C40829B24A5C569007A6266 /* libgtest_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest_main.a; path = ../../tests/googletest/build/lib/libgtest_main.a; sourceTree = "<group>"; };
 		7C40829C24A5C569007A6266 /* libgmock_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmock_main.a; path = ../../tests/googletest/build/lib/libgmock_main.a; sourceTree = "<group>"; };
 		7C5DDE2224AA337D00173363 /* copy_test_data.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_test_data.sh; sourceTree = "<group>"; };
+		7C91F43124E3FEDD0071C31C /* JsonLdError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdError.cpp; sourceTree = "<group>"; };
+		7C91F43224E3FEDD0071C31C /* RDFDataset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFDataset.h; sourceTree = "<group>"; };
+		7C91F43324E3FEDD0071C31C /* JsonLdUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdUtils.h; sourceTree = "<group>"; };
+		7C91F43424E3FEDD0071C31C /* ObjUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjUtils.cpp; sourceTree = "<group>"; };
+		7C91F43524E3FEDD0071C31C /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		7C91F43624E3FEDD0071C31C /* JsonLdProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdProcessor.cpp; sourceTree = "<group>"; };
+		7C91F43724E3FEDD0071C31C /* JsonLdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdError.h; sourceTree = "<group>"; };
+		7C91F43824E3FEDD0071C31C /* JsonLdOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdOptions.h; sourceTree = "<group>"; };
+		7C91F43924E3FEDD0071C31C /* RDFDataset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RDFDataset.cpp; sourceTree = "<group>"; };
+		7C91F43A24E3FEDD0071C31C /* JsonLdApi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdApi.cpp; sourceTree = "<group>"; };
+		7C91F43B24E3FEDD0071C31C /* Context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Context.cpp; sourceTree = "<group>"; };
+		7C91F43C24E3FEDD0071C31C /* RDFDatasetUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RDFDatasetUtils.cpp; sourceTree = "<group>"; };
+		7C91F43D24E3FEDD0071C31C /* JsonLdUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdUtils.cpp; sourceTree = "<group>"; };
+		7C91F43F24E3FEDD0071C31C /* ILoadDocumentCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILoadDocumentCallback.h; sourceTree = "<group>"; };
+		7C91F44224E3FEDD0071C31C /* IHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHttpRequest.h; sourceTree = "<group>"; };
+		7C91F44324E3FEDD0071C31C /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Context.h; sourceTree = "<group>"; };
+		7C91F44424E3FEDD0071C31C /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
+		7C91F44524E3FEDD0071C31C /* DoubleFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleFormatter.h; sourceTree = "<group>"; };
+		7C91F44624E3FEDD0071C31C /* JsonLdUrl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdUrl.cpp; sourceTree = "<group>"; };
+		7C91F44724E3FEDD0071C31C /* RemoteDocument.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemoteDocument.cpp; sourceTree = "<group>"; };
+		7C91F44824E3FEDD0071C31C /* LoadDocumentOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadDocumentOptions.h; sourceTree = "<group>"; };
+		7C91F44924E3FEDD0071C31C /* Permutator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Permutator.cpp; sourceTree = "<group>"; };
+		7C91F44A24E3FEDD0071C31C /* IriUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IriUtils.cpp; sourceTree = "<group>"; };
+		7C91F44B24E3FEDD0071C31C /* JsonLdOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLdOptions.cpp; sourceTree = "<group>"; };
+		7C91F44C24E3FEDD0071C31C /* RDFDatasetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFDatasetUtils.h; sourceTree = "<group>"; };
+		7C91F44D24E3FEDD0071C31C /* NormalizeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalizeUtils.cpp; sourceTree = "<group>"; };
+		7C91F44E24E3FEDD0071C31C /* RemoteDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDocument.h; sourceTree = "<group>"; };
+		7C91F44F24E3FEDD0071C31C /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		7C91F45024E3FEDD0071C31C /* JsonLdApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdApi.h; sourceTree = "<group>"; };
+		7C91F45124E3FEDD0071C31C /* IriUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IriUtils.h; sourceTree = "<group>"; };
+		7C91F45224E3FEDD0071C31C /* Permutator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Permutator.h; sourceTree = "<group>"; };
+		7C91F45324E3FEDD0071C31C /* JsonLdConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdConsts.h; sourceTree = "<group>"; };
+		7C91F45424E3FEDD0071C31C /* NormalizeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalizeUtils.h; sourceTree = "<group>"; };
+		7C91F45524E3FEDD0071C31C /* JsonLdUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdUrl.h; sourceTree = "<group>"; };
+		7C91F45624E3FEDD0071C31C /* DoubleFormatter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DoubleFormatter.cpp; sourceTree = "<group>"; };
+		7C91F45724E3FEDD0071C31C /* JsonldPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonldPromise.h; sourceTree = "<group>"; };
+		7C91F45824E3FEDD0071C31C /* UniqueNamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UniqueNamer.cpp; sourceTree = "<group>"; };
+		7C91F45924E3FEDD0071C31C /* JsonLdProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLdProcessor.h; sourceTree = "<group>"; };
+		7C91F45A24E3FEDD0071C31C /* UniqueNamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniqueNamer.h; sourceTree = "<group>"; };
+		7C91F45B24E3FEDD0071C31C /* ObjUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjUtils.h; sourceTree = "<group>"; };
+		7C91F48524E3FF250071C31C /* CurlLoadDocumentCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurlLoadDocumentCallback.h; sourceTree = "<group>"; };
+		7C91F48624E3FF250071C31C /* CurlLoadDocumentCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CurlLoadDocumentCallback.cpp; sourceTree = "<group>"; };
+		7C91F48724E3FF250071C31C /* CurlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurlHelper.h; sourceTree = "<group>"; };
+		7C91F48824E3FF250071C31C /* CurlHttpRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CurlHttpRequest.cpp; sourceTree = "<group>"; };
+		7C91F48924E3FF250071C31C /* CurlHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurlHttpRequest.h; sourceTree = "<group>"; };
+		7C91F48C24E3FF460071C31C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7C91F48E24E3FF690071C31C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7C91F49024E3FFD60071C31C /* LDAP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LDAP.framework; path = System/Library/Frameworks/LDAP.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -694,9 +708,9 @@
 			files = (
 				7C4082A124A5CA60007A6266 /* libjsonld-cpp-core.a in Frameworks */,
 				7C40829D24A5C569007A6266 /* libgmock.a in Frameworks */,
-				7C338A1C24B89C290055B949 /* libssl.a in Frameworks */,
-				7C338A1D24B89C290055B949 /* libcrypto.a in Frameworks */,
 				7C338A1E24B89C290055B949 /* libcurl.a in Frameworks */,
+				7C91F49224E40CB10071C31C /* libcrypto.a in Frameworks */,
+				7C91F49324E40CB10071C31C /* libssl.a in Frameworks */,
 				7C40829E24A5C569007A6266 /* libgtest.a in Frameworks */,
 				7C40829F24A5C569007A6266 /* libgtest_main.a in Frameworks */,
 				7C4082A024A5C569007A6266 /* libgmock_main.a in Frameworks */,
@@ -706,52 +720,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C1F4F2F24A606DB00732FCC /* jsonld-cpp-core */ = {
-			isa = PBXGroup;
-			children = (
-				7C1F4F3524A606DB00732FCC /* CMakeLists.txt */,
-				7C1F4F3B24A606DB00732FCC /* Context.cpp */,
-				7C1F4F3F24A606DB00732FCC /* Context.h */,
-				7C1F4F3D24A606DB00732FCC /* DocumentLoader.cpp */,
-				7C1F4F3424A606DB00732FCC /* DocumentLoader.h */,
-				7C1F4F5124A606DB00732FCC /* DoubleFormatter.cpp */,
-				7C1F4F4124A606DB00732FCC /* DoubleFormatter.h */,
-				7C1F4F4524A606DB00732FCC /* IriUtils.cpp */,
-				7C1F4F4C24A606DB00732FCC /* IriUtils.h */,
-				7C1F4F3A24A606DB00732FCC /* JsonLdApi.cpp */,
-				7C1F4F4B24A606DB00732FCC /* JsonLdApi.h */,
-				7C1F4F4E24A606DB00732FCC /* JsonLdConsts.h */,
-				7C1F4F3024A606DB00732FCC /* JsonLdError.cpp */,
-				7C1F4F3724A606DB00732FCC /* JsonLdError.h */,
-				7C1F4F4624A606DB00732FCC /* JsonLdOptions.cpp */,
-				7C1F4F3824A606DB00732FCC /* JsonLdOptions.h */,
-				7C1F4F3624A606DB00732FCC /* JsonLdProcessor.cpp */,
-				7C1F4F5324A606DB00732FCC /* JsonLdProcessor.h */,
-				7C1F4F4224A606DB00732FCC /* JsonLdUrl.cpp */,
-				7C1F4F5024A606DB00732FCC /* JsonLdUrl.h */,
-				7C1F4F3E24A606DB00732FCC /* JsonLdUtils.cpp */,
-				7C1F4F3224A606DB00732FCC /* JsonLdUtils.h */,
-				7C1F4F4824A606DB00732FCC /* NormalizeUtils.cpp */,
-				7C1F4F4F24A606DB00732FCC /* NormalizeUtils.h */,
-				7C1F4F3324A606DB00732FCC /* ObjUtils.cpp */,
-				7C1F4F5524A606DB00732FCC /* ObjUtils.h */,
-				7C1F4F4424A606DB00732FCC /* Permutator.cpp */,
-				7C1F4F4D24A606DB00732FCC /* Permutator.h */,
-				7C1F4F3924A606DB00732FCC /* RDFDataset.cpp */,
-				7C1F4F3124A606DB00732FCC /* RDFDataset.h */,
-				7C1F4F3C24A606DB00732FCC /* RDFDatasetUtils.cpp */,
-				7C1F4F4724A606DB00732FCC /* RDFDatasetUtils.h */,
-				7C1F4F4324A606DB00732FCC /* RemoteDocument.cpp */,
-				7C1F4F4924A606DB00732FCC /* RemoteDocument.h */,
-				7C1F4F4024A606DB00732FCC /* sha1.cpp */,
-				7C1F4F4A24A606DB00732FCC /* sha1.h */,
-				7C1F4F5224A606DB00732FCC /* UniqueNamer.cpp */,
-				7C1F4F5424A606DB00732FCC /* UniqueNamer.h */,
-			);
-			name = "jsonld-cpp-core";
-			path = "../../jsonld-cpp-core";
-			sourceTree = "<group>";
-		};
 		7C1F4F7B24A606FD00732FCC /* tests-jsonld-cpp-core */ = {
 			isa = PBXGroup;
 			children = (
@@ -1303,7 +1271,8 @@
 			isa = PBXGroup;
 			children = (
 				7C5DDE2124AA337D00173363 /* Build-Phases */,
-				7C1F4F2F24A606DB00732FCC /* jsonld-cpp-core */,
+				7C91F43024E3FEDD0071C31C /* jsonld-cpp-core */,
+				7C91F48324E3FF250071C31C /* network */,
 				7C1F4F7B24A606FD00732FCC /* tests-jsonld-cpp-core */,
 				7C25058024A3DAE3005F7F28 /* Products */,
 				7C40829824A5C569007A6266 /* Frameworks */,
@@ -1322,6 +1291,9 @@
 		7C40829824A5C569007A6266 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C91F49024E3FFD60071C31C /* LDAP.framework */,
+				7C91F48E24E3FF690071C31C /* Foundation.framework */,
+				7C91F48C24E3FF460071C31C /* Security.framework */,
 				7C338A1A24B89C290055B949 /* libcrypto.a */,
 				7C338A1B24B89C290055B949 /* libcurl.a */,
 				7C338A1924B89C290055B949 /* libssl.a */,
@@ -1341,6 +1313,99 @@
 			path = "Build-Phases";
 			sourceTree = "<group>";
 		};
+		7C91F43024E3FEDD0071C31C /* jsonld-cpp-core */ = {
+			isa = PBXGroup;
+			children = (
+				7C91F43124E3FEDD0071C31C /* JsonLdError.cpp */,
+				7C91F43224E3FEDD0071C31C /* RDFDataset.h */,
+				7C91F43324E3FEDD0071C31C /* JsonLdUtils.h */,
+				7C91F43424E3FEDD0071C31C /* ObjUtils.cpp */,
+				7C91F43524E3FEDD0071C31C /* CMakeLists.txt */,
+				7C91F43624E3FEDD0071C31C /* JsonLdProcessor.cpp */,
+				7C91F43724E3FEDD0071C31C /* JsonLdError.h */,
+				7C91F43824E3FEDD0071C31C /* JsonLdOptions.h */,
+				7C91F43924E3FEDD0071C31C /* RDFDataset.cpp */,
+				7C91F43A24E3FEDD0071C31C /* JsonLdApi.cpp */,
+				7C91F43B24E3FEDD0071C31C /* Context.cpp */,
+				7C91F43C24E3FEDD0071C31C /* RDFDatasetUtils.cpp */,
+				7C91F43D24E3FEDD0071C31C /* JsonLdUtils.cpp */,
+				7C91F43E24E3FEDD0071C31C /* network */,
+				7C91F44324E3FEDD0071C31C /* Context.h */,
+				7C91F44424E3FEDD0071C31C /* sha1.cpp */,
+				7C91F44524E3FEDD0071C31C /* DoubleFormatter.h */,
+				7C91F44624E3FEDD0071C31C /* JsonLdUrl.cpp */,
+				7C91F44724E3FEDD0071C31C /* RemoteDocument.cpp */,
+				7C91F44824E3FEDD0071C31C /* LoadDocumentOptions.h */,
+				7C91F44924E3FEDD0071C31C /* Permutator.cpp */,
+				7C91F44A24E3FEDD0071C31C /* IriUtils.cpp */,
+				7C91F44B24E3FEDD0071C31C /* JsonLdOptions.cpp */,
+				7C91F44C24E3FEDD0071C31C /* RDFDatasetUtils.h */,
+				7C91F44D24E3FEDD0071C31C /* NormalizeUtils.cpp */,
+				7C91F44E24E3FEDD0071C31C /* RemoteDocument.h */,
+				7C91F44F24E3FEDD0071C31C /* sha1.h */,
+				7C91F45024E3FEDD0071C31C /* JsonLdApi.h */,
+				7C91F45124E3FEDD0071C31C /* IriUtils.h */,
+				7C91F45224E3FEDD0071C31C /* Permutator.h */,
+				7C91F45324E3FEDD0071C31C /* JsonLdConsts.h */,
+				7C91F45424E3FEDD0071C31C /* NormalizeUtils.h */,
+				7C91F45524E3FEDD0071C31C /* JsonLdUrl.h */,
+				7C91F45624E3FEDD0071C31C /* DoubleFormatter.cpp */,
+				7C91F45724E3FEDD0071C31C /* JsonldPromise.h */,
+				7C91F45824E3FEDD0071C31C /* UniqueNamer.cpp */,
+				7C91F45924E3FEDD0071C31C /* JsonLdProcessor.h */,
+				7C91F45A24E3FEDD0071C31C /* UniqueNamer.h */,
+				7C91F45B24E3FEDD0071C31C /* ObjUtils.h */,
+			);
+			name = "jsonld-cpp-core";
+			path = "../../jsonld-cpp-core";
+			sourceTree = "<group>";
+		};
+		7C91F43E24E3FEDD0071C31C /* network */ = {
+			isa = PBXGroup;
+			children = (
+				7C91F43F24E3FEDD0071C31C /* ILoadDocumentCallback.h */,
+				7C91F44024E3FEDD0071C31C /* curl */,
+				7C91F44224E3FEDD0071C31C /* IHttpRequest.h */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		7C91F44024E3FEDD0071C31C /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				7C91F44124E3FEDD0071C31C /* impl */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
+		7C91F44124E3FEDD0071C31C /* impl */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
+		7C91F48324E3FF250071C31C /* network */ = {
+			isa = PBXGroup;
+			children = (
+				7C91F48424E3FF250071C31C /* curl */,
+			);
+			name = network;
+			path = ../../network;
+			sourceTree = "<group>";
+		};
+		7C91F48424E3FF250071C31C /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				7C91F48524E3FF250071C31C /* CurlLoadDocumentCallback.h */,
+				7C91F48624E3FF250071C31C /* CurlLoadDocumentCallback.cpp */,
+				7C91F48724E3FF250071C31C /* CurlHelper.h */,
+				7C91F48824E3FF250071C31C /* CurlHttpRequest.cpp */,
+				7C91F48924E3FF250071C31C /* CurlHttpRequest.h */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1348,25 +1413,28 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C1F4F5824A606DB00732FCC /* JsonLdUtils.h in Headers */,
-				7C1F4F7124A606DB00732FCC /* IriUtils.h in Headers */,
-				7C1F4F5A24A606DB00732FCC /* DocumentLoader.h in Headers */,
-				7C1F4F6C24A606DB00732FCC /* RDFDatasetUtils.h in Headers */,
-				7C1F4F7A24A606DB00732FCC /* ObjUtils.h in Headers */,
-				7C1F4F7324A606DB00732FCC /* JsonLdConsts.h in Headers */,
-				7C1F4F6624A606DB00732FCC /* DoubleFormatter.h in Headers */,
-				7C1F4F7224A606DB00732FCC /* Permutator.h in Headers */,
-				7C1F4F7824A606DB00732FCC /* JsonLdProcessor.h in Headers */,
-				7C1F4F5724A606DB00732FCC /* RDFDataset.h in Headers */,
-				7C1F4F7424A606DB00732FCC /* NormalizeUtils.h in Headers */,
-				7C1F4F6F24A606DB00732FCC /* sha1.h in Headers */,
-				7C1F4F5D24A606DB00732FCC /* JsonLdOptions.h in Headers */,
-				7C1F4F6424A606DB00732FCC /* Context.h in Headers */,
-				7C1F4F6E24A606DB00732FCC /* RemoteDocument.h in Headers */,
-				7C1F4F7024A606DB00732FCC /* JsonLdApi.h in Headers */,
-				7C1F4F7524A606DB00732FCC /* JsonLdUrl.h in Headers */,
-				7C1F4F5C24A606DB00732FCC /* JsonLdError.h in Headers */,
-				7C1F4F7924A606DB00732FCC /* UniqueNamer.h in Headers */,
+				7C91F47C24E3FEDD0071C31C /* JsonLdUrl.h in Headers */,
+				7C91F46924E3FEDD0071C31C /* IHttpRequest.h in Headers */,
+				7C91F47924E3FEDD0071C31C /* Permutator.h in Headers */,
+				7C91F47624E3FEDD0071C31C /* sha1.h in Headers */,
+				7C91F48224E3FEDD0071C31C /* ObjUtils.h in Headers */,
+				7C91F47724E3FEDD0071C31C /* JsonLdApi.h in Headers */,
+				7C91F46124E3FEDD0071C31C /* JsonLdError.h in Headers */,
+				7C91F45E24E3FEDD0071C31C /* JsonLdUtils.h in Headers */,
+				7C91F47B24E3FEDD0071C31C /* NormalizeUtils.h in Headers */,
+				7C91F46A24E3FEDD0071C31C /* Context.h in Headers */,
+				7C91F46824E3FEDD0071C31C /* ILoadDocumentCallback.h in Headers */,
+				7C91F47A24E3FEDD0071C31C /* JsonLdConsts.h in Headers */,
+				7C91F45D24E3FEDD0071C31C /* RDFDataset.h in Headers */,
+				7C91F47E24E3FEDD0071C31C /* JsonldPromise.h in Headers */,
+				7C91F48024E3FEDD0071C31C /* JsonLdProcessor.h in Headers */,
+				7C91F48124E3FEDD0071C31C /* UniqueNamer.h in Headers */,
+				7C91F47324E3FEDD0071C31C /* RDFDatasetUtils.h in Headers */,
+				7C91F47824E3FEDD0071C31C /* IriUtils.h in Headers */,
+				7C91F47524E3FEDD0071C31C /* RemoteDocument.h in Headers */,
+				7C91F46F24E3FEDD0071C31C /* LoadDocumentOptions.h in Headers */,
+				7C91F46C24E3FEDD0071C31C /* DoubleFormatter.h in Headers */,
+				7C91F46224E3FEDD0071C31C /* JsonLdOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1470,24 +1538,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C1F4F6124A606DB00732FCC /* RDFDatasetUtils.cpp in Sources */,
-				7C1F4F6224A606DB00732FCC /* DocumentLoader.cpp in Sources */,
-				7C1F4F6A24A606DB00732FCC /* IriUtils.cpp in Sources */,
-				7C1F4F5624A606DB00732FCC /* JsonLdError.cpp in Sources */,
-				7C1F4F6324A606DB00732FCC /* JsonLdUtils.cpp in Sources */,
-				7C1F4F6D24A606DB00732FCC /* NormalizeUtils.cpp in Sources */,
-				7C1F4F5E24A606DB00732FCC /* RDFDataset.cpp in Sources */,
-				7C1F4F5B24A606DB00732FCC /* JsonLdProcessor.cpp in Sources */,
-				7C1F4F6824A606DB00732FCC /* RemoteDocument.cpp in Sources */,
-				7C1F4F6024A606DB00732FCC /* Context.cpp in Sources */,
-				7C1F4F7724A606DB00732FCC /* UniqueNamer.cpp in Sources */,
-				7C1F4F6924A606DB00732FCC /* Permutator.cpp in Sources */,
-				7C1F4F5F24A606DB00732FCC /* JsonLdApi.cpp in Sources */,
-				7C1F4F6524A606DB00732FCC /* sha1.cpp in Sources */,
-				7C1F4F7624A606DB00732FCC /* DoubleFormatter.cpp in Sources */,
-				7C1F4F6724A606DB00732FCC /* JsonLdUrl.cpp in Sources */,
-				7C1F4F5924A606DB00732FCC /* ObjUtils.cpp in Sources */,
-				7C1F4F6B24A606DB00732FCC /* JsonLdOptions.cpp in Sources */,
+				7C91F46624E3FEDD0071C31C /* RDFDatasetUtils.cpp in Sources */,
+				7C91F47F24E3FEDD0071C31C /* UniqueNamer.cpp in Sources */,
+				7C91F45C24E3FEDD0071C31C /* JsonLdError.cpp in Sources */,
+				7C91F47024E3FEDD0071C31C /* Permutator.cpp in Sources */,
+				7C91F47D24E3FEDD0071C31C /* DoubleFormatter.cpp in Sources */,
+				7C91F47124E3FEDD0071C31C /* IriUtils.cpp in Sources */,
+				7C91F46B24E3FEDD0071C31C /* sha1.cpp in Sources */,
+				7C91F46324E3FEDD0071C31C /* RDFDataset.cpp in Sources */,
+				7C91F47224E3FEDD0071C31C /* JsonLdOptions.cpp in Sources */,
+				7C91F46724E3FEDD0071C31C /* JsonLdUtils.cpp in Sources */,
+				7C91F47424E3FEDD0071C31C /* NormalizeUtils.cpp in Sources */,
+				7C91F46024E3FEDD0071C31C /* JsonLdProcessor.cpp in Sources */,
+				7C91F46524E3FEDD0071C31C /* Context.cpp in Sources */,
+				7C91F46D24E3FEDD0071C31C /* JsonLdUrl.cpp in Sources */,
+				7C91F46424E3FEDD0071C31C /* JsonLdApi.cpp in Sources */,
+				7C91F45F24E3FEDD0071C31C /* ObjUtils.cpp in Sources */,
+				7C91F46E24E3FEDD0071C31C /* RemoteDocument.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1506,8 +1573,10 @@
 				7C35470824B1AFE200D78C21 /* test_DoubleFormatter.cpp in Sources */,
 				7C1F518724A6076600732FCC /* testHelpers.cpp in Sources */,
 				7C35470624B1AFE200D78C21 /* test_DocumentLoader.cpp in Sources */,
+				7C91F48B24E3FF250071C31C /* CurlHttpRequest.cpp in Sources */,
 				7C35470924B1AFE200D78C21 /* test_Permutator.cpp in Sources */,
 				7C35471124B1AFE200D78C21 /* test_NodeComparisons.cpp in Sources */,
+				7C91F48A24E3FF250071C31C /* CurlLoadDocumentCallback.cpp in Sources */,
 				7C35470F24B1AFE200D78C21 /* test_JsonLdProcessor_toRDF.cpp in Sources */,
 				7C1F518824A6076600732FCC /* main.cpp in Sources */,
 				7C35471024B1AFE200D78C21 /* test_JsonLdApi.cpp in Sources */,
@@ -1637,8 +1706,7 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../include",
-					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl/impl",
-					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core/network",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1657,8 +1725,7 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../include",
-					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl/impl",
-					"$(PROJECT_DIR)/../../jsonld-cpp-core/network/curl",
+					"$(PROJECT_DIR)/../../jsonld-cpp-core/network",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1676,6 +1743,7 @@
 					"$(PROJECT_DIR)/../../tests/rapidcheck/include",
 					"$(PROJECT_DIR)/../../include",
 					"$(PROJECT_DIR)/../../jsonld-cpp-core",
+					"$(PROJECT_DIR)/../../network/curl",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../tests/googletest/build/lib",
@@ -1695,6 +1763,7 @@
 					"$(PROJECT_DIR)/../../tests/rapidcheck/include",
 					"$(PROJECT_DIR)/../../include",
 					"$(PROJECT_DIR)/../../jsonld-cpp-core",
+					"$(PROJECT_DIR)/../../network/curl",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../tests/googletest/build/lib",
