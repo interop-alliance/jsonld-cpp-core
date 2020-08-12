@@ -32,7 +32,6 @@ void performExpandTest(int testNumber, const std::string& testPrefix = jsonld::t
     options->setDocumentLoader(dl);
 
     const json expanded = JsonLdProcessor::expand(documentUri, std::move(options));
-    std::string expandedString = expanded.dump();
 
     EXPECT_TRUE(JsonLdUtils::deepCompare(expected, expanded));
 }

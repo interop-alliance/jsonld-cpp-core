@@ -7,7 +7,6 @@ using RDF::RDFDataset;
 using nlohmann::json;
 
 nlohmann::json JsonLdProcessor::expand(nlohmann::json input, const std::shared_ptr<JsonLdOptions> options, const std::string& baseUrl) {
-    std::string jsonInputString = input.dump();
     // 3) Initialize a new empty active context.
     // The base IRI of the active context is set to the IRI of the currently being processed document,
     // if available; otherwise to null. If set, the base option from options overrides the base IRI.
@@ -82,7 +81,6 @@ nlohmann::json JsonLdProcessor::expand(const std::string& input, const std::shar
             if (!remoteDocument)
                 throw std::runtime_error("Error: remote document is empty!");
             const json& json_input = remoteDocument->getDocument();
-            std::string jsonInputString = json_input.dump();
             // TODO: figure out how to deal with remote context
 
             // if set the base in options should override the base iri in the
