@@ -368,6 +368,5 @@ TEST(JsonLdProcessorTest, expand_our0400) {
 }
 
 TEST(JsonLdProcessorTest, expand_our0401) {
-    // this is an extra test for testing nested context
     performExpandTest(401, jsonld::test::ourExpandTestPrefix);
 }
