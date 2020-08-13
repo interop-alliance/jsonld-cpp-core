@@ -5,9 +5,7 @@ add_library(jsonld-cpp-core STATIC
         IriUtils.cpp
         sha1.cpp
         JsonLdProcessor.cpp
-        RemoteDocument.cpp
         JsonLdUrl.cpp
-        DocumentLoader.cpp
         JsonLdOptions.cpp
         JsonLdError.cpp
         JsonLdApi.cpp
@@ -20,12 +18,13 @@ add_library(jsonld-cpp-core STATIC
         Permutator.cpp
         Context.cpp
         UniqueNamer.cpp
-        network/curl/impl/CurlHttpRequest.cpp)
+        RemoteDocument.cpp
+)
 
 target_include_directories(jsonld-cpp-core
         PUBLIC
             $<INSTALL_INTERFACE:include/libjsonld-cpp-core>
-            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include;${CMAKE_CURRENT_SOURCE_DIR}/network/curl/impl;${CMAKE_CURRENT_SOURCE_DIR}/network/curl>;${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/curl-7.71.1/include"
+            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include;${CMAKE_CURRENT_SOURCE_DIR}/../jsonld-cpp-core/network;${CMAKE_CURRENT_SOURCE_DIR}/../jsonld-cpp-core;>"
 )
 
 target_compile_features(jsonld-cpp-core PRIVATE cxx_std_17)

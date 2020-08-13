@@ -58,6 +58,11 @@ namespace JsonLdConsts {
     static constexpr const char CONTAINER[] = "@container";
     static constexpr const char BLANK_NODE_PREFIX[] = "_:";
     static constexpr const char VOCAB[] = "@vocab";
+    static constexpr const char DIRECTION[] = "@direction";
+    static constexpr const char IMPORT[] = "@import";
+    static constexpr const char PROPAGATE[] = "@propagate";
+    static constexpr const char PROTECTED[] = "@protected";
+    static constexpr const char VERSION[] = "@version";
     static constexpr const char BASE[] = "@base";
     static constexpr const char REQUIRE_ALL[] = "@requireAll";
 
@@ -65,6 +70,7 @@ namespace JsonLdConsts {
         ALWAYS, NEVER, ONCE, LINK
     };
 
+    const size_t processorDefinedLimit = 1000;
 }
 
 #endif //LIBJSONLD_CPP_JSONLDCONSTS_H

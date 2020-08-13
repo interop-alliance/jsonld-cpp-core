@@ -111,3 +111,9 @@ void JsonLdUtils::mergeValue(json & obj, const std::string& key, const json& val
         values.push_back(value);
     }
 }
+
+std::string JsonLdUtils::getStringVersionFromNumericValue(const float version) {
+    std::string versionString = std::to_string(version);
+    versionString.erase ( versionString.find_last_not_of('0') + 1, std::string::npos );
+    return versionString;
+}

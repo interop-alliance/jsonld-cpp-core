@@ -187,3 +187,7 @@ std::string IriUtils::prependBase(std::string base, std::string iri) {
     return result;
 }
 
+bool IriUtils::isValidIri(const std::string& value) {
+    // TODO: RFC3987 (https://www.ietf.org/rfc/rfc3987.txt)
+    return value.find(':') != std::string::npos;
+}

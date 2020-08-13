@@ -28,16 +28,32 @@ private:
     void init();
 
 public:
-
     Context() = default;
     explicit Context(const std::shared_ptr<JsonLdOptions>& options);
     Context(std::map<std::string, std::string> map, const std::shared_ptr<JsonLdOptions>& options);
     explicit Context(std::map<std::string, std::string> map);
 
-// todo: should these be static constructors?
-    Context parse(const nlohmann::json & localContext, const std::vector<std::string> & remoteContexts, bool parsingARemoteContext);
-    Context parse(const nlohmann::json & localContext, const std::vector<std::string> & remoteContexts);
-    Context parse(const nlohmann::json & localContext);
+    // TODO: should these be static constructors?
+    Context parse(const std::string& baseUrl,
+                  const nlohmann::json& localContext,
+                  std::vector<std::string>& remoteContexts,
+                  const bool overrideProtected = false,
+                  const bool propagate = true,
+                  const bool validateScopedContext = true);
+    Context parse(const std::string& baseUrl,
+                  const nlohmann::json& localContext,
+                  const bool overrideProtected = false,
+                  const bool propagate = true,
+                  const bool validateScopedContext = true);
+//    Context parseDeprecated(const nlohmann::json& localContext, const std::vector<std::string>& remoteContexts, bool parsingARemoteContext);
+
+    // Updated 1.1 Context Processing Algorithms
+    Context applyContextProcessingAlgorithm(const std::string& baseUrl,
+                                            const nlohmann::json& localContext,
+                                            std::vector<std::string>& remoteContexts,
+                                            const bool overrideProtected,
+                                            const bool propagate,
+                                            const bool validateScopedContext);
 
     /**
      * Retrieve container mapping.

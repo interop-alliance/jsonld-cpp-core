@@ -13,12 +13,14 @@ public:
     static const char InvalidIdValue[];
     static const char InvalidLocalContext[];
     static const char MultipleContextLinkHeaders[];
-    static const char LoadingRemoteContextFailed[];
-    static const char InvalidRemoteContext[];
+    static const char LoadingRemoteContextFailedError[];
+    static const char InvalidRemoteContextError[];
     static const char RecursiveContextInclusion[];
     static const char InvalidBaseIri[];
     static const char InvalidVocabMapping[];
     static const char InvalidDefaultLanguage[];
+    static const char InvalidVersionValueError[];
+    static const char ProcessingModeConflictError[];
     static const char KeywordRedefinition[];
     static const char InvalidTermDefinition[];
     static const char InvalidReverseProperty[];
@@ -47,6 +49,7 @@ public:
     static const char InvalidInput[];
     static const char ParseError[];
     static const char UnknownError[];
+    static const char ContextOverflowError[];
 
 private:
     nlohmann::json detail;
